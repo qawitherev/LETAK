@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:title="@string/letak_now"
+        android:icon="@drawable/ic_car"
+        app:showAsAction="always"/>
+    <item
+        android:title="@string/monthly_pass"
+        android:icon="@drawable/ic_monthly_pass"
+        app:showAsAction="always"/>
+    <item
+        android:title="@string/notifications"
+        android:icon="@drawable/ic_notifications"
+        app:showAsAction="always"/>
+    <item
+        android:title="@string/profile"
+        android:icon="@drawable/ic_profile"
+        app:showAsAction="always"/>
+</menu>

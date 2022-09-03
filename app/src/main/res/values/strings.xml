@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">LETAK</string>
+
+    <string name="login">Log In</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="app_desc">Sabah\'s Ticketless Parking Payment App</string>
+    <string name="operator_registration"> <u>Operator Registration</u> </string>
+    <string name="ready_to_letak">Ready to LETAK?</string>
+
+    <!--   signup activity   -->
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last name</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="continue_with_google">Continue with Google</string>
+    <string name="continue_with_apple">Continue with Apple</string>
+    <string name="register">Register</string>
+
+    <!--    login activity  -->
+    <string name="welcome_back">WELCOME BACK!</string>
+    <string name="email_or_phone_num">Email or Phone Number</string>
+
+<!--    bottom nav bar menu -->
+    <string name="letak_now">Letak Now</string>
+    <string name="advance_book">Advance Book</string>
+    <string name="monthly_pass">Monthly Pass</string>
+    <string name="notifications">Notifications</string>
+    <string name="profile">Profile</string>
+
+<!--    appbar main menu    -->
+    <string name="welcome_user">Good Afternoon Qawi!</string>
+</resources>

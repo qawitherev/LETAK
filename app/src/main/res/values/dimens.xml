@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<!--    corner radius   -->
+    <dimen name="corner_radius_low">10dp</dimen>
+    <dimen name="card_corner_radius">15dp</dimen>
+
+<!--    elevation   -->
+    <dimen name="button_elevation">50dp</dimen>
+    <dimen name="card_elevation">10dp</dimen>
+
+<!--    general stuffs  -->
+    <dimen name="margin_between_cards">15dp</dimen>
+    <dimen name="margin_out_in_cards">20dp</dimen>
+    <dimen name="margin_between_in_cards">10dp</dimen>
+</resources>

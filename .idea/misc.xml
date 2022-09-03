@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/drawable/appbar_background_shape.xml" value="0.124" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/drawable/bottom_nav_bar_bg.xml" value="0.1045" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/drawable/circle_1.xml" value="0.124" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/drawable/circle_2.xml" value="0.124" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/drawable/ic_launcher_background.xml" value="0.124" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/activity_login.xml" value="0.152" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/activity_main.xml" value="0.1984375" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/activity_main_menu.xml" value="0.176" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/activity_sign_up.xml" value="0.2" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/activity_welcome.xml" value="0.176" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/appbar_main_menu.xml" value="0.4" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/menu/main_menu_bottom_nav.xml" value="0.21666666666666667" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
