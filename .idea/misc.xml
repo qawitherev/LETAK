@@ -10,6 +10,7 @@
         <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/drawable/ic_launcher_background.xml" value="0.124" />
         <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/drawable/main_menu_nested_scroll_bg.xml" value="0.1045" />
         <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/drawable/main_menu_toolbar_bg.xml" value="0.1045" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/drawable/parking_lot_bar_bg.xml" value="0.1045" />
         <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/activity_login.xml" value="0.152" />
         <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/activity_main.xml" value="0.1984375" />
         <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/activity_main_menu.xml" value="0.176" />
@@ -17,7 +18,9 @@
         <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/activity_welcome.xml" value="0.176" />
         <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/appbar_main_menu.xml" value="0.4" />
         <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/fragment_monthly_pass.xml" value="0.14990942028985507" />
-        <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/fragment_order_now.xml" value="0.14990942028985507" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/fragment_order_now.xml" value="0.2" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/item_list.xml" value="0.21666666666666667" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/parking_lot_item.xml" value="0.176" />
         <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/menu/main_menu_bottom_nav.xml" value="0.21666666666666667" />
         <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/menu/main_menu_toolbar_menu.xml" value="0.215625" />
       </map>

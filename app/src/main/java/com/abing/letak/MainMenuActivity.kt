@@ -43,7 +43,7 @@ class MainMenuActivity : AppCompatActivity() {
                     true
                 }
                 else -> {
-                    // TODO: notification activity
+                    // TODO: profile activity activity
                     true
                 }
 
