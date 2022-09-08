@@ -80,7 +80,7 @@
             android:layout_marginStart="70dp"
             android:layout_marginEnd="70dp"
             android:text="@string/advance_book"
-            android:textSize="15dp"
+            android:textSize="15sp"
             app:cornerRadius="10dp"
             app:elevation="@dimen/button_elevation"
             app:layout_constraintEnd_toEndOf="parent"

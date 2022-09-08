@@ -6,11 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.abing.letak.R
-import com.abing.letak.databinding.FragmentMonthlyPassBinding
+import com.abing.letak.databinding.FragmentNotificationBinding
 import com.abing.letak.databinding.FragmentOrderNowBinding
 
-class MonthlyPassFragment : Fragment() {
-    private var _binding: FragmentMonthlyPassBinding? = null
+class NotificationFragment : Fragment() {
+    private var _binding: FragmentNotificationBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -18,7 +18,7 @@ class MonthlyPassFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentMonthlyPassBinding.inflate(inflater, container, false)
+        _binding = FragmentNotificationBinding.inflate(inflater, container, false)
         return binding.root
     }
 

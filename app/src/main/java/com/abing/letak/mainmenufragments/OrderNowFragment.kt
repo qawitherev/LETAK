@@ -30,4 +30,9 @@ class OrderNowFragment : Fragment() {
         binding.aLittleInsightRecyclerView.adapter = ParkingLotAdapter(requireContext(), data)
         binding.aLittleInsightRecyclerView.layoutManager = LinearLayoutManager(requireContext())
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

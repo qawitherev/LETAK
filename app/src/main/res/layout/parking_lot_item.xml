@@ -29,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_begin="123dp" />
+            app:layout_constraintGuide_begin="106dp" />
 
         <TextView
             android:id="@+id/parking_lot_name"
@@ -67,7 +67,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_begin="342dp" />
+            app:layout_constraintGuide_begin="327dp" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

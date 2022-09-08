@@ -1,16 +1,17 @@
 package com.abing.letak
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
+import android.view.View.GONE
+import android.view.View.VISIBLE
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.abing.letak.databinding.ActivityMainMenuBinding
 import com.abing.letak.mainmenufragments.MonthlyPassFragment
+import com.abing.letak.mainmenufragments.NotificationFragment
 import com.abing.letak.mainmenufragments.OrderNowFragment
+import com.abing.letak.mainmenufragments.ProfileFragment
 import com.abing.letak.utils.lightStatusBar
-import com.abing.letak.utils.setFullScreen
 
 class MainMenuActivity : AppCompatActivity() {
 
@@ -20,30 +21,50 @@ class MainMenuActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainMenuBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        supportFragmentManager.beginTransaction().replace(R.id.fragment_container, OrderNowFragment()).commit()
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, OrderNowFragment()).commit()
+        setSupportActionBar(binding.orderMonthlyToolbar)
+        binding.orderMonthlyToolbar.visibility = VISIBLE
+        binding.notificationToolbar.visibility = GONE
+        binding.profileToolbar.visibility = GONE
         lightStatusBar(window, false, false)
-        setSupportActionBar(binding.mainMenuToolbar)
 
         navBotNavigations()
     }
 
     private fun navBotNavigations() {
         binding.bottomNavBar.setOnItemSelectedListener {
-            when(it.itemId) {
+            when (it.itemId) {
                 R.id.order_now -> {
                     setCurrentFragment(OrderNowFragment())
+                    setSupportActionBar(binding.orderMonthlyToolbar)
+                    binding.orderMonthlyToolbar.visibility = VISIBLE
+                    binding.notificationToolbar.visibility = GONE
+                    binding.profileToolbar.visibility = GONE
                     true
                 }
                 R.id.monthly_pass -> {
                     setCurrentFragment(MonthlyPassFragment())
+                    setSupportActionBar(binding.orderMonthlyToolbar)
+                    binding.orderMonthlyToolbar.visibility = VISIBLE
+                    binding.notificationToolbar.visibility = GONE
+                    binding.profileToolbar.visibility = GONE
                     true
                 }
                 R.id.notifications -> {
-                    // TODO: notifications activity
+                    setCurrentFragment(NotificationFragment())
+                    setSupportActionBar(binding.notificationToolbar)
+                    binding.orderMonthlyToolbar.visibility = GONE
+                    binding.notificationToolbar.visibility = VISIBLE
+                    binding.profileToolbar.visibility = GONE
                     true
                 }
                 else -> {
-                    // TODO: profile activity activity
+                    setCurrentFragment(ProfileFragment())
+                    setSupportActionBar(binding.profileToolbar)
+                    binding.orderMonthlyToolbar.visibility = GONE
+                    binding.notificationToolbar.visibility = GONE
+                    binding.profileToolbar.visibility = VISIBLE
                     true
                 }
 

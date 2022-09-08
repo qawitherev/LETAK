@@ -19,17 +19,33 @@
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:liftOnScroll="true"
-            android:fitsSystemWindows="true">
+            android:fitsSystemWindows="true"
+            app:liftOnScroll="true">
 
             <com.google.android.material.appbar.MaterialToolbar
-                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-                app:subtitle="@string/welcome_user"
-                android:id="@+id/main_menu_toolbar"
+                android:id="@+id/order_monthly_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
                 app:layout_scrollFlags="scroll|enterAlways"
-                app:menu="@menu/main_menu_toolbar_menu"/>
+                app:menu="@menu/main_menu_toolbar_menu" />
+
+            <com.google.android.material.appbar.MaterialToolbar
+                app:title="@string/notification_caps"
+                android:id="@+id/notification_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                app:layout_scrollFlags="scroll|enterAlways"/>
+
+            <com.google.android.material.appbar.MaterialToolbar
+                app:title="@string/profile_caps"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:id="@+id/profile_toolbar"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                app:layout_scrollFlags="scroll|enterAlways"/>
+
 
 
         </com.google.android.material.appbar.AppBarLayout>
@@ -42,7 +58,7 @@
             <FrameLayout
                 android:id="@+id/fragment_container"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent" />
 
 
         </androidx.core.widget.NestedScrollView>
