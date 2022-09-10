@@ -120,7 +120,7 @@
             android:id="@+id/letak_vehicle_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:text="@string/letak_vehicle"
             android:textSize="17sp"
             android:textStyle="bold"
@@ -128,10 +128,10 @@
             app:layout_constraintTop_toBottomOf="@id/letak_card" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:paddingBottom="10dp"
             android:id="@+id/user_vehicle_rv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/letak_vehicle_text" />
@@ -140,7 +140,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="70dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="70dp"
             android:elevation="@dimen/button_elevation"
             android:text="@string/register_new_vehicle"
