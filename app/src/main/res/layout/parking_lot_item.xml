@@ -51,6 +51,7 @@
             app:layout_constraintTop_toBottomOf="@+id/parking_lot_name" />
 
         <ProgressBar
+            android:progress="60"
             android:id="@+id/parking_lot_occupancy_bar"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="0dp"

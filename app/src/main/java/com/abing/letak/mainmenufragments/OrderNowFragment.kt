@@ -4,7 +4,9 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
 import android.view.ViewGroup
+import android.webkit.RenderProcessGoneDetail
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.abing.letak.R
 import com.abing.letak.data.parkingLotList

@@ -12,8 +12,20 @@
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp">
 
+        <include
+            android:visibility="gone"
+            android:id="@+id/active_parking_card"
+            layout="@layout/letak_now_active_parking"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
         <ImageView
-            android:id="@+id/no_active_parking"
+            android:id="@+id/no_active_parking_img"
             android:layout_width="200dp"
             android:layout_height="200dp"
             android:src="@drawable/no_active_parking"
@@ -35,7 +47,7 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/no_active_parking" />
+            app:layout_constraintTop_toBottomOf="@id/no_active_parking_img" />
 
         <TextView
             android:id="@+id/a_little_insight"
@@ -86,6 +98,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/letak_now_button" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="no_active_parking_img,no_active_parking_text" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
