@@ -40,4 +40,10 @@
         <item name="android:navigationBarColor">@color/primaryColor</item>
     </style>
 
+<!--    order now activity  -->
+    <style name="Theme.LETAK.OrderNowActivity">
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@color/white</item>
+    </style>
+
 </resources>

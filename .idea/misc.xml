@@ -14,13 +14,16 @@
         <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/activity_login.xml" value="0.152" />
         <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/activity_main.xml" value="0.1984375" />
         <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/activity_main_menu.xml" value="0.176" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/activity_order_now.xml" value="0.21666666666666667" />
         <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/activity_sign_up.xml" value="0.2" />
         <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/activity_welcome.xml" value="0.176" />
         <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/appbar_main_menu.xml" value="0.4" />
         <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/fragment_monthly_pass.xml" value="0.264" />
         <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/fragment_notification.xml" value="0.21666666666666667" />
         <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/fragment_order_now.xml" value="0.264" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/fragment_parking_confirmation.xml" value="0.21666666666666667" />
         <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/fragment_profile.xml" value="0.2" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/fragment_space_selection.xml" value="0.2" />
         <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/item_list.xml" value="0.21666666666666667" />
         <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/letak_now_active_parking.xml" value="0.6" />
         <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/monthly_pass_card.xml" value="0.5765069551777434" />
