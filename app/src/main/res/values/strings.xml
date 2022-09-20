@@ -67,11 +67,42 @@
     <string name="inactive">Expired</string>
     <string name="need_assistance">Need Assistance</string>
 
-    <!--    parking space selection     -->
+    <!--    order now parking space selection     -->
     <string name="parking_fee">Parking Fee</string>
     <string name="parking_space">Parking Space</string>
     <string name="parking_time">Parking Time</string>
     <string name="continue_button">Continue</string>
+
+    <!--    order now parking confirmation    -->
+    <string name="parking_details">Parking Details</string>
+    <string name="payment">Payment</string>
+    <string name="select_preferred_ewallet">Select your preferred e-wallet</string>
+    <string name="select_vehicle">Select your vehicle</string>
+    <string name="vehicle">Vehicle</string>
+    <string name="confirmation_reminder">Reminder: Go to the selected parking space in 5 minutes to avoid cancellation</string>
+
+    <!--    booking confirmed      -->
+    <string name="parking_ready">Yeay! Your parking is ready.</string>
+    <string name="tap_park_button">Tap PARK button once you have arrived.</string>
+    <string name="tap_assistance_button">Needing help? Tap NEED ASSISTANCE button below.</string>
+    <string name="time_left">Time left: </string>
+
+    <!--    parking lot selection   -->
+    <string name="letak_where">LETAK where?</string>
+    <string name="available_letak_now">Available parking lot</string>
+
+    <!--    monthly pass lot selection  -->
+    <string name="available_monthly_pass">Available Monthly Pass</string>
+    <string name="registered_car_can_park">All your registered car can park in the selected parking lot.</string>
+    <string name="park_start_date">Park Start Date</string>
+    <string name="park_end_date">Park End Date</string>
+    <string name="valid_for">Valid for: </string>
+    <string name="monthly_pass_selection">Monthly Pass: </string>
+    <string name="parking_time_selection">Parking Time: </string>
+
+    <!--    pass confirmation fragment     -->
+    <string name="important_notice">Important notice: </string>
+    <string name="the_notice">You are only eligible for the parking space at the specified time. Parking outside of the specified time will be charged at the normal rate.</string>
 
     <!--    testing purposes    -->
     <string name="lorem_ipsum_long"> START Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ullamcorper sit amet risus nullam eget felis. Eu augue ut lectus arcu bibendum at varius vel pharetra. Bibendum arcu vitae elementum curabitur vitae nunc sed velit. Nisi est sit amet facilisis magna etiam tempor orci eu. Accumsan tortor posuere ac ut consequat semper viverra nam libero. Commodo sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec. At augue eget arcu dictum varius duis at. In ornare quam viverra orci sagittis eu. Eget gravida cum sociis natoque penatibus et magnis dis. Eu turpis egestas pretium aenean pharetra. Nec dui nunc mattis enim ut tellus elementum. Feugiat pretium nibh ipsum consequat nisl vel pretium. Nullam vehicula ipsum a arcu cursus vitae. Tempus quam pellentesque nec nam aliquam sem et tortor. Massa tincidunt dui ut ornare lectus sit amet. Vel eros donec ac odio tempor orci dapibus ultrices in.

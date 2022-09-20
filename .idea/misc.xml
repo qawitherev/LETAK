@@ -10,7 +10,11 @@
         <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/drawable/ic_launcher_background.xml" value="0.124" />
         <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/drawable/main_menu_nested_scroll_bg.xml" value="0.1045" />
         <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/drawable/main_menu_toolbar_bg.xml" value="0.1045" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/drawable/parking_confirmation_bot_bg.xml" value="0.131" />
         <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/drawable/parking_lot_bar_bg.xml" value="0.1045" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/drawable/parking_lot_selection_bot_bg.xml" value="0.131" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/drawable/pass_confirmation_bot_bg.xml" value="0.131" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/activity_extend_parking.xml" value="0.11639492753623189" />
         <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/activity_login.xml" value="0.152" />
         <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/activity_main.xml" value="0.1984375" />
         <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/activity_main_menu.xml" value="0.176" />
@@ -18,10 +22,17 @@
         <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/activity_sign_up.xml" value="0.2" />
         <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/activity_welcome.xml" value="0.176" />
         <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/appbar_main_menu.xml" value="0.4" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/available_parking_lot_item.xml" value="0.2" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/fragment_booking_confirmed.xml" value="0.152" />
         <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/fragment_monthly_pass.xml" value="0.264" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/fragment_monthly_pass_confirmation.xml" value="0.2" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/fragment_monthly_pass_parking_lot_selection.xml" value="0.21666666666666667" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/fragment_monthly_pass_space_selection.xml" value="0.264" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/fragment_monthy_pass_lot_selection.xml" value="0.21666666666666667" />
         <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/fragment_notification.xml" value="0.21666666666666667" />
         <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/fragment_order_now.xml" value="0.264" />
-        <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/fragment_parking_confirmation.xml" value="0.21666666666666667" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/fragment_parking_confirmation.xml" value="0.176" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/fragment_parking_lot_selection.xml" value="0.264" />
         <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/fragment_profile.xml" value="0.2" />
         <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/fragment_space_selection.xml" value="0.2" />
         <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/item_list.xml" value="0.21666666666666667" />

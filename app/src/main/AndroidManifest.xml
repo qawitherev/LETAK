@@ -14,6 +14,12 @@
         android:theme="@style/Theme.LETAK"
         tools:targetApi="31">
         <activity
+            android:name=".ExtendParking"
+            android:exported="false" />
+        <activity
+            android:name=".MonthlyPassActivity"
+            android:exported="false" />
+        <activity
             android:name=".ordernowactivity.OrderNowActivity"
             android:exported="false" />
         <activity

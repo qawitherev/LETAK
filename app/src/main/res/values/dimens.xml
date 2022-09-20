@@ -6,7 +6,7 @@
 
 <!--    elevation   -->
     <dimen name="button_elevation">50dp</dimen>
-    <dimen name="card_elevation">10dp</dimen>
+    <dimen name="card_elevation">50dp</dimen>
 
 <!--    general stuffs  -->
     <dimen name="margin_between_cards">15dp</dimen>
