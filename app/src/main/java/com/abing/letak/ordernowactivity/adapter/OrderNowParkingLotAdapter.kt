@@ -14,7 +14,7 @@ class OrderNowParkingLotAdapter(private val context: Context, private val datase
         viewType: Int
     ): OrderNowParkingLotViewHolder {
         val binding = AvailableParkingLotItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return return OrderNowParkingLotViewHolder(binding)
+        return OrderNowParkingLotViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: OrderNowParkingLotViewHolder, position: Int) {

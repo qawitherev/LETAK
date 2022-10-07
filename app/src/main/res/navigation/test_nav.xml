@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/test_nav"
+    app:startDestination="@id/firstTestFragment">
+
+    <fragment
+        android:id="@+id/firstTestFragment"
+        android:name="com.abing.letak.test.fragment.FirstTestFragment"
+        android:label="fragment_first_test"
+        tools:layout="@layout/fragment_first_test" >
+        <action
+            android:id="@+id/action_firstTestFragment_to_secondTestFragment"
+            app:destination="@id/secondTestFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/secondTestFragment"
+        android:name="com.abing.letak.test.fragment.SecondTestFragment"
+        android:label="fragment_second_test"
+        tools:layout="@layout/fragment_second_test" />
+</navigation>

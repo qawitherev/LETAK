@@ -48,7 +48,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/tap_park_button"
-                    android:textColor="white" />
+                    android:textColor="@color/white" />
 
                 <com.google.android.material.button.MaterialButton
                     android:layout_width="wrap_content"

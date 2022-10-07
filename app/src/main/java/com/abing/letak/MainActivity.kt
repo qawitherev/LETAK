@@ -1,8 +1,8 @@
 package com.abing.letak
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.abing.letak.ordernowactivity.OrderNowActivity
 
 class MainActivity : AppCompatActivity() {
@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun welcomeActivity() {
-        val intent = Intent(this, OrderNowActivity::class.java)
+        val intent = Intent(this, MainMenuActivity::class.java)
         startActivity(intent)
     }
 }

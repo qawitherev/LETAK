@@ -68,7 +68,7 @@
     <string name="need_assistance">Need Assistance</string>
 
     <!--    order now parking space selection     -->
-    <string name="parking_fee">Parking Fee</string>
+    <string name="parking_fee">Parking Fee:</string>
     <string name="parking_space">Parking Space</string>
     <string name="parking_time">Parking Time</string>
     <string name="continue_button">Continue</string>
@@ -90,6 +90,7 @@
     <!--    parking lot selection   -->
     <string name="letak_where">LETAK where?</string>
     <string name="available_letak_now">Available parking lot</string>
+    <string name="select_parking_lot">Select Parking Lot</string>
 
     <!--    monthly pass lot selection  -->
     <string name="available_monthly_pass">Available Monthly Pass</string>

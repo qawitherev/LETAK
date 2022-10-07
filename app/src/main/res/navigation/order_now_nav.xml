@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/order_now_nav"
+    app:startDestination="@id/parkingLotSelectionFragment">
+
+    <fragment
+        android:id="@+id/parkingLotSelectionFragment"
+        android:name="com.abing.letak.ordernowactivity.fragments.ParkingLotSelectionFragment"
+        android:label="fragment_parking_lot_selection"
+        tools:layout="@layout/fragment_parking_lot_selection" >
+        <action
+            android:id="@+id/action_parkingLotSelectionFragment_to_monthlyPassSpaceSelection"
+            app:destination="@id/monthlyPassSpaceSelection" />
+    </fragment>
+    <fragment
+        android:id="@+id/monthlyPassSpaceSelection"
+        android:name="com.abing.letak.monthlypassactivity.fragments.MonthlyPassSpaceSelection"
+        android:label="fragment_monthly_pass_space_selection"
+        tools:layout="@layout/fragment_monthly_pass_space_selection" >
+        <action
+            android:id="@+id/action_monthlyPassSpaceSelection_to_monthlyPassConfirmationFragment"
+            app:destination="@id/monthlyPassConfirmationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/monthlyPassConfirmationFragment"
+        android:name="com.abing.letak.monthlypassactivity.fragments.MonthlyPassConfirmationFragment"
+        android:label="fragment_monthly_pass_confirmation"
+        tools:layout="@layout/fragment_monthly_pass_confirmation" >
+        <action
+            android:id="@+id/action_monthlyPassConfirmationFragment_to_bookingConfirmedFragment"
+            app:destination="@id/bookingConfirmedFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bookingConfirmedFragment"
+        android:name="com.abing.letak.ordernowactivity.fragments.BookingConfirmedFragment"
+        android:label="fragment_booking_confirmed"
+        tools:layout="@layout/fragment_booking_confirmed" />
+</navigation>

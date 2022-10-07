@@ -4,27 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ordernowactivity.OrderNowActivity">
+    tools:context=".test.NavigationComponent">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/order_now_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
+        android:id="@+id/toolbar_test"
         android:background="@color/primaryColor"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:titleTextColor="@color/white"
         app:layout_constraintTop_toTopOf="parent"
-        app:titleTextColor="@color/white" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/order_now_container_fragment"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_test"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/test_fragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:defaultNavHost="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/order_now_toolbar"
-        app:navGraph="@navigation/order_now_nav" />
+        app:defaultNavHost="false"
+        app:navGraph="@navigation/test_nav" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

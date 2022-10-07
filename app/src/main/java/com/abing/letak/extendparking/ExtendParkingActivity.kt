@@ -1,18 +1,19 @@
-package com.abing.letak.needassistance
+package com.abing.letak.extendparking
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
 import com.abing.letak.R
 import com.abing.letak.databinding.ActivityExtendParkingBinding
-import com.abing.letak.databinding.ActivityNeedAssistanceBinding
 import com.abing.letak.utils.lightStatusBar
+import com.abing.letak.utils.setFullScreen
 
-class NeedAssistanceActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityNeedAssistanceBinding
+class ExtendParkingActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityExtendParkingBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        binding = ActivityNeedAssistanceBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
+        binding = ActivityExtendParkingBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         lightStatusBar(window, false, true)
