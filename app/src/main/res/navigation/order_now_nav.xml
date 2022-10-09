@@ -8,33 +8,33 @@
     <fragment
         android:id="@+id/parkingLotSelectionFragment"
         android:name="com.abing.letak.ordernowactivity.fragments.ParkingLotSelectionFragment"
-        android:label="fragment_parking_lot_selection"
-        tools:layout="@layout/fragment_parking_lot_selection" >
+        android:label="@string/select_your_parking"
+        tools:layout="@layout/fragment_parking_lot_selection">
         <action
-            android:id="@+id/action_parkingLotSelectionFragment_to_monthlyPassSpaceSelection"
-            app:destination="@id/monthlyPassSpaceSelection" />
-    </fragment>
-    <fragment
-        android:id="@+id/monthlyPassSpaceSelection"
-        android:name="com.abing.letak.monthlypassactivity.fragments.MonthlyPassSpaceSelection"
-        android:label="fragment_monthly_pass_space_selection"
-        tools:layout="@layout/fragment_monthly_pass_space_selection" >
-        <action
-            android:id="@+id/action_monthlyPassSpaceSelection_to_monthlyPassConfirmationFragment"
-            app:destination="@id/monthlyPassConfirmationFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/monthlyPassConfirmationFragment"
-        android:name="com.abing.letak.monthlypassactivity.fragments.MonthlyPassConfirmationFragment"
-        android:label="fragment_monthly_pass_confirmation"
-        tools:layout="@layout/fragment_monthly_pass_confirmation" >
-        <action
-            android:id="@+id/action_monthlyPassConfirmationFragment_to_bookingConfirmedFragment"
-            app:destination="@id/bookingConfirmedFragment" />
+            android:id="@+id/action_parkingLotSelectionFragment_to_spaceSelectionFragment"
+            app:destination="@id/spaceSelectionFragment" />
     </fragment>
     <fragment
         android:id="@+id/bookingConfirmedFragment"
         android:name="com.abing.letak.ordernowactivity.fragments.BookingConfirmedFragment"
-        android:label="fragment_booking_confirmed"
+        android:label="@string/all_set"
         tools:layout="@layout/fragment_booking_confirmed" />
+    <fragment
+        android:id="@+id/spaceSelectionFragment"
+        android:name="com.abing.letak.ordernowactivity.fragments.SpaceSelectionFragment"
+        android:label="@string/select_preferred_spot"
+        tools:layout="@layout/fragment_space_selection">
+        <action
+            android:id="@+id/action_spaceSelectionFragment_to_parkingConfirmationFragment"
+            app:destination="@id/parkingConfirmationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/parkingConfirmationFragment"
+        android:name="com.abing.letak.ordernowactivity.fragments.ParkingConfirmationFragment"
+        android:label="@string/confirm_your_booking"
+        tools:layout="@layout/fragment_parking_confirmation">
+        <action
+            android:id="@+id/action_parkingConfirmationFragment_to_bookingConfirmedFragment"
+            app:destination="@id/bookingConfirmedFragment" />
+    </fragment>
 </navigation>

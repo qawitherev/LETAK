@@ -1,13 +1,11 @@
 package com.abing.letak.mainmenufragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.abing.letak.R
+import androidx.fragment.app.Fragment
 import com.abing.letak.databinding.FragmentMonthlyPassBinding
-import com.abing.letak.databinding.FragmentOrderNowBinding
 
 class MonthlyPassFragment : Fragment() {
     private var _binding: FragmentMonthlyPassBinding? = null

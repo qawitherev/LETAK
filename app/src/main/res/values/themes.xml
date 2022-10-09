@@ -58,4 +58,10 @@
         <item name="android:navigationBarColor">@color/white</item>
     </style>
 
+<!--    monthly pass activity   -->
+    <style name="Theme.LETAK.MonthlyPassActivity">
+        <item name="android:statusBarColor">@color/primaryColor</item>
+        <item name="android:navigationBarColor">@color/white</item>
+    </style>
+
 </resources>

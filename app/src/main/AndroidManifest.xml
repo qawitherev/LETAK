@@ -16,6 +16,7 @@
         <activity
             android:name=".ordernowactivity.OrderNowActivity"
             android:theme="@style/Theme.LETAK.OrderNowActivity"
+            android:parentActivityName=".MainMenuActivity"
             android:exported="false" />
         <activity
             android:name=".test.NavigationComponent"
@@ -30,6 +31,7 @@
             android:theme="@style/Theme.LETAK.NeedAssistanceActivity" />
         <activity
             android:name=".monthlypassactivity.MonthlyPassActivity"
+            android:theme="@style/Theme.LETAK.MonthlyPassActivity"
             android:exported="false" />
         <activity
             android:name=".MainMenuActivity"

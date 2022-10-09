@@ -105,6 +105,7 @@
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/parking_space_card"
+            android:clickable="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/parking_space_text"
@@ -128,6 +129,7 @@
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/space_selection_continue_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:cornerRadius="15dp"

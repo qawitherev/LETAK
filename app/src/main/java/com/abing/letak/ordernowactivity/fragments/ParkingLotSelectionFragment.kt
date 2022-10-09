@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.abing.letak.R
 import com.abing.letak.data.parkingLotList
 import com.abing.letak.databinding.FragmentParkingLotSelectionBinding
@@ -26,6 +27,7 @@ class ParkingLotSelectionFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val data = parkingLotList
+        binding.availableParkingLotRv.layoutManager =LinearLayoutManager(requireContext())
         binding.availableParkingLotRv.adapter = OrderNowParkingLotAdapter(requireContext(),data)
     }
 }

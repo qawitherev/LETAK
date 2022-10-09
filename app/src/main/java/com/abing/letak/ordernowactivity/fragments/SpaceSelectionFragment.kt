@@ -1,11 +1,11 @@
 package com.abing.letak.ordernowactivity.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.abing.letak.R
+import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import com.abing.letak.databinding.FragmentSpaceSelectionBinding
 
 class SpaceSelectionFragment : Fragment() {
@@ -19,6 +19,17 @@ class SpaceSelectionFragment : Fragment() {
     ): View? {
         _binding = FragmentSpaceSelectionBinding.inflate(layoutInflater)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        binding.spaceSelectionContinueButton.setOnClickListener { continueToParkingConfirmation(it) }
+        super.onViewCreated(view, savedInstanceState)
+    }
+
+    private fun continueToParkingConfirmation(view: View) {
+        val action = SpaceSelectionFragmentDirections
+            .actionSpaceSelectionFragmentToParkingConfirmationFragment()
+        view.findNavController().navigate(action)
     }
 
     override fun onDestroyView() {

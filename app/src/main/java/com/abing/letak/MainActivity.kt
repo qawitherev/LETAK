@@ -3,6 +3,7 @@ package com.abing.letak
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.abing.letak.monthlypassactivity.MonthlyPassActivity
 import com.abing.letak.ordernowactivity.OrderNowActivity
 
 class MainActivity : AppCompatActivity() {

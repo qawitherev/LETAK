@@ -18,6 +18,7 @@
         <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/activity_login.xml" value="0.152" />
         <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/activity_main.xml" value="0.1984375" />
         <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/activity_main_menu.xml" value="0.176" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/activity_monthly_pass.xml" value="0.10494450050454086" />
         <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/activity_navigation_component.xml" value="0.14492753623188406" />
         <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/activity_need_assistance.xml" value="0.2" />
         <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/activity_order_now.xml" value="0.1" />
@@ -27,10 +28,10 @@
         <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/available_parking_lot_item.xml" value="0.2" />
         <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/fragment_booking_confirmed.xml" value="0.152" />
         <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/fragment_first_test.xml" value="0.14492753623188406" />
-        <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/fragment_monthly_pass.xml" value="0.264" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/fragment_monthly_pass.xml" value="0.2" />
         <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/fragment_monthly_pass_confirmation.xml" value="0.2" />
         <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/fragment_monthly_pass_parking_lot_selection.xml" value="0.21666666666666667" />
-        <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/fragment_monthly_pass_space_selection.xml" value="0.264" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/fragment_monthly_pass_space_selection.xml" value="0.176" />
         <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/fragment_monthy_pass_lot_selection.xml" value="0.21666666666666667" />
         <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/fragment_notification.xml" value="0.21666666666666667" />
         <entry key="..\:/Users/User/AndroidStudioProjects/LETAK/app/src/main/res/layout/fragment_order_now.xml" value="0.264" />
