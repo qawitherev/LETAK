@@ -64,4 +64,10 @@
         <item name="android:navigationBarColor">@color/white</item>
     </style>
 
+<!--    register vehicle activity   -->
+    <style name="Theme.LETAK.RegisterVehicleActivity">
+        <item name="android:statusBarColor">@color/primaryColor</item>
+        <item name="android:navigationBarColor">@color/white</item>
+    </style>
+
 </resources>

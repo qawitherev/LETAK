@@ -12,7 +12,11 @@
         tools:layout="@layout/fragment_monthly_pass_parking_lot_selection">
         <action
             android:id="@+id/action_monthlyPassParkingLotSelectionFragment_to_monthlyPassSpaceSelection"
-            app:destination="@id/monthlyPassSpaceSelection" />
+            app:destination="@id/monthlyPassSpaceSelection"
+            app:enterAnim="@anim/slide_in_from_right"
+            app:exitAnim="@anim/slide_out_from_right"
+            app:popEnterAnim="@anim/slide_in_from_left"
+            app:popExitAnim="@anim/slide_out_from_left" />
     </fragment>
     <fragment
         android:id="@+id/monthlyPassSpaceSelection"
@@ -21,7 +25,11 @@
         tools:layout="@layout/fragment_monthly_pass_space_selection">
         <action
             android:id="@+id/action_monthlyPassSpaceSelection_to_monthlyPassConfirmationFragment"
-            app:destination="@id/monthlyPassConfirmationFragment" />
+            app:destination="@id/monthlyPassConfirmationFragment"
+            app:enterAnim="@anim/slide_in_from_right"
+            app:exitAnim="@anim/slide_out_from_right"
+            app:popEnterAnim="@anim/slide_in_from_left"
+            app:popExitAnim="@anim/slide_out_from_left" />
     </fragment>
     <fragment
         android:id="@+id/monthlyPassConfirmationFragment"

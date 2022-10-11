@@ -29,6 +29,7 @@ class MonthlyPassParkingLotSelectionFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.availableParkingLotRv.layoutManager = LinearLayoutManager(requireContext())
         binding.availableParkingLotRv.adapter = PassParkingLotAdapter(requireContext(), dataset)
+        binding.cancelButton.setOnClickListener { activity?.finish() }
     }
 
     override fun onDestroy() {

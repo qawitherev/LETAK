@@ -85,6 +85,7 @@
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
+            android:visibility="gone"
             android:id="@+id/active_monthly_pass_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -258,6 +259,7 @@
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.button.MaterialButton
+            android:visibility="gone"
             android:id="@+id/need_assistance_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -282,7 +284,7 @@
             android:elevation="@dimen/button_elevation"
             android:text="@string/purchase_monthly_pass"
             android:textSize="15sp"
-            android:visibility="gone"
+            android:visibility="visible"
             app:cornerRadius="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

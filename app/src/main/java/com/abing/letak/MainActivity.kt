@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.abing.letak.monthlypassactivity.MonthlyPassActivity
 import com.abing.letak.ordernowactivity.OrderNowActivity
+import com.abing.letak.registervehicle.RegisterVehicleActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

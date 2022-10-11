@@ -29,5 +29,10 @@ class ParkingLotSelectionFragment : Fragment() {
         val data = parkingLotList
         binding.availableParkingLotRv.layoutManager =LinearLayoutManager(requireContext())
         binding.availableParkingLotRv.adapter = OrderNowParkingLotAdapter(requireContext(),data)
+        binding.cancelButton.setOnClickListener { cancelOrderNow() }
+    }
+
+    private fun cancelOrderNow() {
+        activity?.finish()
     }
 }

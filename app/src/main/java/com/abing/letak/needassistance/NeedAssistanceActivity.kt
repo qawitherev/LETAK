@@ -17,4 +17,13 @@ class NeedAssistanceActivity : AppCompatActivity() {
 
         lightStatusBar(window, false, true)
     }
+
+    override fun onStart() {
+        binding.cancelButton.setOnClickListener { cancelAssistance() }
+        super.onStart()
+    }
+
+    private fun cancelAssistance() {
+        finish()
+    }
 }
