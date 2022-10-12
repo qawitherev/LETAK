@@ -17,7 +17,7 @@ class OrderNowActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_order_now)
 
-        lightStatusBar(window, false, false)
+        lightStatusBar(window, false, true)
 
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.order_now_container_fragment) as NavHostFragment

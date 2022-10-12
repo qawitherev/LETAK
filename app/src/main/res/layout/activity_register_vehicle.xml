@@ -8,6 +8,12 @@
     android:background="@color/primaryColor"
     android:orientation="vertical">
 
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:id="@+id/register_vehicle_toolbar"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
     <ImageView
         android:layout_marginTop="16dp"
         android:layout_width="250dp"
@@ -102,24 +108,14 @@
             android:id="@+id/register_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="16dp"
             android:text="@string/register_vehicle_button"
-            app:cornerRadius="10dp"
-            app:layout_constraintBottom_toTopOf="@+id/cancel_button"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/cancel_button"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:text="cancel"
             app:cornerRadius="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

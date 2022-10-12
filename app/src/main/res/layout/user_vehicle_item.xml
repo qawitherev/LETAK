@@ -21,6 +21,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
+                android:scaleType="centerCrop"
                 android:id="@+id/user_vehicle_img"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -58,6 +59,7 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <com.google.android.material.button.MaterialButton
+            app:cornerRadius="10dp"
             android:text="@string/manage_profile"
             android:textAllCaps="false"
             android:layout_width="wrap_content"
