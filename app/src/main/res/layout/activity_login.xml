@@ -149,12 +149,12 @@
                             android:scaleType="fitCenter"
                             android:src="@drawable/ic_google"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toStartOf="@id/continue_with_google"
+                            app:layout_constraintEnd_toStartOf="@id/continue_with_google_text"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
-                            android:id="@+id/continue_with_google"
+                            android:id="@+id/continue_with_google_text"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/continue_with_google"
@@ -217,7 +217,7 @@
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/sign_up_button"
+            android:id="@+id/register_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"

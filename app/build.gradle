@@ -2,6 +2,9 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id("androidx.navigation.safeargs.kotlin")
+    //google services plugin
+    id 'com.google.gms.google-services'
+
 }
 
 android {
@@ -37,6 +40,14 @@ android {
 }
 
 dependencies {
+    //firebase dependencies
+    //when already using BoM(billing of material, don't specify the version for the firebase products
+    implementation platform('com.google.firebase:firebase-bom:31.0.2')
+
+    //firebase product you want to use
+    implementation 'com.google.firebase:firebase-analytics'
+    implementation 'com.google.firebase:firebase-auth:21.1.0'
+    implementation 'com.google.android.gms:play-services-auth:20.3.0'
 
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation 'androidx.core:core-ktx:1.8.0'

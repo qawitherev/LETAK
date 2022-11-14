@@ -61,6 +61,7 @@
     <string name="letak_vehicle">LETAK Vehicle</string>
     <string name="manage_profile">Manage</string>
     <string name="register_new_vehicle">Register New Vehicle</string>
+    <string name="show_profile">Show Profile</string>
 
     <!--    monthly pass card   -->
     <string name="status">Status: </string>
@@ -133,7 +134,14 @@
     <string name="vehicle_colour">Vehicle Colour: </string>
     <string name="register_vehicle_button">Register Vehicle</string>
 
-    <!--    testing purposes    -->
+    <!--    Sign in activity programmatically   -->
+    <string name="fill_out_details">Please fill out details</string>
+    <string name="password_not_confirmed">Password is not the same</string>
+    <string name="authentication_failed">Authentication failed, try again</string>
+    <string name="registration_success">Registration Success</string>
+    <string name="sign_in_google_success">Registration using Google success</string>
+
+    <!--    testing purposes    -->/
     <string name="lorem_ipsum_long"> START Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ullamcorper sit amet risus nullam eget felis. Eu augue ut lectus arcu bibendum at varius vel pharetra. Bibendum arcu vitae elementum curabitur vitae nunc sed velit. Nisi est sit amet facilisis magna etiam tempor orci eu. Accumsan tortor posuere ac ut consequat semper viverra nam libero. Commodo sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec. At augue eget arcu dictum varius duis at. In ornare quam viverra orci sagittis eu. Eget gravida cum sociis natoque penatibus et magnis dis. Eu turpis egestas pretium aenean pharetra. Nec dui nunc mattis enim ut tellus elementum. Feugiat pretium nibh ipsum consequat nisl vel pretium. Nullam vehicula ipsum a arcu cursus vitae. Tempus quam pellentesque nec nam aliquam sem et tortor. Massa tincidunt dui ut ornare lectus sit amet. Vel eros donec ac odio tempor orci dapibus ultrices in.
 
 Purus semper eget duis at tellus. In arcu cursus euismod quis viverra nibh. Id diam vel quam elementum pulvinar etiam non quam. Sem integer vitae justo eget magna fermentum. Aliquet enim tortor at auctor urna nunc id. Tortor consequat id porta nibh venenatis cras sed. Consectetur adipiscing elit pellentesque habitant morbi. Non sodales neque sodales ut etiam sit amet nisl. Nunc non blandit massa enim. Tellus mauris a diam maecenas sed enim ut sem viverra. A diam maecenas sed enim ut sem. Egestas purus viverra accumsan in nisl nisi.

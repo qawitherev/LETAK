@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun welcomeActivity() {
-        val intent = Intent(this, MainMenuActivity::class.java)
+        val intent = Intent(this, WelcomeActivity::class.java)
         startActivity(intent)
     }
 }

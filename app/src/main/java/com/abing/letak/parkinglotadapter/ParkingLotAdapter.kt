@@ -7,9 +7,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.abing.letak.databinding.ParkingLotItemBinding
 import com.abing.letak.model.ParkingLot
 
-class ParkingLotAdapter(private val context: Context, private val dataset: List<ParkingLot>): RecyclerView.Adapter<ParkingLotAdapter.ParkingLotViewHolder>() {
+class ParkingLotAdapter(private val context: Context, private val dataset: List<ParkingLot>) :
+    RecyclerView.Adapter<ParkingLotAdapter.ParkingLotViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ParkingLotViewHolder {
-        val binding = ParkingLotItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            ParkingLotItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ParkingLotViewHolder(binding)
     }
 
@@ -22,7 +24,8 @@ class ParkingLotAdapter(private val context: Context, private val dataset: List<
         return dataset.size
     }
 
-    class ParkingLotViewHolder(val binding: ParkingLotItemBinding): RecyclerView.ViewHolder(binding.root){
+    class ParkingLotViewHolder(val binding: ParkingLotItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         // TODO: nothing here???
     }
 }

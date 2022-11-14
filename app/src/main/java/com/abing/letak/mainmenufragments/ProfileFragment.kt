@@ -12,6 +12,7 @@ import com.abing.letak.data.vehicles
 import com.abing.letak.databinding.FragmentProfileBinding
 import com.abing.letak.registervehicle.RegisterVehicleActivity
 import com.abing.letak.sampleadapters.VehicleAdapter
+import com.abing.letak.showprofileactivity.ShowProfileActivity
 
 class ProfileFragment : Fragment() {
     private var _binding: FragmentProfileBinding? = null
@@ -32,6 +33,13 @@ class ProfileFragment : Fragment() {
         binding.userVehicleRv.adapter = VehicleAdapter(dataset)
         binding.userVehicleRv.layoutManager = LinearLayoutManager(requireContext())
         binding.registerVehicleButton.setOnClickListener { registerVehicle() }
+
+        binding.showProfileButton.setOnClickListener { showProfile() }
+    }
+
+    private fun showProfile() {
+        val intent = Intent(requireContext(), ShowProfileActivity::class.java)
+        startActivity(intent)
     }
 
     private fun registerVehicle() {

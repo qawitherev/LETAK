@@ -1,7 +1,9 @@
 package com.abing.letak
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import androidx.appcompat.app.AppCompatActivity
@@ -12,10 +14,12 @@ import com.abing.letak.mainmenufragments.NotificationFragment
 import com.abing.letak.mainmenufragments.OrderNowFragment
 import com.abing.letak.mainmenufragments.ProfileFragment
 import com.abing.letak.utils.lightStatusBar
+import com.google.firebase.auth.FirebaseAuth
 
 class MainMenuActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainMenuBinding
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +34,21 @@ class MainMenuActivity : AppCompatActivity() {
         lightStatusBar(window, false, false)
 
         navBotNavigations()
+
+        //init values
+        auth = FirebaseAuth.getInstance()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item.itemId){
+            R.id.setting -> {
+                auth.signOut()
+                finish()
+                val intent = Intent(this, WelcomeActivity::class.java)
+                startActivity(intent)
+                true
+            }else -> { super.onOptionsItemSelected(item)}
+        }
     }
 
     private fun navBotNavigations() {

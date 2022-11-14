@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "351695659516",
+    "project_id": "letak-test",
+    "storage_bucket": "letak-test.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:351695659516:android:049294d79f1d8a92e19279",
+        "android_client_info": {
+          "package_name": "com.abing.letak"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "351695659516-8iabb96qdt546oabfkj329q7ks26eco6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.abing.letak",
+            "certificate_hash": "8aaab43a8034589339c4a11cc8a4377f34f38f79"
+          }
+        },
+        {
+          "client_id": "351695659516-5lv4derql5ckeh69f4bo6elurjsi0d7j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCoetQPYieUNBdpH39Hn4pZhtnZO2LcJtE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "351695659516-5lv4derql5ckeh69f4bo6elurjsi0d7j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
