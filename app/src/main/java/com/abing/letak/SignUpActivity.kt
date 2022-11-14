@@ -40,9 +40,16 @@ class SignUpActivity : AppCompatActivity() {
             .build()
         googleSignInClient = GoogleSignIn.getClient(this, gso)
 
-        //button binding set onclick listener
+        //event listener
         binding.registerButton.setOnClickListener { registerEmailAddress() }
         binding.continueWithGoogle.setOnClickListener { registerWithGoogle() }
+        binding.cancelButton.setOnClickListener { cancelButton() }
+    }
+
+    private fun cancelButton() {
+        finish()
+        val intent = Intent(this, WelcomeActivity::class.java)
+        startActivity(intent)
     }
 
     //once register with google button clicked
@@ -52,16 +59,17 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     //register the activity to know what google account is available for sign in
-    private val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){ result ->
-        //check if the handled activity is the right activity
-        if (result.resultCode == Activity.RESULT_OK){
-            val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
-            handleTask(task)
+    private val launcher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            //check if the handled activity is the right activity
+            if (result.resultCode == Activity.RESULT_OK) {
+                val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
+                handleTask(task)
+            }
         }
-    }
 
     private fun handleTask(task: Task<GoogleSignInAccount>) {
-        if (task.isSuccessful){
+        if (task.isSuccessful) {
             val account: GoogleSignInAccount = task.result
             authFirebaseWithCredential(account)
         }
@@ -70,11 +78,11 @@ class SignUpActivity : AppCompatActivity() {
     private fun authFirebaseWithCredential(account: GoogleSignInAccount) {
         val credential = GoogleAuthProvider.getCredential(account.idToken, null)
         auth.signInWithCredential(credential).addOnCompleteListener {
-            if (it.isSuccessful){
+            if (it.isSuccessful) {
                 Toast.makeText(this, R.string.sign_in_google_success, Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, MainMenuActivity::class.java)
                 startActivity(intent)
-            }else {
+            } else {
                 val stringRes = getString(R.string.authentication_failed)
                 Toast.makeText(this, "$stringRes ${it.exception}", Toast.LENGTH_SHORT).show()
             }
@@ -85,18 +93,18 @@ class SignUpActivity : AppCompatActivity() {
         super.onStart()
         //check if user already logged in
         val currentUser = auth.currentUser
-        if  (currentUser != null){
+        if (currentUser != null) {
             val intent = Intent(this, MainMenuActivity::class.java)
             startActivity(intent)
         }
     }
 
     private fun registerEmailAddress() {
-        if (detailsNotFilled()){
+        if (detailsNotFilled()) {
             Toast.makeText(this, R.string.fill_out_details, Toast.LENGTH_SHORT).show()
-        }else if (passwordNotConfirmed()){
+        } else if (passwordNotConfirmed()) {
             Toast.makeText(this, R.string.password_not_confirmed, Toast.LENGTH_SHORT).show()
-        }else {
+        } else {
             val email = binding.email.text.toString()
             val password = binding.password.text.toString()
             emailPasswordAuth(email, password)
@@ -106,10 +114,11 @@ class SignUpActivity : AppCompatActivity() {
     private fun emailPasswordAuth(email: String, password: String) {
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) {
-                if (it.isSuccessful){
+                if (it.isSuccessful) {
                     Toast.makeText(this, R.string.registration_success, Toast.LENGTH_SHORT).show()
-                    // TODO: go to main menu activity
-                }else {
+                    val intent = Intent(this, MainMenuActivity::class.java)
+                    startActivity(intent)
+                } else {
                     Toast.makeText(this, R.string.authentication_failed, Toast.LENGTH_SHORT).show()
                     Log.w("Sign up activity", "Sign up failed. ${it.exception}")
                 }

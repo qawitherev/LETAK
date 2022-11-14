@@ -22,7 +22,7 @@
 
     <!--    login activity  -->
     <string name="welcome_back">WELCOME BACK!</string>
-    <string name="email_or_phone_num">Email or Phone Number</string>
+    <string name="email_or_phone_num">Email</string>
 
     <!--    bottom nav bar menu -->
     <string name="letak_now">Letak Now</string>
@@ -140,6 +140,11 @@
     <string name="authentication_failed">Authentication failed, try again</string>
     <string name="registration_success">Registration Success</string>
     <string name="sign_in_google_success">Registration using Google success</string>
+
+    <!--    register activity programmatically  -->
+    <string name="login_success">Login successful</string>
+    <string name="login_failed">Login failed</string>
+
 
     <!--    testing purposes    -->/
     <string name="lorem_ipsum_long"> START Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ullamcorper sit amet risus nullam eget felis. Eu augue ut lectus arcu bibendum at varius vel pharetra. Bibendum arcu vitae elementum curabitur vitae nunc sed velit. Nisi est sit amet facilisis magna etiam tempor orci eu. Accumsan tortor posuere ac ut consequat semper viverra nam libero. Commodo sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec. At augue eget arcu dictum varius duis at. In ornare quam viverra orci sagittis eu. Eget gravida cum sociis natoque penatibus et magnis dis. Eu turpis egestas pretium aenean pharetra. Nec dui nunc mattis enim ut tellus elementum. Feugiat pretium nibh ipsum consequat nisl vel pretium. Nullam vehicula ipsum a arcu cursus vitae. Tempus quam pellentesque nec nam aliquam sem et tortor. Massa tincidunt dui ut ornare lectus sit amet. Vel eros donec ac odio tempor orci dapibus ultrices in.

@@ -10,6 +10,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
+        android:backgroundTint="@color/background_color"
         android:layout_height="match_parent">
 
         <TextView
@@ -65,6 +66,8 @@
                     app:cardElevation="@dimen/card_elevation">
 
                     <EditText
+                        android:inputType="textEmailAddress"
+                        android:id="@+id/email"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
@@ -87,13 +90,14 @@
                     app:cardElevation="@dimen/card_elevation">
 
                     <EditText
-                        android:inputType="textPassword"
+                        android:id="@+id/password"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
                         android:layout_marginEnd="20dp"
                         android:background="@android:color/transparent"
                         android:hint="@string/password"
+                        android:inputType="textPassword"
                         android:paddingTop="10dp"
                         android:paddingBottom="10dp" />
 
@@ -124,6 +128,7 @@
                 android:orientation="vertical">
 
                 <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/continue_with_google_button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="50dp"
@@ -217,7 +222,7 @@
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/register_button"
+            android:id="@+id/login_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
@@ -234,6 +239,21 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/connect_with_social" />
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/cancel_button"
+            android:layout_marginStart="60dp"
+            android:layout_marginEnd="60dp"
+            app:layout_constraintTop_toBottomOf="@id/login_button"
+            android:layout_marginTop="10dp"
+            app:cornerRadius="10dp"
+            android:textSize="15sp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="@string/cancel"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
