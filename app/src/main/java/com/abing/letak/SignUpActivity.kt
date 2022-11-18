@@ -8,6 +8,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import com.abing.letak.databinding.ActivitySignUpBinding
+import com.abing.letak.phoneauth.PhoneAuthActivity
 import com.abing.letak.utils.lightStatusBar
 import com.abing.letak.utils.setFullScreen
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -44,6 +45,12 @@ class SignUpActivity : AppCompatActivity() {
         binding.registerButton.setOnClickListener { registerEmailAddress() }
         binding.continueWithGoogle.setOnClickListener { registerWithGoogle() }
         binding.cancelButton.setOnClickListener { cancelButton() }
+        binding.continueWithPhone.setOnClickListener { continuewithPhone()}
+    }
+
+    private fun continuewithPhone() {
+        val intent = Intent(this, PhoneAuthActivity::class.java)
+        startActivity(intent)
     }
 
     private fun cancelButton() {

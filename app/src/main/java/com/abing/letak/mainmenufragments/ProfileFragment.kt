@@ -13,11 +13,13 @@ import com.abing.letak.databinding.FragmentProfileBinding
 import com.abing.letak.registervehicle.RegisterVehicleActivity
 import com.abing.letak.sampleadapters.VehicleAdapter
 import com.abing.letak.showprofileactivity.ShowProfileActivity
+import com.google.firebase.auth.FirebaseAuth
 
 class ProfileFragment : Fragment() {
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
     private val dataset = vehicles
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,11 +32,19 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        //setting the LETAK card
+        initLetakCard()
+
         binding.userVehicleRv.adapter = VehicleAdapter(dataset)
         binding.userVehicleRv.layoutManager = LinearLayoutManager(requireContext())
         binding.registerVehicleButton.setOnClickListener { registerVehicle() }
 
         binding.showProfileButton.setOnClickListener { showProfile() }
+    }
+
+    private fun initLetakCard() {
+        // TODO: the user profile card  
     }
 
     private fun showProfile() {

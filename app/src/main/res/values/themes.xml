@@ -70,4 +70,10 @@
         <item name="android:navigationBarColor">@color/white</item>
     </style>
 
+<!--    phone auth activity     -->
+    <style name="Theme.LETAK.PhoneAuthActivity">
+        <item name="android:statusBarColor">@color/background_color</item>
+        <item name="android:navigationBarColor">@color/background_color</item>
+    </style>
+
 </resources>

@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import com.abing.letak.databinding.ActivityLoginBinding
+import com.abing.letak.phoneauth.PhoneAuthActivity
 import com.abing.letak.utils.lightStatusBar
 import com.abing.letak.utils.setFullScreen
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -42,6 +43,12 @@ class LoginActivity : AppCompatActivity() {
         binding.loginButton.setOnClickListener { userLogin() }
         binding.cancelButton.setOnClickListener { cancelButton() }
         binding.continueWithGoogleButton.setOnClickListener { loginWithGoogle() }
+        binding.continueWithPhone.setOnClickListener { continueWithPhone()}
+    }
+
+    private fun continueWithPhone() {
+        val intent = Intent(this, PhoneAuthActivity::class.java)
+        startActivity(intent)
     }
 
     private val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){ result ->

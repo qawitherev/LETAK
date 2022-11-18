@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/phone_auth_nav"
+    app:startDestination="@id/phoneNumberFragment">
+
+    <fragment
+        android:id="@+id/phoneNumberFragment"
+        android:name="com.abing.letak.phoneauth.PhoneNumberFragment"
+        android:label="fragment_phone_number"
+        tools:layout="@layout/fragment_phone_number" >
+        <action
+            android:id="@+id/action_phoneNumberFragment_to_phoneOtpFragment"
+            app:destination="@id/phoneOtpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/phoneOtpFragment"
+        android:name="com.abing.letak.phoneauth.PhoneOtpFragment"
+        android:label="fragment_phone_otp"
+        tools:layout="@layout/fragment_phone_otp" >
+        <action
+            android:id="@+id/action_phoneOtpFragment_to_phoneNumberFragment"
+            app:destination="@id/phoneNumberFragment" />
+        <argument
+            android:name="verificationId"
+            app:argType="string" />
+    </fragment>
+</navigation>

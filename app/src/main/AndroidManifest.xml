@@ -14,9 +14,17 @@
         android:theme="@style/Theme.LETAK"
         tools:targetApi="31">
         <activity
+            android:name=".phoneauth.PhoneAuthActivity"
+            android:theme="@style/Theme.LETAK.PhoneAuthActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".showprofileactivity.ShowProfileActivity"
-            android:parentActivityName=".MainMenuActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".MainMenuActivity" />
         <activity
             android:name=".registervehicle.RegisterVehicleActivity"
             android:exported="false"
