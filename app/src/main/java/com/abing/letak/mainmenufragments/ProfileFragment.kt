@@ -44,7 +44,7 @@ class ProfileFragment : Fragment() {
     }
 
     private fun initLetakCard() {
-        // TODO: the user profile card  
+        // TODO: here somthing
     }
 
     private fun showProfile() {

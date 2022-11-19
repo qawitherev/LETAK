@@ -35,6 +35,10 @@ class MainMenuActivity : AppCompatActivity() {
 
         navBotNavigations()
 
+
+        //getting intent extras
+        val firstName = intent.getStringExtra("firstName")
+
         //init values
         auth = FirebaseAuth.getInstance()
     }

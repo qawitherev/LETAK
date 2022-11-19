@@ -3,6 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.abing.letak">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -14,9 +17,17 @@
         android:theme="@style/Theme.LETAK"
         tools:targetApi="31">
         <activity
+            android:name=".profilesetupactivity.ProfileSetupActivity"
+            android:exported="false"
+            android:theme="@style/Theme.LETAK.ProfileSetupActivity">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".phoneauth.PhoneAuthActivity"
-            android:theme="@style/Theme.LETAK.PhoneAuthActivity"
-            android:exported="false">
+            android:exported="false"
+            android:theme="@style/Theme.LETAK.PhoneAuthActivity">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

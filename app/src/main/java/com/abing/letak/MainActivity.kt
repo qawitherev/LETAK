@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.abing.letak.monthlypassactivity.MonthlyPassActivity
 import com.abing.letak.ordernowactivity.OrderNowActivity
 import com.abing.letak.phoneauth.PhoneAuthActivity
+import com.abing.letak.profilesetupactivity.ProfileSetupActivity
 import com.abing.letak.registervehicle.RegisterVehicleActivity
 
 class MainActivity : AppCompatActivity() {

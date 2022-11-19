@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import com.abing.letak.databinding.ActivitySignUpBinding
 import com.abing.letak.phoneauth.PhoneAuthActivity
+import com.abing.letak.profilesetupactivity.ProfileSetupActivity
 import com.abing.letak.utils.lightStatusBar
 import com.abing.letak.utils.setFullScreen
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -87,7 +88,7 @@ class SignUpActivity : AppCompatActivity() {
         auth.signInWithCredential(credential).addOnCompleteListener {
             if (it.isSuccessful) {
                 Toast.makeText(this, R.string.sign_in_google_success, Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, MainMenuActivity::class.java)
+                val intent = Intent(this, ProfileSetupActivity::class.java)
                 startActivity(intent)
             } else {
                 val stringRes = getString(R.string.authentication_failed)
@@ -123,7 +124,7 @@ class SignUpActivity : AppCompatActivity() {
             .addOnCompleteListener(this) {
                 if (it.isSuccessful) {
                     Toast.makeText(this, R.string.registration_success, Toast.LENGTH_SHORT).show()
-                    val intent = Intent(this, MainMenuActivity::class.java)
+                    val intent = Intent(this, ProfileSetupActivity::class.java)
                     startActivity(intent)
                 } else {
                     Toast.makeText(this, R.string.authentication_failed, Toast.LENGTH_SHORT).show()

@@ -15,6 +15,7 @@ import com.abing.letak.MainMenuActivity
 import com.abing.letak.R
 import com.abing.letak.databinding.FragmentPhoneNumberBinding
 import com.abing.letak.databinding.FragmentPhoneOtpBinding
+import com.abing.letak.profilesetupactivity.ProfileSetupActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.PhoneAuthCredential
@@ -58,7 +59,7 @@ class PhoneOtpFragment : Fragment() {
         auth.signInWithCredential(credential).addOnCompleteListener {
             if (it.isSuccessful){
                 Toast.makeText(requireContext(), R.string.registration_success, Toast.LENGTH_SHORT).show()
-                val intent = Intent(requireContext(), MainMenuActivity::class.java)
+                val intent = Intent(requireContext(), ProfileSetupActivity::class.java)
                 startActivity(intent)
             }else {
                 Toast.makeText(requireContext(), "Error: ${it.exception}", Toast.LENGTH_SHORT).show()
