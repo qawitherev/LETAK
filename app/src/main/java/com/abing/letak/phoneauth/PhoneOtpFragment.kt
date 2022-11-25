@@ -59,7 +59,9 @@ class PhoneOtpFragment : Fragment() {
         auth.signInWithCredential(credential).addOnCompleteListener {
             if (it.isSuccessful){
                 Toast.makeText(requireContext(), R.string.registration_success, Toast.LENGTH_SHORT).show()
+                val userId = auth.currentUser?.uid.toString()
                 val intent = Intent(requireContext(), ProfileSetupActivity::class.java)
+                intent.putExtra("userId", userId)
                 startActivity(intent)
             }else {
                 Toast.makeText(requireContext(), "Error: ${it.exception}", Toast.LENGTH_SHORT).show()

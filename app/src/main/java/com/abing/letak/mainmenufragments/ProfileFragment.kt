@@ -1,6 +1,7 @@
 package com.abing.letak.mainmenufragments
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,12 +15,15 @@ import com.abing.letak.registervehicle.RegisterVehicleActivity
 import com.abing.letak.sampleadapters.VehicleAdapter
 import com.abing.letak.showprofileactivity.ShowProfileActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.ktx.Firebase
 
 class ProfileFragment : Fragment() {
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
     private val dataset = vehicles
     private lateinit var auth: FirebaseAuth
+    private lateinit var db: FirebaseFirestore
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,18 +37,26 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        //init firebase stuff
+        auth = FirebaseAuth.getInstance()
+        db = FirebaseFirestore.getInstance()
+
         //setting the LETAK card
         initLetakCard()
 
+        //binding listener
         binding.userVehicleRv.adapter = VehicleAdapter(dataset)
         binding.userVehicleRv.layoutManager = LinearLayoutManager(requireContext())
         binding.registerVehicleButton.setOnClickListener { registerVehicle() }
-
         binding.showProfileButton.setOnClickListener { showProfile() }
     }
 
     private fun initLetakCard() {
-        // TODO: here somthing
+        val firstName = activity?.intent?.extras?.getString("firstName")
+        val lastName = activity?.intent?.extras?.getString("lastName")
+        val profilePicUri = activity?.intent?.extras?.getParcelable<Uri>("profileImageUri")
+        binding.userName.text = firstName + " " + lastName
+        binding.userProfilePicture.setImageURI(profilePicUri)
     }
 
     private fun showProfile() {

@@ -10,17 +10,28 @@ import androidx.activity.result.contract.ActivityResultContracts
 import com.abing.letak.MainMenuActivity
 import com.abing.letak.R
 import com.abing.letak.databinding.ActivityProfileSetupBinding
+import com.abing.letak.model.User
+import com.abing.letak.model.Vehicle
 import com.abing.letak.utils.lightStatusBar
+import com.google.firebase.firestore.DocumentReference
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.ktx.Firebase
+import org.w3c.dom.Document
 
 class ProfileSetupActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityProfileSetupBinding
     private var profilePicUri: Uri? = null
+    private lateinit var db: FirebaseFirestore
+    private lateinit var userRef: DocumentReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityProfileSetupBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        //init
+        db = FirebaseFirestore.getInstance()
 
         //utils
         lightStatusBar(window, true, true)
@@ -37,11 +48,25 @@ class ProfileSetupActivity : AppCompatActivity() {
             Toast.makeText(this, R.string.fill_out_details, Toast.LENGTH_SHORT).show()
             return
         }
+        addUserInFireStore(firstName, lastName)
         val intent = Intent(this, MainMenuActivity::class.java)
         intent.putExtra("profileImageUri", profilePicUri)
         intent.putExtra("firstName", firstName)
         intent.putExtra("lastName", lastName)
         startActivity(intent)
+    }
+
+    private fun addUserInFireStore(firstName: String, lastName: String) {
+        val userId = intent.extras?.get("userId").toString()
+        val user = User(
+            userId,
+            firstName,
+            lastName
+        )
+        //user doc ref
+        val userRef = db.collection("users").document(userId)
+        //add user
+        userRef.set(user)
     }
 
     private val getContent =
