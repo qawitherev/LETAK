@@ -82,4 +82,10 @@
         <item name="android:navigationBarColor">@color/background_color</item>
     </style>
 
+<!--    show profile activity   -->
+    <style name="Theme.LETAK.ShowProfileActivity">
+        <item name="android:statusBarColor">@color/primaryColor</item>
+        <item name="android:navigationBarColor">@color/background_color</item>
+    </style>
+
 </resources>

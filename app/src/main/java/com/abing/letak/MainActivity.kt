@@ -8,6 +8,7 @@ import com.abing.letak.ordernowactivity.OrderNowActivity
 import com.abing.letak.phoneauth.PhoneAuthActivity
 import com.abing.letak.profilesetupactivity.ProfileSetupActivity
 import com.abing.letak.registervehicle.RegisterVehicleActivity
+import com.abing.letak.showprofileactivity.ShowProfileActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

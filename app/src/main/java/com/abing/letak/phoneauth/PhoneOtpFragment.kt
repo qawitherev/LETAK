@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -16,6 +17,7 @@ import com.abing.letak.R
 import com.abing.letak.databinding.FragmentPhoneNumberBinding
 import com.abing.letak.databinding.FragmentPhoneOtpBinding
 import com.abing.letak.profilesetupactivity.ProfileSetupActivity
+import com.abing.letak.viewmodel.UserIdViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.PhoneAuthCredential
@@ -27,6 +29,8 @@ class PhoneOtpFragment : Fragment() {
     private val args: PhoneOtpFragmentArgs by navArgs()
     private lateinit var verificationId: String
     private lateinit var auth: FirebaseAuth
+    private val viewModel: UserIdViewModel by viewModels()
+    private lateinit var userId: String
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,6 +46,7 @@ class PhoneOtpFragment : Fragment() {
 
         //init
         auth = FirebaseAuth.getInstance()
+        userId = viewModel.userId
 
         //receiving verification id from phoneNumberFragment
         verificationId = args.verificationId
@@ -59,9 +64,7 @@ class PhoneOtpFragment : Fragment() {
         auth.signInWithCredential(credential).addOnCompleteListener {
             if (it.isSuccessful){
                 Toast.makeText(requireContext(), R.string.registration_success, Toast.LENGTH_SHORT).show()
-                val userId = auth.currentUser?.uid.toString()
                 val intent = Intent(requireContext(), ProfileSetupActivity::class.java)
-                intent.putExtra("userId", userId)
                 startActivity(intent)
             }else {
                 Toast.makeText(requireContext(), "Error: ${it.exception}", Toast.LENGTH_SHORT).show()

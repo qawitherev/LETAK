@@ -8,13 +8,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.accessibility.AccessibilityViewCommand
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.abing.letak.data.vehicles
 import com.abing.letak.databinding.FragmentProfileBinding
 import com.abing.letak.registervehicle.RegisterVehicleActivity
 import com.abing.letak.sampleadapters.VehicleAdapter
 import com.abing.letak.showprofileactivity.ShowProfileActivity
+import com.abing.letak.viewmodel.UserIdViewModel
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 
@@ -24,6 +27,8 @@ class ProfileFragment : Fragment() {
     private val dataset = vehicles
     private lateinit var auth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
+    private val viewModel: UserIdViewModel by viewModels()
+    private lateinit var userRef: DocumentReference
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,6 +45,7 @@ class ProfileFragment : Fragment() {
         //init firebase stuff
         auth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
+        userRef = db.collection("users").document(viewModel.userId)
 
         //setting the LETAK card
         initLetakCard()
@@ -56,6 +62,7 @@ class ProfileFragment : Fragment() {
         val lastName = activity?.intent?.extras?.getString("lastName")
         val profilePicUri = activity?.intent?.extras?.getParcelable<Uri>("profileImageUri")
         binding.userName.text = firstName + " " + lastName
+        // TODO: get the first and last name from database 
         binding.userProfilePicture.setImageURI(profilePicUri)
     }
 

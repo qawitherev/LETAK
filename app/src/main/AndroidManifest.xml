@@ -34,6 +34,7 @@
         </activity>
         <activity
             android:name=".showprofileactivity.ShowProfileActivity"
+            android:theme="@style/Theme.LETAK.ShowProfileActivity"
             android:exported="false"
             android:parentActivityName=".MainMenuActivity" />
         <activity

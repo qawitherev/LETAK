@@ -7,11 +7,13 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
 import com.abing.letak.databinding.ActivitySignUpBinding
 import com.abing.letak.phoneauth.PhoneAuthActivity
 import com.abing.letak.profilesetupactivity.ProfileSetupActivity
 import com.abing.letak.utils.lightStatusBar
 import com.abing.letak.utils.setFullScreen
+import com.abing.letak.viewmodel.UserIdViewModel
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -29,6 +31,7 @@ class SignUpActivity : AppCompatActivity() {
     private lateinit var googleSignInClient: GoogleSignInClient
     private lateinit var db: FirebaseFirestore
     private lateinit var userId: String
+    private val viewModel: UserIdViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,6 +49,7 @@ class SignUpActivity : AppCompatActivity() {
             .build()
         googleSignInClient = GoogleSignIn.getClient(this, gso)
         db = FirebaseFirestore.getInstance()
+        userId = viewModel.userId
 
         //event listener
         binding.registerButton.setOnClickListener { registerEmailAddress() }
@@ -94,12 +98,7 @@ class SignUpActivity : AppCompatActivity() {
             if (it.isSuccessful) {
                 //user successfully registered
                 Toast.makeText(this, R.string.sign_in_google_success, Toast.LENGTH_SHORT).show()
-                val currentUser = auth.currentUser
-                if (currentUser != null){
-                    userId = currentUser.uid.toString()
-                }
                 val intent = Intent(this, ProfileSetupActivity::class.java)
-                intent.putExtra("userId", userId)
                 startActivity(intent)
             } else {
                 val stringRes = getString(R.string.authentication_failed)
@@ -135,13 +134,7 @@ class SignUpActivity : AppCompatActivity() {
             .addOnCompleteListener(this) {
                 if (it.isSuccessful) {
                     Toast.makeText(this, R.string.registration_success, Toast.LENGTH_SHORT).show()
-                    //get user id
-                    val currentUser = auth.currentUser
-                    if (currentUser != null){
-                        userId = currentUser.uid.toString()
-                    }
                     val intent = Intent(this, ProfileSetupActivity::class.java)
-                    intent.putExtra("userId", userId)
                     startActivity(intent)
                 } else {
                     Toast.makeText(this, R.string.authentication_failed, Toast.LENGTH_SHORT).show()
