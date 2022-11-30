@@ -19,6 +19,8 @@ import com.abing.letak.viewmodel.UserIdViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.auth.User
+import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 
 class ProfileFragment : Fragment() {
@@ -58,10 +60,16 @@ class ProfileFragment : Fragment() {
     }
 
     private fun initLetakCard() {
+        //from the profile setup
         val firstName = activity?.intent?.extras?.getString("firstName")
         val lastName = activity?.intent?.extras?.getString("lastName")
         val profilePicUri = activity?.intent?.extras?.getParcelable<Uri>("profileImageUri")
-        binding.userName.text = firstName + " " + lastName
+
+        userRef.get().addOnSuccessListener {
+            val user = it.toObject<com.abing.letak.model.User>()
+            val userName = user?.userFirstName + " " +user?.userLastName
+            binding.userName.text = userName
+        }
         // TODO: get the first and last name from database 
         binding.userProfilePicture.setImageURI(profilePicUri)
     }

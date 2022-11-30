@@ -1,9 +1,9 @@
 package com.abing.letak.model
 
 data class User(
-    val userId: String,
-    val userFirstName: String,
-    val userLastName: String,
+    val userId: String? = null,
+    val userFirstName: String? = null,
+    val userLastName: String? = null,
     val userEmail: String? = null,
     val userPhoneNum: String? = null
 )
