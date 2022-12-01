@@ -80,7 +80,7 @@ class ProfileFragment : Fragment() {
     }
 
     private fun initVehicleRecyclerView() {
-        binding.userVehicleRv.adapter = VehicleAdapter(vehicleList)
+        binding.userVehicleRv.adapter = VehicleAdapter(vehicleList, requireContext())
         binding.userVehicleRv.layoutManager = LinearLayoutManager(requireContext())
     }
 

@@ -88,4 +88,10 @@
         <item name="android:navigationBarColor">@color/background_color</item>
     </style>
 
+<!--    manage vehicle activity -->
+    <style name="Theme.LETAK.ManageVehicleActivity">
+        <item name="android:statusBarColor">@color/primaryColor</item>
+        <item name="android:navigationBarColor">@color/background_color</item>
+    </style>
+
 </resources>

@@ -59,6 +59,7 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/manage_vehicle_button"
             app:cornerRadius="10dp"
             android:text="@string/manage_profile"
             android:textAllCaps="false"

@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.abing.letak">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -16,6 +16,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LETAK"
         tools:targetApi="31">
+        <activity
+            android:name=".managevehicle.ManageVehicleActivity"
+            android:theme="@style/Theme.LETAK.ManageVehicleActivity"
+            android:parentActivityName=".MainMenuActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".profilesetupactivity.ProfileSetupActivity"
             android:exported="false"
@@ -34,9 +43,9 @@
         </activity>
         <activity
             android:name=".showprofileactivity.ShowProfileActivity"
-            android:theme="@style/Theme.LETAK.ShowProfileActivity"
             android:exported="false"
-            android:parentActivityName=".MainMenuActivity" />
+            android:parentActivityName=".MainMenuActivity"
+            android:theme="@style/Theme.LETAK.ShowProfileActivity" />
         <activity
             android:name=".registervehicle.RegisterVehicleActivity"
             android:exported="false"
