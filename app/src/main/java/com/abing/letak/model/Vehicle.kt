@@ -3,5 +3,7 @@ package com.abing.letak.model
 import com.abing.letak.enum.VehicleType
 
 data class Vehicle (
-    val vehicleName: String
+    val vecPlate: String? = null,
+    val vecColour: String? = null,
+    val vecName: String? = null
     )

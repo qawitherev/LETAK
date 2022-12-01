@@ -48,7 +48,7 @@
             app:layout_constraintTop_toBottomOf="@+id/user_vehicle_name" />
 
         <TextView
-            android:id="@+id/user_vehicle_expense"
+            android:id="@+id/vehicle_color"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
