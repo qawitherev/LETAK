@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.abing.letak.databinding.ParkingLotItemBinding
 import com.abing.letak.model.ParkingLot
 
-class ParkingLotAdapter(private val context: Context, private val dataset: List<ParkingLot>) :
+class ParkingLotAdapter(private val context: Context, private val dataset: MutableList<ParkingLot>) :
     RecyclerView.Adapter<ParkingLotAdapter.ParkingLotViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ParkingLotViewHolder {
         val binding =
@@ -17,7 +17,7 @@ class ParkingLotAdapter(private val context: Context, private val dataset: List<
 
     override fun onBindViewHolder(holder: ParkingLotViewHolder, position: Int) {
         val data = dataset[position]
-        holder.binding.parkingLotName.text = data.parkingLotName
+        holder.binding.parkingLotName.text = data.lotName
     }
 
     override fun getItemCount(): Int {

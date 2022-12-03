@@ -35,6 +35,9 @@
             app:exitAnim="@anim/slide_out_from_right"
             app:popEnterAnim="@anim/slide_in_from_left"
             app:popExitAnim="@anim/slide_out_from_left" />
+        <argument
+            android:name="lotId"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/parkingConfirmationFragment"

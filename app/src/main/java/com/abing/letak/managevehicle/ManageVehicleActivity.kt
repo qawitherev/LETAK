@@ -1,11 +1,13 @@
 package com.abing.letak.managevehicle
 
+import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.viewModels
 import com.abing.letak.MainMenuActivity
 import com.abing.letak.R
@@ -45,7 +47,37 @@ class ManageVehicleActivity : AppCompatActivity() {
 
         //listener
         binding.makeChangesBtn.setOnClickListener { makeChanges() }
-//        binding.deleteVehicleBtn.setOnClickListener { deleteVehicle() }
+        binding.deleteVehicleBtn.setOnClickListener { deleteVehicleDialog() }
+    }
+
+    private fun deleteVehicleDialog() {
+        Log.d("manageVehicle", "delete button pressed")
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle(R.string.delete_confirmation)
+            .setMessage(R.string.delete_vehicle_cannot_undone)
+            .setCancelable(true)
+            .setPositiveButton(R.string.confirmed_delete_vehicle){dialogInterface, it ->
+                deleteVehicle()
+            }
+            .setNegativeButton(R.string.no_delete_vehicle){dialogInterface, it ->
+                dialogInterface.cancel()
+            }
+            .show()
+    }
+
+    private fun deleteVehicle() {
+        //method to delete vehicle from database
+        userRef.collection("vehicles").document(vecId).delete()
+            .addOnSuccessListener {
+                Log.d("manage vehicle", "vehicle deleted")
+                Toast.makeText(this, R.string.vehicle_deleted, Toast.LENGTH_SHORT).show()
+            }
+            .addOnFailureListener {
+                Log.d("manage vehicle", "failed to delete vehicle with", it)
+            }
+        finish()
+        val intent = Intent(this, MainMenuActivity::class.java)
+        startActivity(intent)
     }
 
     private fun makeChanges() {

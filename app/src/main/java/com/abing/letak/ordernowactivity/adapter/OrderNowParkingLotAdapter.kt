@@ -11,7 +11,7 @@ import com.abing.letak.ordernowactivity.fragments.ParkingLotSelectionFragmentDir
 
 class OrderNowParkingLotAdapter(
     private val context: Context,
-    private val dataset: List<ParkingLot>
+    private val dataset: MutableList<ParkingLot>
 ) : RecyclerView.Adapter<
         OrderNowParkingLotAdapter.OrderNowParkingLotViewHolder>() {
     override fun onCreateViewHolder(
@@ -28,10 +28,11 @@ class OrderNowParkingLotAdapter(
 
     override fun onBindViewHolder(holder: OrderNowParkingLotViewHolder, position: Int) {
         val parkingLot = dataset[position]
-        holder.binding.parkingLotName.text = parkingLot.parkingLotName
+        holder.binding.parkingLotName.text = parkingLot.lotName
         holder.binding.selectedParkingLot.setOnClickListener {
+            dataset.clear()
             val action = ParkingLotSelectionFragmentDirections
-                .actionParkingLotSelectionFragmentToSpaceSelectionFragment()
+                .actionParkingLotSelectionFragmentToSpaceSelectionFragment(parkingLot.lotId!!)
             it.findNavController().navigate(action)
         }
     }

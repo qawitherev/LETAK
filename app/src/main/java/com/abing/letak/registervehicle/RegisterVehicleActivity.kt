@@ -3,6 +3,7 @@ package com.abing.letak.registervehicle
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.abing.letak.MainMenuActivity
@@ -40,6 +41,12 @@ class RegisterVehicleActivity : AppCompatActivity() {
     }
 
     private fun registerVehicle() {
+
+        if (inputInvalid()){
+            Toast.makeText(this, R.string.fill_out_vehicle_details, Toast.LENGTH_SHORT).show()
+            return
+        }
+
         val vecPlate = binding.vehiclePlate.text.toString()
         val vecCol = binding.vehicleColor.text.toString()
         val vecName = binding.vehicleName.text.toString()
@@ -59,6 +66,10 @@ class RegisterVehicleActivity : AppCompatActivity() {
         val intent = Intent(this, MainMenuActivity::class.java)
         startActivity(intent)
         finish()
+    }
+
+    private fun inputInvalid(): Boolean {
+        return binding.vehicleColor.text.isEmpty() || binding.vehicleName.text.isEmpty() || binding.vehiclePlate.text.isEmpty()
     }
 
 }

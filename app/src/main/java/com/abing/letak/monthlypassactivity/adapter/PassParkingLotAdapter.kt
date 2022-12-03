@@ -24,7 +24,7 @@ class PassParkingLotAdapter(
 
     override fun onBindViewHolder(holder: PassParkingLotViewHolder, position: Int) {
         val parkingLot = dataset[position]
-        holder.binding.parkingLotName.text = parkingLot.parkingLotName
+        holder.binding.parkingLotName.text = parkingLot.lotName
         holder.binding.selectedParkingLot.setOnClickListener { continueToPassSelection(it) }
     }
 

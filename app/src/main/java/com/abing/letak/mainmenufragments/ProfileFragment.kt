@@ -99,6 +99,7 @@ class ProfileFragment : Fragment() {
     }
 
     private fun showProfile() {
+        activity?.finish()
         val intent = Intent(requireContext(), ShowProfileActivity::class.java)
         startActivity(intent)
     }

@@ -1,9 +1,12 @@
 package com.abing.letak.showprofileactivity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.activity.viewModels
+import com.abing.letak.MainMenuActivity
 import com.abing.letak.R
 import com.abing.letak.databinding.ActivityShowProfileBinding
 import com.abing.letak.model.User
@@ -42,6 +45,10 @@ class ShowProfileActivity : AppCompatActivity() {
     }
 
     private fun saveProfile() {
+        if (inputInvalid()){
+            Toast.makeText(this, R.string.fill_up_user_detail, Toast.LENGTH_SHORT).show()
+            return
+        }
         val firstName = binding.firstName.text.toString()
         val lastName = binding.lastName.text.toString()
         val email = binding.email.text.toString()
@@ -61,6 +68,14 @@ class ShowProfileActivity : AppCompatActivity() {
             .addOnFailureListener {
                 Log.d("updated user", "failed with", it)
             }
+        finish()
+        val intent = Intent(this, MainMenuActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun inputInvalid(): Boolean {
+        return binding.firstName.text.isEmpty() || binding.lastName.text.isEmpty() ||
+                binding.email.text.isEmpty() || binding.phoneNumber.text.isEmpty()
     }
 
     private fun initEditable() {
