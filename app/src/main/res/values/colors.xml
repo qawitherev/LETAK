@@ -19,4 +19,9 @@
 
     <color name="white_transparent">#8FFFFFFF</color>
 
+    <!--    space type color    -->
+    <color name="space_green">#358e44</color>
+    <color name="space_yellow">#c1be00</color>
+    <color name="space_red">#cc3931</color>
+
 </resources>

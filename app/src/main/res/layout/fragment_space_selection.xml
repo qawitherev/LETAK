@@ -21,7 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="300dp" />
+        app:layout_constraintGuide_begin="250dp" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -49,7 +49,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="@string/parking_fee"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/parking_lot_name" />
@@ -59,7 +59,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="@string/parking_time"
+            android:text="@string/parking_duration"
             android:textSize="18dp"
             app:layout_constraintEnd_toEndOf="@id/parking_time_card"
             app:layout_constraintStart_toStartOf="@id/parking_time_card"
@@ -73,66 +73,104 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="64dp"
             android:backgroundTint="@color/background_color"
-            android:clickable="true"
+            android:clickable="false"
             app:cardCornerRadius="10dp"
             app:cardElevation="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/parking_time_text">
 
-            <TextView
-                android:id="@+id/parking_time"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
                 android:paddingTop="10dp"
-                android:paddingBottom="10dp"
-                android:text="10.30"
-                android:textAlignment="center"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:paddingBottom="10dp">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@color/white"
+                    app:cardCornerRadius="5dp">
+
+                    <EditText
+                        android:id="@+id/duration_hour"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/white"
+                        android:hint="@string/hour_hint"
+                        android:inputType="number"
+                        android:textAlignment="center"
+                        android:textSize="20sp" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:text=":"
+                    android:textSize="20sp" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="45dp"
+                    android:layout_height="30dp"
+                    android:background="@color/white"
+                    app:cardCornerRadius="5dp">
+
+                    <EditText
+                        android:id="@+id/duration_minute"
+                        android:layout_width="45dp"
+                        android:layout_height="30dp"
+                        android:layout_marginEnd="10dp"
+                        android:background="@color/white"
+                        android:hint="@string/minute"
+                        android:inputType="number"
+                        android:textAlignment="center"
+                        android:textSize="20sp" />
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
         <TextView
-            app:layout_constraintStart_toStartOf="@id/parking_space_card"
-            app:layout_constraintEnd_toEndOf="@id/parking_space_card"
             android:id="@+id/parking_space_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="@string/parking_space"
             android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/parking_time_card" />
 
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/parking_space_card"
-            android:clickable="true"
+            android:id="@+id/parking_space_card_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/parking_space_text"
-            android:layout_marginTop="10dp"
             android:layout_marginStart="64dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="64dp"
             app:cardCornerRadius="10dp"
-            app:cardElevation="10dp"
-            android:backgroundTint="@color/background_color">
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/parking_space_text">
 
-            <TextView
+            <Spinner
+                android:id="@+id/parking_space_spinner"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/parking_space"
-                android:textSize="20sp"
-                android:textAlignment="center"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
-                android:textStyle="bold"
-                android:text="A1"/>
+                android:layout_height="wrap_content" />
+
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/space_selection_continue_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="64dp"
             android:paddingStart="30dp"
             android:paddingTop="10dp"
             android:paddingEnd="30dp"
@@ -140,23 +178,22 @@
             android:text="@string/continue_button"
             app:cornerRadius="15dp"
             app:elevation="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@id/parking_space_card"
-            app:layout_constraintStart_toStartOf="@id/parking_space_card"
-            app:layout_constraintTop_toBottomOf="@id/parking_space_card"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/parking_space_card_view" />
 
         <TextView
+            android:id="@+id/parking_fee"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/parking_fee"
-            app:layout_constraintStart_toEndOf="@id/parking_fee_text"
-            app:layout_constraintTop_toTopOf="@id/parking_fee_text"
-            app:layout_constraintBottom_toBottomOf="@id/parking_fee_text"
             android:layout_marginStart="10dp"
             android:text="RM 10.00"
             android:textSize="18sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/parking_fee_text"
+            app:layout_constraintStart_toEndOf="@id/parking_fee_text"
+            app:layout_constraintTop_toTopOf="@id/parking_fee_text" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

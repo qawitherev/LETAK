@@ -40,6 +40,7 @@ android {
 }
 
 dependencies {
+
     //firebase dependencies
     //when already using BoM(billing of material, don't specify the version for the firebase products
     implementation platform('com.google.firebase:firebase-bom:31.0.2')

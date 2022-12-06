@@ -76,6 +76,11 @@
     <string name="parking_space">Parking Space</string>
     <string name="parking_time">Parking Time</string>
     <string name="continue_button">Continue</string>
+    <string name="parking_duration">Parking Duration</string>
+    <string name="hour_hint">hh</string>
+    <string name="minute">mm</string>
+    <string name="enter_hour">Enter hour between 1 – 23</string>
+    <string name="enter_minute">Enter minute between 0 – 59</string>
 
     <!--    order now parking confirmation    -->
     <string name="parking_details">Parking Details</string>
@@ -190,6 +195,12 @@
     <string name="confirmed_delete_vehicle">Yes</string>
     <string name="no_delete_vehicle">No</string>
     <string name="delete_vehicle_cannot_undone">Deleting Your Vehicle Cannot Be Undone</string>
+
+    <string-array name="space_type">
+        <item>Green</item>
+        <item>Yellow</item>
+        <item>Red</item>
+    </string-array>
 
     <!--    testing purposes    -->/
     <string name="lorem_ipsum_long"> START Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ullamcorper sit amet risus nullam eget felis. Eu augue ut lectus arcu bibendum at varius vel pharetra. Bibendum arcu vitae elementum curabitur vitae nunc sed velit. Nisi est sit amet facilisis magna etiam tempor orci eu. Accumsan tortor posuere ac ut consequat semper viverra nam libero. Commodo sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec. At augue eget arcu dictum varius duis at. In ornare quam viverra orci sagittis eu. Eget gravida cum sociis natoque penatibus et magnis dis. Eu turpis egestas pretium aenean pharetra. Nec dui nunc mattis enim ut tellus elementum. Feugiat pretium nibh ipsum consequat nisl vel pretium. Nullam vehicula ipsum a arcu cursus vitae. Tempus quam pellentesque nec nam aliquam sem et tortor. Massa tincidunt dui ut ornare lectus sit amet. Vel eros donec ac odio tempor orci dapibus ultrices in.
