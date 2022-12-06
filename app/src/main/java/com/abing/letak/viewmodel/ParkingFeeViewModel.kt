@@ -11,18 +11,16 @@ class ParkingFeeViewModel: ViewModel() {
 
 
     fun calculateFee(spaceType: String, hour: String, minute: String){
-        val hourInt = hour.toInt()
-        val minuteInt = minute.toInt()
+        parkingFee.value = 0.0
         if (spaceType == "Green"){
-            // TODO: need to do some revising here esp for when minute is under 30
-            val durationMinute = (hourInt * 60) + minuteInt
-            val hourFee = durationMinute / 30
-            val minuteFee = durationMinute % 30
-            if (minuteFee % 30 != 0){
-                hourFee + 1
+            var totalFee = hour.toDouble() * 0.5
+            if (minute.toDouble() > 0.0){
+                totalFee += 0.5
+                parkingFee.value = totalFee
+            }else {
+                parkingFee.value = totalFee
             }
 
-            parkingFee.value = hourFee.toDouble() * 0.5
         }
         // TODO: do for red and yellow
 
