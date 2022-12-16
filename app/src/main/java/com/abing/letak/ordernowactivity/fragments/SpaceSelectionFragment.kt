@@ -75,16 +75,19 @@ class SpaceSelectionFragment : Fragment() {
                             binding.parkingSpaceCardView.backgroundTintList =
                                 resources.getColorStateList(R.color.space_green)
                             this@SpaceSelectionFragment.spaceType = "Green"
+                            updateParkingFee()
                         }
                         1 -> {
                             binding.parkingSpaceCardView.backgroundTintList =
                                 resources.getColorStateList(R.color.space_yellow)
                             this@SpaceSelectionFragment.spaceType = "Yellow"
+                            updateParkingFee()
                         }
                         2 -> {
                             binding.parkingSpaceCardView.backgroundTintList =
                                 resources.getColorStateList(R.color.space_red)
                             this@SpaceSelectionFragment.spaceType = "Red"
+                            updateParkingFee()
                         }
                     }
                 }
@@ -139,7 +142,6 @@ class SpaceSelectionFragment : Fragment() {
             binding.durationHour.text.toString(),
             binding.durationMinute.text.toString()
         )
-        Log.d("spaceSelectionFragment", "parking fee is ${viewModel.parkingFee.value}")
         viewModel.parkingFee.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
             binding.parkingFee.text = it.toString()
         })
