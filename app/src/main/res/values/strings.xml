@@ -81,6 +81,7 @@
     <string name="minute">mm</string>
     <string name="enter_hour">Enter hour between 1 – 23</string>
     <string name="enter_minute">Enter minute between 0 – 59</string>
+    <string name="red_valid_below_two_hours">Red Parking Space Only Available For 2 Hours</string>
 
     <!--    order now parking confirmation    -->
     <string name="parking_details">Parking Details</string>

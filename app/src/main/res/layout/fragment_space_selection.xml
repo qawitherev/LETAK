@@ -176,7 +176,7 @@
             android:paddingEnd="30dp"
             android:paddingBottom="10dp"
             android:text="@string/continue_button"
-            app:cornerRadius="15dp"
+            app:cornerRadius="10dp"
             app:elevation="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"

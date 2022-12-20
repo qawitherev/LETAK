@@ -65,8 +65,5 @@ class ParkingFeeViewModel: ViewModel() {
                 }
             }
         }
-        // TODO: do for red and yellow
-
-
     }
 }

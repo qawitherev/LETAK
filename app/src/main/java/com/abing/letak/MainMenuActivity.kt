@@ -31,7 +31,7 @@ class MainMenuActivity : AppCompatActivity() {
         binding.orderMonthlyToolbar.visibility = VISIBLE
         binding.notificationToolbar.visibility = GONE
         binding.profileToolbar.visibility = GONE
-        lightStatusBar(window, false, false)
+        lightStatusBar(window, false, true)
 
         navBotNavigations()
 

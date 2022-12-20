@@ -14,7 +14,7 @@ class UserIdViewModel: ViewModel() {
     init {
         getUid()
     }
-    fun getUid(){
+    private fun getUid(){
         val currentUser = auth.currentUser
         if (currentUser != null){
             _userId = currentUser.uid

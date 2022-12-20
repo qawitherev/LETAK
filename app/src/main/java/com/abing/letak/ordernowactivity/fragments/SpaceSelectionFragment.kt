@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
@@ -20,6 +21,7 @@ import com.abing.letak.model.ParkingSpace
 import com.abing.letak.ordernowactivity.adapter.SpaceSpinnerAdapter
 import com.abing.letak.utils.MinMaxFilter
 import com.abing.letak.viewmodel.ParkingFeeViewModel
+import com.abing.letak.viewmodel.UserBookingViewModel
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.toObject
 import java.util.Observer
@@ -30,8 +32,9 @@ class SpaceSelectionFragment : Fragment() {
     private val args: SpaceSelectionFragmentArgs by navArgs()
     private val db = FirebaseFirestore.getInstance()
     private val spaces = mutableListOf<ParkingSpace>()
-    private val viewModel: ParkingFeeViewModel by viewModels()
+    private val viewModel: ParkingFeeViewModel by activityViewModels()
     private var spaceType = "Green"
+    private val userBookingViewModel: UserBookingViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,10 +44,22 @@ class SpaceSelectionFragment : Fragment() {
         _binding = FragmentSpaceSelectionBinding.inflate(layoutInflater)
 
         initView()
+        setupParkingDetails()
         setupSpinner()
 
-
         return binding.root
+    }
+
+    private fun setupParkingDetails() {
+        val lotId = args.lotId
+        db.collection("parkingLots").document(lotId).get()
+            .addOnSuccessListener {
+                val parkingLot = it.toObject<ParkingLot>()
+                binding.parkingLotName.text = parkingLot?.lotName
+                val lotId = parkingLot?.lotId.toString()
+                userBookingViewModel.setLotId(lotId)
+            }
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -136,7 +151,6 @@ class SpaceSelectionFragment : Fragment() {
     }
 
     private fun updateParkingFee() {
-//        Log.d("spaceSelectionFragment", "spaceType: $spaceType")
         viewModel.calculateFee(
             spaceType,
             binding.durationHour.text.toString(),
@@ -163,9 +177,25 @@ class SpaceSelectionFragment : Fragment() {
     }
 
     private fun continueToParkingConfirmation(view: View) {
+        if (redParkingInvalid() && spaceType == "Red"){
+            Toast.makeText(requireContext(), R.string.red_valid_below_two_hours, Toast.LENGTH_SHORT).show()
+            return
+        }
+        val periodHour = binding.durationHour.text.toString().toInt() * 60
+        val periodMinute = binding.durationMinute.text.toString().toInt()
+        val parkingPeriodMinute = periodHour + periodMinute
+        userBookingViewModel.setParkingPeriodMinute(parkingPeriodMinute)
+        userBookingViewModel.setSpaceType(spaceType)
         val action = SpaceSelectionFragmentDirections
             .actionSpaceSelectionFragmentToParkingConfirmationFragment()
         view.findNavController().navigate(action)
+    }
+
+    private fun redParkingInvalid(): Boolean {
+        val totalMinute = binding.durationHour.text.toString().toInt() +
+                binding.durationMinute.text.toString().toInt()
+        Log.d("SpaceSelectionFragment", "total minute is -> $totalMinute")
+        return totalMinute >= 120
     }
 
     override fun onDestroyView() {

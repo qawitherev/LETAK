@@ -7,11 +7,9 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.accessibility.AccessibilityViewCommand
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.abing.letak.data.vehicles
 import com.abing.letak.databinding.FragmentProfileBinding
 import com.abing.letak.model.Vehicle
 import com.abing.letak.registervehicle.RegisterVehicleActivity
@@ -21,9 +19,7 @@ import com.abing.letak.viewmodel.UserIdViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.auth.User
 import com.google.firebase.firestore.ktx.toObject
-import com.google.firebase.ktx.Firebase
 
 class ProfileFragment : Fragment() {
     private var _binding: FragmentProfileBinding? = null

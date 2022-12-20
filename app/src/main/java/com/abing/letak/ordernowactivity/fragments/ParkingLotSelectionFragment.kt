@@ -6,10 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.abing.letak.databinding.FragmentParkingLotSelectionBinding
 import com.abing.letak.model.ParkingLot
+import com.abing.letak.model.UserBooking
 import com.abing.letak.ordernowactivity.adapter.OrderNowParkingLotAdapter
+import com.abing.letak.viewmodel.UserBookingViewModel
+import com.abing.letak.viewmodel.UserIdViewModel
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.toObject
 
@@ -36,7 +40,6 @@ class ParkingLotSelectionFragment : Fragment() {
         db = FirebaseFirestore.getInstance()
 
         getParkingLot()
-        Log.d("parking lot selection fragment", "here")
 
     }
 
