@@ -5,9 +5,11 @@ import java.util.Date
 data class UserBooking(
     var bookingId: String? = null,
     var lotId: String? = null,
-    val spaceId: String? = null,
-    val spaceType: String? = null,
-    val parkingPeriodMinute: Int? = null,
-    val parkingStart: Date? = null,
-    val parkingEnd: Date? = null
+    var spaceId: String? = null,
+    var spaceType: String? = null,
+    var parkingPeriodMinute: Int? = null,
+    var parkingStart: Date? = null,
+    var parkingEnd: Date? = null,
+    var eWalletType: String? = null,
+    var vehicleId: String? = null
 )

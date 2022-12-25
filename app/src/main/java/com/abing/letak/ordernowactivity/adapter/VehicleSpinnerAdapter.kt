@@ -5,13 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import android.widget.BaseAdapter
 import android.widget.TextView
 import com.abing.letak.R
 import com.abing.letak.model.Vehicle
 
-class VehicleSpinnerAdapter(context: Context, vehicles: ArrayList<Vehicle>): ArrayAdapter<Vehicle>(context, 0, vehicles) {
-
+class VehicleSpinnerAdapter(context: Context, vecPlates: MutableList<Vehicle>): ArrayAdapter<Vehicle>(context, 0, vecPlates) {
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         return initView(position, convertView, parent)
     }
@@ -22,8 +20,8 @@ class VehicleSpinnerAdapter(context: Context, vehicles: ArrayList<Vehicle>): Arr
 
     private fun initView(position: Int, convertView: View?, parent: ViewGroup): View{
         val vehicle = getItem(position)
-        val view = convertView ?: LayoutInflater.from(context).inflate(R.layout.parking_space_spinner_item, parent, false)
-        view.findViewById<TextView>(R.id.space_type_text).text = vehicle?.vecPlate
+        val view = convertView ?: LayoutInflater.from(context).inflate(R.layout.vehicle_spinner_item, parent, false)
+        view.findViewById<TextView>(R.id.label).text = vehicle?.vecPlate
 
         return view
     }

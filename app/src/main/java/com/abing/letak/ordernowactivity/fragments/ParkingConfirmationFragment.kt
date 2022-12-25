@@ -1,15 +1,15 @@
 package com.abing.letak.ordernowactivity.fragments
 
 import android.annotation.SuppressLint
-import android.icu.number.NumberFormatter
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
@@ -27,7 +27,7 @@ import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.toObject
 import java.text.NumberFormat
-import java.util.Locale
+import java.util.*
 
 class ParkingConfirmationFragment : Fragment() {
     private var _binding: FragmentParkingConfirmationBinding? = null
@@ -36,9 +36,10 @@ class ParkingConfirmationFragment : Fragment() {
     private lateinit var db: FirebaseFirestore
     private lateinit var userRef: DocumentReference
     private val userIdViewModel: UserIdViewModel by viewModels()
-    private val vehicles: ArrayList<Vehicle> = arrayListOf()
+    private val vehiclePlates = mutableListOf<String>()
     private val userBookingViewModel: UserBookingViewModel by activityViewModels()
     private val parkingFeeViewModel: ParkingFeeViewModel by activityViewModels()
+    private var vehicles = mutableListOf<Vehicle>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -47,14 +48,34 @@ class ParkingConfirmationFragment : Fragment() {
     ): View? {
         _binding = FragmentParkingConfirmationBinding.inflate(layoutInflater)
 
-        Log.d("ParkingConfirmationFragment", "the userBookingViewModel: ${userBookingViewModel.parkingPeriodMinute.value}")
         initialSetup()
 
+        changeNavigationBarColour()
         parkingDetailsSetup()
         setupEWalletSpinner()
         setupVehicleSpinner()
 
         return binding.root
+    }
+
+    private fun setupVehicleSpinner() {
+        userRef.collection("vehicles").get()
+            .addOnSuccessListener {
+                vehicles.clear()
+                for (document in it){
+                    vehicles.add(document.toObject())
+                }
+                Log.d("ParkingConfirmationFragment", "vehicles->$vehicles")
+                binding.vehicleSpinner.adapter = VehicleSpinnerAdapter(requireContext(), vehicles)
+            }
+    }
+
+
+    private fun changeNavigationBarColour() {
+        val activity = requireActivity()
+        val window = activity.window
+        val context = activity.applicationContext
+        window.setNavigationBarColor(ContextCompat.getColor(context, R.color.white))
     }
 
     private fun parkingDetailsSetup() {
@@ -76,7 +97,7 @@ class ParkingConfirmationFragment : Fragment() {
         return formattedAmount.toString()
     }
 
-    private fun changeToHHMM(): String{
+    private fun changeToHHMM(): String {
         val parkingPeriodMinute = userBookingViewModel.parkingPeriodMinute.value
         val hour = parkingPeriodMinute?.div(60)
         val minute = parkingPeriodMinute?.mod(60)
@@ -88,20 +109,6 @@ class ParkingConfirmationFragment : Fragment() {
         userRef = db.collection("users").document(userIdViewModel.userId)
     }
 
-    private fun setupVehicleSpinner() {
-        getVehicles()
-        binding.vehicleSpinner.adapter = VehicleSpinnerAdapter(requireContext(), vehicles)
-    }
-
-    private fun getVehicles() {
-        userRef.collection("vehicles").get()
-            .addOnSuccessListener {
-                for (vehicle in it){
-                    vehicles.add(vehicle.toObject())
-                }
-            }
-
-    }
 
     private fun setupEWalletSpinner() {
         val eWallet = arrayOf("Boost", "Touch n' Go", "MAE")
@@ -123,14 +130,17 @@ class ParkingConfirmationFragment : Fragment() {
                         0 -> {
                             binding.ewalletLogo.setImageDrawable(resources.getDrawable(R.drawable.boost_logo))
                             selectedEWallet = "Boost"
+                            userBookingViewModel.setEWalletType("Boost")
                         }
                         1 -> {
                             binding.ewalletLogo.setImageDrawable(resources.getDrawable(R.drawable.touch_n__go_logo))
                             selectedEWallet = "Touch n' Go"
+                            userBookingViewModel.setEWalletType("Touch n' Go")
                         }
                         2 -> {
                             binding.ewalletLogo.setImageDrawable(resources.getDrawable(R.drawable.mae_logo))
                             selectedEWallet = "MAE"
+                            userBookingViewModel.setEWalletType("MAE")
                         }
                     }
                 }
@@ -144,10 +154,23 @@ class ParkingConfirmationFragment : Fragment() {
     }
 
     private fun continueToParkingConfirmed(view: View) {
-        vehicles.clear()
+        vehiclePlates.clear()
+        insertBookingFirestore()
         val action = ParkingConfirmationFragmentDirections
             .actionParkingConfirmationFragmentToBookingConfirmedFragment()
         view.findNavController().navigate(action)
+    }
+
+    private fun insertBookingFirestore() {
+        //create userBooking object from userBookingViewModel
+        val userBooking = UserBooking()
+        userBooking.lotId = userBookingViewModel.lotId.value
+        userBooking.parkingPeriodMinute = userBookingViewModel.parkingPeriodMinute.value
+        userBooking.spaceType = userBookingViewModel.spaceType.value
+        userBooking.eWalletType = userBookingViewModel.eWalletType.value
+        userRef.collection("bookings").add(userBooking).addOnSuccessListener {
+            it.update("bookingId", it.id)
+        }
     }
 
     override fun onDestroyView() {

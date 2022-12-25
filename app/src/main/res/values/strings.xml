@@ -88,8 +88,9 @@
     <string name="payment">Payment</string>
     <string name="select_preferred_ewallet">Select your preferred e-wallet</string>
     <string name="select_vehicle">Select your vehicle</string>
-    <string name="vehicle">Vehicle</string>
+    <string name="available_vehicle">Available Vehicle</string>
     <string name="confirmation_reminder">Reminder: Go to the selected parking space in 5 minutes to avoid cancellation</string>
+    <string name="no_vehicle_selected">Please select your vehicle</string>
 
     <!--    booking confirmed      -->
     <string name="parking_ready">Yeay! Your parking is ready.</string>
@@ -140,6 +141,7 @@
     <string name="vehicle_colour">Vehicle Colour: </string>
     <string name="register_vehicle_button">Register Vehicle</string>
     <string name="fill_out_vehicle_details">Please Fill Out Vehicle Details</string>
+    <string name="vehicle_registration_successful">Vehicle Registration Successful</string>
 
     <!--    Sign in activity programmatically   -->
     <string name="fill_out_details">Please fill out details</string>

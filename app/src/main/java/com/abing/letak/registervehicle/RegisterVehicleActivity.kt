@@ -63,6 +63,7 @@ class RegisterVehicleActivity : AppCompatActivity() {
             .addOnFailureListener {
                 Log.d("add user vehicle", "failed because", it)
             }
+        Toast.makeText(this, R.string.vehicle_registration_successful, Toast.LENGTH_SHORT).show()
         val intent = Intent(this, MainMenuActivity::class.java)
         startActivity(intent)
         finish()

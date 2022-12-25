@@ -29,6 +29,11 @@ class UserBookingViewModel: ViewModel() {
     private val _parkingEnd = MutableLiveData<String>()
     val parkingEnd: LiveData<String> = _parkingEnd
 
+    private val _eWalletType = MutableLiveData<String>()
+    val eWalletType: LiveData<String> = _eWalletType
+
+    private val _vecPlate = MutableLiveData<String>()
+    val vecPlate: LiveData<String> = _vecPlate
 
     init {
         reset()
@@ -37,6 +42,7 @@ class UserBookingViewModel: ViewModel() {
     private fun reset(){
         _lotId.value = ""
         _parkingPeriodMinute.value = 0
+        _spaceType.value = ""
     }
 
     fun setLotId(lotId: String){
@@ -49,5 +55,13 @@ class UserBookingViewModel: ViewModel() {
 
     fun setSpaceType(spaceType: String){
         _spaceType.value = spaceType
+    }
+
+    fun setEWalletType(eWalletType: String){
+        _eWalletType.value = eWalletType
+    }
+
+    fun setVecPlate(vehicleId: String){
+        _vecPlate.value = vehicleId
     }
 }
