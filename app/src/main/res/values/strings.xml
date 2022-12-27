@@ -91,6 +91,7 @@
     <string name="available_vehicle">Available Vehicle</string>
     <string name="confirmation_reminder">Reminder: Go to the selected parking space in 5 minutes to avoid cancellation</string>
     <string name="no_vehicle_selected">Please select your vehicle</string>
+    <string name="parking_is_not_available">Parking Space Selected Not Available</string>
 
     <!--    booking confirmed      -->
     <string name="parking_ready">Yeay! Your parking is ready.</string>

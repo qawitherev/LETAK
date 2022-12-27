@@ -39,6 +39,10 @@ class UserBookingViewModel: ViewModel() {
         reset()
     }
 
+    fun setSpaceId(spaceId: String){
+        _spaceId.value = spaceId
+    }
+
     private fun reset(){
         _lotId.value = ""
         _parkingPeriodMinute.value = 0
