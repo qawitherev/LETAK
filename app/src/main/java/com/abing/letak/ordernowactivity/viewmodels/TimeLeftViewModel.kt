@@ -6,8 +6,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class TimeLeftViewModel: ViewModel() {
-    private val _timeLeft = MutableLiveData<Long>()
-    val timeLeft: LiveData<Long> = _timeLeft
+
+    private val _elapsedTime = MutableLiveData<String>()
+    val elapsedTime: LiveData<String> = _elapsedTime
 
     private var timer: CountDownTimer? = null
 
@@ -15,11 +16,18 @@ class TimeLeftViewModel: ViewModel() {
     fun startTimer() {
         timer = object: CountDownTimer(300000, 1000){
             override fun onTick(milisUntilFinish: Long) {
-                _timeLeft.value = milisUntilFinish / 1000
+                var diff = milisUntilFinish
+                val secondsInMilis: Long = 1000
+                val minutesInMilis = secondsInMilis * 60
+
+                val minuteLeft = diff / minutesInMilis
+                diff %= minutesInMilis
+                val secondsLeft = diff / secondsInMilis
+                _elapsedTime.value = "$minuteLeft:$secondsLeft"
             }
 
             override fun onFinish() {
-                _timeLeft.value = 0
+                timer?.cancel()
             }
         }
         timer?.start()

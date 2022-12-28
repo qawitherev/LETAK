@@ -2,6 +2,7 @@ package com.abing.letak.ordernowactivity.fragments
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -40,9 +41,9 @@ class BookingConfirmedFragment : Fragment() {
 
     private fun settingUpTimer() {
         timeLeftViewModel.startTimer()
-        timeLeftViewModel.timeLeft.observe(viewLifecycleOwner, Observer { time ->
-            binding.timeLeft.text = time.toString()
-        })
+        timeLeftViewModel.elapsedTime.observe(viewLifecycleOwner) { time ->
+            binding.timeLeft.text = time
+        }
     }
 
     private fun startParking() {
@@ -50,6 +51,22 @@ class BookingConfirmedFragment : Fragment() {
         val dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
         val currentDateTime = LocalDateTime.now().format(dateTimeFormatter)
         userBookingViewModel.setParkingStart(currentDateTime)
+        updateBookingFirestore()
+    }
+
+    private fun updateBookingFirestore() {
+        //calculate parking end time based on parking period minute
+        //parking end time = parking start time + parking period minute
+
+        //convert parkingMinutePeriod into hours and minute
+        convertParkingMinute()
+    }
+
+    private fun convertParkingMinute() {
+        val parkingPeriodMinute = userBookingViewModel.parkingPeriodMinute.value?.toInt()
+        val parkingHours = parkingPeriodMinute?.div(60)
+        val parkingMinutes = parkingPeriodMinute?.rem(60)
+        Log.d("ParkingConfirmationFragment", "time is $parkingHours hours $parkingMinutes minutes")
     }
 
     private fun changeNavigationBarColour() {
