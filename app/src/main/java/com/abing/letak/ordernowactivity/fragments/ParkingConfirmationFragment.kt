@@ -24,12 +24,15 @@ import com.abing.letak.ordernowactivity.adapter.VehicleSpinnerAdapter
 import com.abing.letak.viewmodel.ParkingFeeViewModel
 import com.abing.letak.viewmodel.UserBookingViewModel
 import com.abing.letak.viewmodel.UserIdViewModel
+import com.google.firebase.Timestamp
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.toObject
 import java.text.NumberFormat
 import java.text.SimpleDateFormat
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 import java.util.*
 
 class ParkingConfirmationFragment : Fragment() {
@@ -203,15 +206,9 @@ class ParkingConfirmationFragment : Fragment() {
         vehiclePlates.clear()
         insertBookingFirestore()
         updateSpaceVacancy()
-        updateParkingTime()
         val action = ParkingConfirmationFragmentDirections
             .actionParkingConfirmationFragmentToBookingConfirmedFragment()
         view.findNavController().navigate(action)
-    }
-
-    private fun updateParkingTime() {
-        val currentTime = SimpleDateFormat("HH:mm", Locale.getDefault()).format(Date())
-        Log.d("ParkingConfirmationFragment", "current time is $currentTime")
     }
 
     private fun updateSpaceVacancy() {

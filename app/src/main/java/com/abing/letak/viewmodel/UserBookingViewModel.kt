@@ -39,6 +39,14 @@ class UserBookingViewModel: ViewModel() {
         reset()
     }
 
+    fun setParkingStart(startTime: String){
+        _parkingStart.value = startTime
+    }
+
+    fun setParkingEnd(endTime: String){
+        _parkingEnd.value = endTime
+    }
+
     fun setSpaceId(spaceId: String){
         _spaceId.value = spaceId
     }
