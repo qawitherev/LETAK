@@ -231,6 +231,7 @@ class ParkingConfirmationFragment : Fragment() {
         userBooking.spaceId = userBookingViewModel.spaceId.value
         userRef.collection("bookings").add(userBooking).addOnSuccessListener {
             it.update("bookingId", it.id)
+            userBookingViewModel.setBookingId(it.id)
         }
     }
 

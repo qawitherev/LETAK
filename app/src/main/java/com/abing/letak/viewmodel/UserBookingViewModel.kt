@@ -39,6 +39,10 @@ class UserBookingViewModel: ViewModel() {
         reset()
     }
 
+    fun setBookingId(bookingId: String){
+        _bookingId.value = bookingId
+    }
+
     fun setParkingStart(startTime: String){
         _parkingStart.value = startTime
     }

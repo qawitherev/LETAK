@@ -16,14 +16,27 @@ import com.abing.letak.databinding.FragmentBookingConfirmedBinding
 import com.abing.letak.needassistance.NeedAssistanceActivity
 import com.abing.letak.ordernowactivity.viewmodels.TimeLeftViewModel
 import com.abing.letak.viewmodel.UserBookingViewModel
+import com.abing.letak.viewmodel.UserIdViewModel
+import com.google.api.LogDescriptor
+import com.google.firebase.firestore.DocumentReference
+import com.google.firebase.firestore.FirebaseFirestore
+import java.time.Instant
 import java.time.LocalDateTime
+import java.time.LocalTime
 import java.time.format.DateTimeFormatter
+import kotlin.time.Duration
+import kotlin.time.Duration.Companion.hours
 
 class BookingConfirmedFragment : Fragment() {
+    private lateinit var bookingRef: DocumentReference
     private var _binding: FragmentBookingConfirmedBinding? = null
     private val binding get() = _binding!!
     private val userBookingViewModel: UserBookingViewModel by activityViewModels()
     private val timeLeftViewModel: TimeLeftViewModel by viewModels()
+    private val db = FirebaseFirestore.getInstance()
+    private val userIdViewModel: UserIdViewModel by viewModels()
+    private val TAG = "BookingConfirmedFragment"
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,11 +45,16 @@ class BookingConfirmedFragment : Fragment() {
     ): View? {
         _binding = FragmentBookingConfirmedBinding.inflate(layoutInflater)
 
+        initialSetup()
         changeNavigationBarColour()
-        binding.parkButton.setOnClickListener { startParking() } // TODO: nanti lagi pasal the time
-
+        binding.parkButton.setOnClickListener { startParking() }
         settingUpTimer()
         return binding.root
+    }
+
+    private fun initialSetup() {
+        bookingRef = db.collection("users").document(userIdViewModel.userId).collection("bookings")
+            .document(userBookingViewModel.bookingId.value.toString())
     }
 
     private fun settingUpTimer() {
@@ -51,22 +69,32 @@ class BookingConfirmedFragment : Fragment() {
         val dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
         val currentDateTime = LocalDateTime.now().format(dateTimeFormatter)
         userBookingViewModel.setParkingStart(currentDateTime)
-        updateBookingFirestore()
+        calculateParkingEnd()
+        updateParkingStartEndFirestore()
     }
 
-    private fun updateBookingFirestore() {
-        //calculate parking end time based on parking period minute
-        //parking end time = parking start time + parking period minute
-
-        //convert parkingMinutePeriod into hours and minute
-        convertParkingMinute()
+    private fun calculateParkingEnd() {
+        val parkingPeriodMinute = userBookingViewModel.parkingPeriodMinute.value!!
+        val durationHour = java.time.Duration.ofHours(parkingPeriodMinute.div(60).toLong())
+        val durationMinute = java.time.Duration.ofMinutes(parkingPeriodMinute.rem(60).toLong())
+        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
+        val currentTime = LocalDateTime.now()
+        val endTime = currentTime.plus(durationHour).plus(durationMinute)
+        Log.d(TAG, "calculateParkingEnd: end time is ${endTime.format(formatter)}")
+        userBookingViewModel.setParkingEnd(endTime.format(formatter))
     }
 
-    private fun convertParkingMinute() {
-        val parkingPeriodMinute = userBookingViewModel.parkingPeriodMinute.value?.toInt()
-        val parkingHours = parkingPeriodMinute?.div(60)
-        val parkingMinutes = parkingPeriodMinute?.rem(60)
-        Log.d("ParkingConfirmationFragment", "time is $parkingHours hours $parkingMinutes minutes")
+    private fun updateParkingStartEndFirestore() {
+        bookingRef = db.collection("users").document(userIdViewModel.userId).collection("bookings")
+            .document(userBookingViewModel.bookingId.value.toString())
+        val parkingStart = userBookingViewModel.parkingStart.value
+        val parkingEnd = userBookingViewModel.parkingEnd.value
+        bookingRef.update("parkingStart", parkingStart, "parkingEnd", parkingEnd)
+            .addOnSuccessListener {
+        }
+            .addOnFailureListener {
+                Log.d("BookingConfirmedFragment", "failed with $it")
+            }
     }
 
     private fun changeNavigationBarColour() {
