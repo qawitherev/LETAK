@@ -39,6 +39,18 @@ class UserBookingViewModel: ViewModel() {
         reset()
     }
 
+    private fun reset(){
+        _bookingId.value = ""
+        _lotId.value = ""
+        _spaceId.value = ""
+        _spaceType.value = ""
+        _parkingPeriodMinute.value = 0
+        _parkingStart.value = ""
+        _parkingEnd.value = ""
+        _eWalletType.value = ""
+        _vecPlate.value = ""
+    }
+
     fun setBookingId(bookingId: String){
         _bookingId.value = bookingId
     }
@@ -53,12 +65,6 @@ class UserBookingViewModel: ViewModel() {
 
     fun setSpaceId(spaceId: String){
         _spaceId.value = spaceId
-    }
-
-    private fun reset(){
-        _lotId.value = ""
-        _parkingPeriodMinute.value = 0
-        _spaceType.value = ""
     }
 
     fun setLotId(lotId: String){

@@ -6,6 +6,7 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.abing.letak.managevehicle.ManageVehicleActivity
 import com.abing.letak.monthlypassactivity.MonthlyPassActivity
+import com.abing.letak.needassistance.NeedAssistanceActivity
 import com.abing.letak.ordernowactivity.OrderNowActivity
 import com.abing.letak.phoneauth.PhoneAuthActivity
 import com.abing.letak.profilesetupactivity.ProfileSetupActivity

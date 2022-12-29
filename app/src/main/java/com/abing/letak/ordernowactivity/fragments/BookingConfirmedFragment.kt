@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import com.abing.letak.MainMenuActivity
 import com.abing.letak.R
 import com.abing.letak.databinding.FragmentBookingConfirmedBinding
 import com.abing.letak.needassistance.NeedAssistanceActivity
@@ -71,6 +72,9 @@ class BookingConfirmedFragment : Fragment() {
         userBookingViewModel.setParkingStart(currentDateTime)
         calculateParkingEnd()
         updateParkingStartEndFirestore()
+        val intent = Intent(requireContext(), MainMenuActivity::class.java)
+        startActivity(intent)
+        activity?.finish()
     }
 
     private fun calculateParkingEnd() {

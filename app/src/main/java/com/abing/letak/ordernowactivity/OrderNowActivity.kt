@@ -1,6 +1,7 @@
 package com.abing.letak.ordernowactivity
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
@@ -12,6 +13,7 @@ import com.abing.letak.utils.lightStatusBar
 
 class OrderNowActivity : AppCompatActivity() {
     private lateinit var navController: NavController
+    private val TAG = "OrderNowActivity"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,7 +28,12 @@ class OrderNowActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController)
     }
 
-    override fun onSupportNavigateUp(): Boolean {
-        return navController.navigateUp() || super.onSupportNavigateUp()
+//    override fun onSupportNavigateUp(): Boolean {
+//        return navController.navigateUp() || super.onSupportNavigateUp()
+//    }
+
+    override fun onBackPressed() {
+        finish()
+        super.onBackPressed()
     }
 }

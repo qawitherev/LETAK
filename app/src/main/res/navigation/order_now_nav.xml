@@ -22,7 +22,11 @@
         android:id="@+id/bookingConfirmedFragment"
         android:name="com.abing.letak.ordernowactivity.fragments.BookingConfirmedFragment"
         android:label="@string/all_set"
-        tools:layout="@layout/fragment_booking_confirmed" />
+        tools:layout="@layout/fragment_booking_confirmed" >
+        <action
+            android:id="@+id/action_bookingConfirmedFragment_to_parkingLotSelectionFragment"
+            app:destination="@id/parkingLotSelectionFragment" />
+    </fragment>
     <fragment
         android:id="@+id/spaceSelectionFragment"
         android:name="com.abing.letak.ordernowactivity.fragments.SpaceSelectionFragment"
@@ -38,6 +42,9 @@
         <argument
             android:name="lotId"
             app:argType="string" />
+        <action
+            android:id="@+id/action_spaceSelectionFragment_to_parkingLotSelectionFragment"
+            app:destination="@id/parkingLotSelectionFragment" />
     </fragment>
     <fragment
         android:id="@+id/parkingConfirmationFragment"
@@ -51,5 +58,8 @@
             app:exitAnim="@anim/slide_out_from_right"
             app:popEnterAnim="@anim/slide_in_from_left"
             app:popExitAnim="@anim/slide_out_from_left" />
+        <action
+            android:id="@+id/action_parkingConfirmationFragment_to_parkingLotSelectionFragment"
+            app:destination="@id/parkingLotSelectionFragment" />
     </fragment>
 </navigation>
