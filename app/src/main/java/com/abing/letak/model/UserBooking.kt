@@ -11,5 +11,6 @@ data class UserBooking(
     var parkingStart: Date? = null,
     var parkingEnd: Date? = null,
     var eWalletType: String? = null,
-    var vecPlate: String? = null
+    var vecPlate: String? = null,
+    var parkingStartMilis: Long? = null
 )

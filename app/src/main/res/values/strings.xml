@@ -38,7 +38,7 @@
     <string name="no_active_parking">There are no active parking currently</string>
     <string name="a_little_insight">A little insight...</string>
     <string name="advance_book">Advance Book</string>
-    <string name="remaining">Remaining</string>
+    <string name="remaining">minutes remaining</string>
     <string name="unpark">Unpark</string>
     <string name="extend">Extend</string>
 

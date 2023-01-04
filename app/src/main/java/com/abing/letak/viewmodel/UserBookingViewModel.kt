@@ -35,22 +35,6 @@ class UserBookingViewModel: ViewModel() {
     private val _vecPlate = MutableLiveData<String>()
     val vecPlate: LiveData<String> = _vecPlate
 
-    init {
-        reset()
-    }
-
-    private fun reset(){
-        _bookingId.value = ""
-        _lotId.value = ""
-        _spaceId.value = ""
-        _spaceType.value = ""
-        _parkingPeriodMinute.value = 0
-        _parkingStart.value = ""
-        _parkingEnd.value = ""
-        _eWalletType.value = ""
-        _vecPlate.value = ""
-    }
-
     fun setBookingId(bookingId: String){
         _bookingId.value = bookingId
     }

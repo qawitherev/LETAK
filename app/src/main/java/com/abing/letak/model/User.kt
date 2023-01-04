@@ -5,7 +5,10 @@ data class User(
     val userFirstName: String? = null,
     val userLastName: String? = null,
     val userEmail: String? = null,
-    val userPhoneNum: String? = null
+    val userPhoneNum: String? = null,
+    val orderNowStatus: Boolean? = null,
+    val advanceBookingStatus: Boolean? = null,
+    val monthlyPassStatus: Boolean? = null,
+    val activeBookingId: String? = null,
+    val activeMonthlyId: String? = null
 )
-
-// TODO: use viewmodel to store the user id so that can access from anywhere

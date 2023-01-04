@@ -49,6 +49,7 @@ class ParkingConfirmationFragment : Fragment() {
     private val parkingFeeViewModel: ParkingFeeViewModel by activityViewModels()
     private var vehicles = mutableListOf<Vehicle>()
     private lateinit var selectedVehicle: Vehicle
+    private val TAG = "ParkingConfirmationFragment"
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -96,7 +97,6 @@ class ParkingConfirmationFragment : Fragment() {
                 for (document in it) {
                     vehicles.add(document.toObject())
                 }
-                Log.d("ParkingConfirmationFragment", "vehicles->$vehicles")
                 binding.vehicleSpinner.adapter = VehicleSpinnerAdapter(requireContext(), vehicles)
                 binding.vehicleSpinner.onItemSelectedListener =
                     object : AdapterView.OnItemSelectedListener {
@@ -216,7 +216,6 @@ class ParkingConfirmationFragment : Fragment() {
         val selectedSpaceId = userBookingViewModel.spaceId.value.toString()
         parkingLotRef.document(lotId).collection("parkingSpaces").document(selectedSpaceId)
             .update("spaceEmpty", false).addOnSuccessListener {
-                Log.d("ParkingConfirmationFragment", "$selectedSpaceId is now false")
             }
     }
 
@@ -232,6 +231,7 @@ class ParkingConfirmationFragment : Fragment() {
         userRef.collection("bookings").add(userBooking).addOnSuccessListener {
             it.update("bookingId", it.id)
             userBookingViewModel.setBookingId(it.id)
+            Log.d(TAG, "insertBookingFirestore: bookingId is ${userBookingViewModel.bookingId.value}")
         }
     }
 

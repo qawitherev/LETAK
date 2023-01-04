@@ -15,10 +15,12 @@ import com.abing.letak.MainMenuActivity
 import com.abing.letak.R
 import com.abing.letak.databinding.FragmentBookingConfirmedBinding
 import com.abing.letak.needassistance.NeedAssistanceActivity
+import com.abing.letak.ordernowactivity.TimerService
 import com.abing.letak.ordernowactivity.viewmodels.TimeLeftViewModel
 import com.abing.letak.viewmodel.UserBookingViewModel
 import com.abing.letak.viewmodel.UserIdViewModel
 import com.google.api.LogDescriptor
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 import java.time.Instant
@@ -33,6 +35,7 @@ class BookingConfirmedFragment : Fragment() {
     private var _binding: FragmentBookingConfirmedBinding? = null
     private val binding get() = _binding!!
     private val userBookingViewModel: UserBookingViewModel by activityViewModels()
+    private lateinit var userRef: DocumentReference
     private val timeLeftViewModel: TimeLeftViewModel by viewModels()
     private val db = FirebaseFirestore.getInstance()
     private val userIdViewModel: UserIdViewModel by viewModels()
@@ -56,6 +59,7 @@ class BookingConfirmedFragment : Fragment() {
     private fun initialSetup() {
         bookingRef = db.collection("users").document(userIdViewModel.userId).collection("bookings")
             .document(userBookingViewModel.bookingId.value.toString())
+        userRef = db.collection("users").document(userIdViewModel.userId)
     }
 
     private fun settingUpTimer() {
@@ -72,9 +76,20 @@ class BookingConfirmedFragment : Fragment() {
         userBookingViewModel.setParkingStart(currentDateTime)
         calculateParkingEnd()
         updateParkingStartEndFirestore()
+        updateOrderNowStatus()
+        updateActiveBookingId()
         val intent = Intent(requireContext(), MainMenuActivity::class.java)
         startActivity(intent)
         activity?.finish()
+    }
+
+    private fun updateActiveBookingId() {
+        userRef.update("activeBookingId", userBookingViewModel.bookingId.value.toString())
+    }
+
+    private fun updateOrderNowStatus() {
+        val userRef = db.collection("users").document(userIdViewModel.userId)
+        userRef.update("orderNowStatus", true)
     }
 
     private fun calculateParkingEnd() {
@@ -93,7 +108,8 @@ class BookingConfirmedFragment : Fragment() {
             .document(userBookingViewModel.bookingId.value.toString())
         val parkingStart = userBookingViewModel.parkingStart.value
         val parkingEnd = userBookingViewModel.parkingEnd.value
-        bookingRef.update("parkingStart", parkingStart, "parkingEnd", parkingEnd)
+        val parkingStartMilis = System.currentTimeMillis()
+        bookingRef.update("parkingStart", parkingStart, "parkingEnd", parkingEnd, "parkingStartMilis", parkingStartMilis)
             .addOnSuccessListener {
         }
             .addOnFailureListener {

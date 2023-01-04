@@ -9,20 +9,125 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp">
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp">
 
-        <include
-            android:visibility="gone"
-            android:id="@+id/active_parking_card"
-            layout="@layout/letak_now_active_parking"
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/order_now_active_card"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="10dp"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/primaryColor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:orientation="vertical">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    app:cardCornerRadius="10dp"
+                    android:layout_height="wrap_content">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp">
+
+                        <TextView
+                            android:id="@+id/parking_lot_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="ParkingLotName"
+                            android:textColor="@color/primaryColor"
+                            android:textSize="20sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/elapsed_time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="5.08"
+                            android:textColor="@color/primaryColor"
+                            android:textSize="48sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginBottom="8dp"
+                            android:text="@string/remaining"
+                            android:textColor="@color/primaryColor"
+                            app:layout_constraintBottom_toBottomOf="@+id/elapsed_time"
+                            app:layout_constraintStart_toEndOf="@+id/elapsed_time" />
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/parking_lot_image"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:src="@drawable/one_borneo"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.5" />
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/space_type_card"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_marginStart="8dp"
+                            android:backgroundTint="@color/green"
+                            app:cardElevation="10dp"
+                            app:layout_constraintStart_toEndOf="@+id/parking_lot_name"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/unpark_button"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:cornerRadius="8dp"
+                    android:padding="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/white"
+                    android:textColor="@color/primaryColor"
+                    android:layout_marginTop="20dp"
+                    android:layout_gravity="center"
+                    android:text="@string/unpark"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/extend_button"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:cornerRadius="10dp"
+                    android:padding="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/white"
+                    android:textColor="@color/primaryColor"
+                    android:layout_gravity="center"
+                    android:text="@string/extend"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
 
         <ImageView
             android:id="@+id/no_active_parking_img"
@@ -100,10 +205,19 @@
             app:layout_constraintTop_toBottomOf="@id/letak_now_button" />
 
         <androidx.constraintlayout.widget.Group
-            android:id="@+id/group"
+            android:visibility="gone"
+            android:id="@+id/no_active_group"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:constraint_referenced_ids="no_active_parking_img,no_active_parking_text" />
+            app:constraint_referenced_ids="no_active_parking_img,no_active_parking_text, a_little_insight,
+a_little_insight_recycler_view, letak_now_button, advance_book_button" />
+
+        <androidx.constraintlayout.widget.Group
+
+            android:id="@+id/order_now_active_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="order_now_active_card"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

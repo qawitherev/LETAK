@@ -2,6 +2,7 @@ package com.abing.letak
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View.GONE
@@ -13,11 +14,13 @@ import com.abing.letak.mainmenufragments.MonthlyPassFragment
 import com.abing.letak.mainmenufragments.NotificationFragment
 import com.abing.letak.mainmenufragments.OrderNowFragment
 import com.abing.letak.mainmenufragments.ProfileFragment
+import com.abing.letak.ordernowactivity.TimerService
 import com.abing.letak.utils.lightStatusBar
 import com.google.firebase.auth.FirebaseAuth
 
 class MainMenuActivity : AppCompatActivity() {
 
+    private val TAG = "MainMenuActivity"
     private lateinit var binding: ActivityMainMenuBinding
     private lateinit var auth: FirebaseAuth
 
@@ -34,7 +37,6 @@ class MainMenuActivity : AppCompatActivity() {
         lightStatusBar(window, false, true)
 
         navBotNavigations()
-
 
         //getting intent extras
         val firstName = intent.getStringExtra("firstName")
