@@ -41,12 +41,15 @@
     <string name="remaining">minutes remaining</string>
     <string name="unpark">Unpark</string>
     <string name="extend">Extend</string>
+    <string name="parking_expiring">Expiring Parking</string>
+    <string name="parking_expiring_soon">Your Parking Expires In A Few Minutes</string>
+    <string name="parking_expired">Expired</string>
 
     <!--    monthly pass fragment   -->
     <string name="monthly_pass_desc">Get monthly pass to park for a month</string>
     <string name="pass_desc">Park everyday at 8am-6pm using the purchased pass</string>
     <string name="pass_desc_2">Parking space will be reserved just for you everyday!</string>
-    <string name="no_active_pass">There is no active monthly pass, yet...</string>
+    <string name="no_active_pass">There is no active monthly pass, yet…</string>
     <string name="purchase_monthly_pass">Purchase monthly pass</string>
 
     <!--    main menu toolbar   -->

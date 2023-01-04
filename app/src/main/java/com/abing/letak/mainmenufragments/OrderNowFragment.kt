@@ -4,9 +4,12 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -131,6 +134,29 @@ class OrderNowFragment : Fragment() {
         //1minute = 1000 * 60
         val remainingMinute = remainingMilis.div(60*1000)
         binding.elapsedTime.text = remainingMinute.toString()
+        if (remainingMinute < 10){
+            val builder = AlertDialog.Builder(requireContext())
+            builder.setTitle(R.string.parking_expiring)
+                .setMessage(R.string.parking_expiring_soon)
+                .setCancelable(true)
+                .setPositiveButton(R.string.extend){dialogInterface, it ->
+                    extendParking()
+                }
+                .setNegativeButton(R.string.unpark){dialogInterface, it ->
+                    dialogInterface.cancel()
+                }
+                .show()
+            if (remainingMinute < 1){
+                binding.elapsedTime.apply {
+                    setTextSize(TypedValue.COMPLEX_UNIT_SP, 16f)
+                    text = getString(R.string.parking_expired)
+                }
+            }
+        }
+    }
+
+    private fun extendParking() {
+        Toast.makeText(requireContext(), "Go to extend parking", Toast.LENGTH_SHORT).show()
     }
 
 
