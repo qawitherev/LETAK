@@ -99,7 +99,6 @@ class BookingConfirmedFragment : Fragment() {
         val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
         val currentTime = LocalDateTime.now()
         val endTime = currentTime.plus(durationHour).plus(durationMinute)
-        Log.d(TAG, "calculateParkingEnd: end time is ${endTime.format(formatter)}")
         userBookingViewModel.setParkingEnd(endTime.format(formatter))
     }
 

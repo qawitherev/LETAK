@@ -15,6 +15,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.abing.letak.R
 import com.abing.letak.databinding.FragmentOrderNowBinding
+import com.abing.letak.extendparking.ExtendParkingActivity
 import com.abing.letak.model.ParkingLot
 import com.abing.letak.ordernowactivity.OrderNowActivity
 import com.abing.letak.parkinglotadapter.ParkingLotAdapter
@@ -123,6 +124,8 @@ class OrderNowFragment : Fragment() {
                 binding.parkingLotName.text = parkingLotName
             }
 
+            binding.extendButton.setOnClickListener { extendParking() }
+
         }
     }
 
@@ -150,13 +153,16 @@ class OrderNowFragment : Fragment() {
                 binding.elapsedTime.apply {
                     setTextSize(TypedValue.COMPLEX_UNIT_SP, 16f)
                     text = getString(R.string.parking_expired)
+                    unparkStart()
                 }
             }
         }
     }
 
     private fun extendParking() {
-        Toast.makeText(requireContext(), "Go to extend parking", Toast.LENGTH_SHORT).show()
+        val intent = Intent(requireContext(), ExtendParkingActivity::class.java)
+        intent.putExtra("activeBookingId", activeBookingId)
+        startActivity(intent)
     }
 
 
