@@ -7,12 +7,14 @@ import android.text.InputFilter
 import android.util.Log
 import android.view.LayoutInflater
 import androidx.activity.viewModels
+import androidx.lifecycle.LifecycleOwner
 import com.abing.letak.MainMenuActivity
 import com.abing.letak.R
 import com.abing.letak.databinding.ActivityExtendParkingBinding
 import com.abing.letak.utils.MinMaxFilter
 import com.abing.letak.utils.lightStatusBar
 import com.abing.letak.utils.setFullScreen
+import com.abing.letak.viewmodel.ParkingFeeViewModel
 import com.abing.letak.viewmodel.UserBookingViewModel
 import com.abing.letak.viewmodel.UserIdViewModel
 import com.google.firebase.firestore.DocumentReference
@@ -27,10 +29,10 @@ class ExtendParkingActivity : AppCompatActivity() {
     private var durationMinute: Long = 0
     private val db = FirebaseFirestore.getInstance()
     private val userIdViewModel: UserIdViewModel by viewModels()
-    private val userBookingViewModel: UserBookingViewModel by viewModels()
     private var activeBookingId: String? = null
     private lateinit var bookingRef: DocumentReference
     private val TAG = "ExtendParkingActivity"
+    private val parkingFeeViewModel: ParkingFeeViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -75,12 +77,14 @@ class ExtendParkingActivity : AppCompatActivity() {
             .addOnSuccessListener {
                 val parkingPeriodMinute = it.get("parkingPeriodMinute").toString().toInt()
                 val newParkingPeriodMinute = parkingPeriodMinute + (durationHour * 60).toInt() + durationMinute.toInt()
-                Log.d(TAG, "extendParking: newParkingPeriodMinute->$newParkingPeriodMinute")
                 val durationHour = java.time.Duration.ofHours(durationHour)
                 val durationMinute = java.time.Duration.ofMinutes(durationMinute)
                 val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
                 val currentTime = LocalDateTime.now()
                 val endTime = currentTime.plus(durationHour).plus(durationMinute).format(formatter)
+                val feePaid = it.get("feePaid").toString()
+                val spaceType = it.getString("spaceType").toString()
+                calculateExtendFee(spaceType, newParkingPeriodMinute, feePaid.toDouble())
                 //update periodParkingMinute and parkingEnd in Firestore
                 bookingRef.update("parkingPeriodMinute", newParkingPeriodMinute,
                 "parkingEnd", endTime)
@@ -88,6 +92,19 @@ class ExtendParkingActivity : AppCompatActivity() {
                 val intent = Intent(this, MainMenuActivity::class.java)
                 startActivity(intent)
             }
+    }
+
+    private fun calculateExtendFee(spaceType: String, newParkingPeriodMinute: Int, feePaid: Double) {
+        //parkingFeeViewModel accepts spaceType, hour and minute all strings
+        val hour = newParkingPeriodMinute.div(60).toString()
+        val minute = newParkingPeriodMinute.mod(60).toString()
+        parkingFeeViewModel.calculateFee(spaceType, hour, minute)
+        //extend fee = feeAll - feePaid
+        parkingFeeViewModel.calculateExtend(feePaid)
+        val extendFee = parkingFeeViewModel.extendFee.value?.toDouble()
+        parkingFeeViewModel.extendFee.observe(this, androidx.lifecycle.Observer {
+            binding.extendCharge.text = it.toString()
+        })
     }
 
     private fun isMinuteEmpty(): Boolean {

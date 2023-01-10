@@ -35,6 +35,13 @@ class UserBookingViewModel: ViewModel() {
     private val _vecPlate = MutableLiveData<String>()
     val vecPlate: LiveData<String> = _vecPlate
 
+    private val _feePaid = MutableLiveData<Double>()
+    val feePaid: LiveData<Double> = _feePaid
+
+    fun setFeePaid(feePaid: Double){
+        _feePaid.value = feePaid
+    }
+
     fun setBookingId(bookingId: String){
         _bookingId.value = bookingId
     }

@@ -10,6 +10,9 @@ class ParkingFeeViewModel: ViewModel() {
         MutableLiveData<Double>()
     }
 
+    val extendFee: MutableLiveData<Double> by lazy {
+        MutableLiveData<Double>()
+    }
 
     fun calculateFee(spaceType: String, hour: String, minute: String){
         parkingFee.value = 0.0
@@ -65,5 +68,10 @@ class ParkingFeeViewModel: ViewModel() {
                 }
             }
         }
+    }
+
+    fun calculateExtend(feePaid: Double) {
+        val fee = parkingFee.value?.minus(feePaid)
+        extendFee.value = fee
     }
 }

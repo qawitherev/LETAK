@@ -135,6 +135,10 @@ class ParkingConfirmationFragment : Fragment() {
             binding.parkingLotName.text = lot?.lotName
             binding.parkingDuration.text = changeToHHMM()
             binding.parkingFee.text = parkingFee()
+            val feePaid = parkingFeeViewModel.parkingFee.value
+            if (feePaid != null) {
+                userBookingViewModel.setFeePaid(feePaid.toDouble())
+            }
             binding.spaceType.text = userBookingViewModel.spaceType.value
         }
 
@@ -228,6 +232,7 @@ class ParkingConfirmationFragment : Fragment() {
         userBooking.eWalletType = userBookingViewModel.eWalletType.value
         userBooking.vecPlate = userBookingViewModel.vecPlate.value
         userBooking.spaceId = userBookingViewModel.spaceId.value
+        userBooking.feePaid = userBookingViewModel.feePaid.value
         userRef.collection("bookings").add(userBooking).addOnSuccessListener {
             it.update("bookingId", it.id)
             userBookingViewModel.setBookingId(it.id)
