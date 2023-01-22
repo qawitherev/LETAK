@@ -110,6 +110,7 @@ class BookingConfirmedFragment : Fragment() {
         val parkingStartMilis = System.currentTimeMillis()
         bookingRef.update("parkingStart", parkingStart, "parkingEnd", parkingEnd, "parkingStartMilis", parkingStartMilis)
             .addOnSuccessListener {
+                //nothing here
         }
             .addOnFailureListener {
                 Log.d("BookingConfirmedFragment", "failed with $it")

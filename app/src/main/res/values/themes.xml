@@ -94,4 +94,17 @@
         <item name="android:navigationBarColor">@color/background_color</item>
     </style>
 
+<!--    advance booking activity    -->
+    <style name="Theme.LETAK.AdvanceBookingActivity">
+        <item name="android:statusBarColor">@color/primaryColor</item>
+        <item name="android:navigationBarColor">@color/white</item>
+    </style>
+    
+    <!--    date picker style   -->
+    <style name="LETAKDatePickerTheme"
+        parent="Theme.MaterialComponents.Light.Dialog">
+        <item name="colorAccent">@color/primaryColor</item>
+    </style>
+
+
 </resources>

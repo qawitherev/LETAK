@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.abing.letak.R
+import com.abing.letak.advancebookingactivity.AdvanceBookingActivity
 import com.abing.letak.databinding.FragmentOrderNowBinding
 import com.abing.letak.extendparking.ExtendParkingActivity
 import com.abing.letak.model.ParkingLot
@@ -182,6 +183,12 @@ class OrderNowFragment : Fragment() {
         binding.letakNowButton.setOnClickListener {
             startOrderNowActivity()
         }
+        binding.advanceBookButton.setOnClickListener { startAdvanceBookActivity() }
+    }
+
+    private fun startAdvanceBookActivity() {
+        val intent = Intent(requireContext(), AdvanceBookingActivity::class.java)
+        startActivity(intent)
     }
 
     private fun initialSetup() {

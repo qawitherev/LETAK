@@ -27,6 +27,7 @@ import com.google.firebase.firestore.ktx.toObject
 import java.util.Observer
 
 class SpaceSelectionFragment : Fragment() {
+    private val TAG = "spaceSelectionFragment"
     private var _binding: FragmentSpaceSelectionBinding? = null
     private val binding get() = _binding!!
     private val args: SpaceSelectionFragmentArgs by navArgs()
@@ -134,9 +135,10 @@ class SpaceSelectionFragment : Fragment() {
             durationHour.setOnFocusChangeListener { view, focus ->
                 if (!focus){
                     updateParkingFee()
-                    Log.d("spaceSelectionFragment", "hour lost focus")
+                    Log.d(TAG, "parkingFee -> ${viewModel.parkingFee.value}")
                 }else {
                     Toast.makeText(requireContext(), R.string.enter_hour, Toast.LENGTH_SHORT).show()
+                    Log.d(TAG, "parkingFee -> ${viewModel.parkingFee.value}")
                 }
             }
             durationMinute.setOnFocusChangeListener { view, focus ->
@@ -192,7 +194,7 @@ class SpaceSelectionFragment : Fragment() {
     }
 
     private fun redParkingInvalid(): Boolean {
-        val totalMinute = binding.durationHour.text.toString().toInt() +
+        val totalMinute = (binding.durationHour.text.toString().toInt() * 60) +
                 binding.durationMinute.text.toString().toInt()
         Log.d("SpaceSelectionFragment", "total minute is -> $totalMinute")
         return totalMinute >= 120

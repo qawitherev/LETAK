@@ -81,9 +81,6 @@ class ProfileFragment : Fragment() {
     }
 
     private fun initLetakCard() {
-        //from the profile setup
-//        val firstName = activity?.intent?.extras?.getString("firstName")
-//        val lastName = activity?.intent?.extras?.getString("lastName")
         val profilePicUri = activity?.intent?.extras?.getParcelable<Uri>("profileImageUri")
 
         userRef.get().addOnSuccessListener {

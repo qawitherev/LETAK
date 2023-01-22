@@ -203,7 +203,22 @@
     <string name="no_delete_vehicle">No</string>
     <string name="delete_vehicle_cannot_undone">Deleting Your Vehicle Cannot Be Undone</string>
 
+    <!--    advance booking activity    -->
+    <string name="select_date">Select Date</string>
+    <string name="select_time">Select Time</string>
+    <string name="advance_reminder">Make sure to park your vehicle at stated time!</string>
+    <string name="advance_parking_time">Parking Time</string>
+    <string name="set_date">Set Your Date</string>
+    <string name="set_time">Set Your Time</string>
+    <string name="adv_book_rule">Advance Booking Must Be Between 6-12 hours before</string>
+
     <string-array name="space_type">
+        <item>Green</item>
+        <item>Yellow</item>
+        <item>Red</item>
+    </string-array>
+
+    <string-array name="adv_space_type">
         <item>Green</item>
         <item>Yellow</item>
         <item>Red</item>

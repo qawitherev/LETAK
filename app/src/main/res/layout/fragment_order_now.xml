@@ -13,6 +13,114 @@
         android:layout_marginEnd="15dp">
 
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/advance_active_card"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="10dp"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/primaryColor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:orientation="vertical">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    app:cardCornerRadius="10dp"
+                    android:layout_height="wrap_content">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp">
+
+                        <TextView
+                            android:id="@+id/advance_parking_lot_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="ParkingLotName"
+                            android:textColor="@color/primaryColor"
+                            android:textSize="20sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/advance_time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:text="5.08"
+                            android:textColor="@color/primaryColor"
+                            android:textSize="48sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/advance_parking_lot_image"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toEndOf="@+id/textView26" />
+
+                        <TextView
+                            android:id="@+id/textView26"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/advance_parking_time"
+                            android:textColor="@color/primaryColor"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent" />
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/advance_parking_lot_image"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:src="@drawable/one_borneo"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.5" />
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/advance_space_type_card"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_marginStart="8dp"
+                            android:backgroundTint="@color/green"
+                            app:cardElevation="10dp"
+                            app:layout_constraintEnd_toStartOf="@+id/advance_parking_lot_image"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toEndOf="@+id/advance_parking_lot_name"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/park_button"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:cornerRadius="8dp"
+                    android:padding="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/white"
+                    android:textColor="@color/primaryColor"
+                    android:layout_marginTop="20dp"
+                    android:layout_gravity="center"
+                    android:text="@string/app_name"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/order_now_active_card"
             app:cardCornerRadius="10dp"
             app:cardElevation="10dp"
@@ -213,11 +321,17 @@
 a_little_insight_recycler_view, letak_now_button, advance_book_button" />
 
         <androidx.constraintlayout.widget.Group
-
+            android:visibility="gone"
             android:id="@+id/order_now_active_group"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:constraint_referenced_ids="order_now_active_card"/>
+
+        <androidx.constraintlayout.widget.Group
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="advance_active_card"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

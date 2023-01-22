@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/advance_nav"
+    app:startDestination="@id/advanceLotSelectionFragment">
+
+    <fragment
+        android:id="@+id/advance_space_selection_fragment"
+        android:name="com.abing.letak.advancebookingactivity.fragments.advance_space_selection_fragment"
+        android:label="fragment_advance_space_selection_fragment"
+        tools:layout="@layout/fragment_advance_space_selection_fragment" >
+        <action
+            android:id="@+id/action_advance_space_selection_fragment_to_advanceConfirmationFragment"
+            app:destination="@id/advanceConfirmationFragment" />
+        <argument
+            android:name="lotId"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/advanceConfirmationFragment"
+        android:name="com.abing.letak.advancebookingactivity.fragments.AdvanceConfirmationFragment"
+        android:label="fragment_advance_confirmation"
+        tools:layout="@layout/fragment_advance_confirmation" />
+    <fragment
+        android:id="@+id/advanceLotSelectionFragment"
+        android:name="com.abing.letak.advancebookingactivity.fragments.AdvanceLotSelectionFragment"
+        android:label="fragment_advance_lot_selection"
+        tools:layout="@layout/fragment_advance_lot_selection" >
+        <action
+            android:id="@+id/action_advanceLotSelectionFragment_to_advance_space_selection_fragment"
+            app:destination="@id/advance_space_selection_fragment" />
+    </fragment>
+</navigation>

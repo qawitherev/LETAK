@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.text.InputFilter
 import android.util.Log
 import android.view.LayoutInflater
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.lifecycle.LifecycleOwner
 import com.abing.letak.MainMenuActivity
@@ -84,6 +85,10 @@ class ExtendParkingActivity : AppCompatActivity() {
                 val endTime = currentTime.plus(durationHour).plus(durationMinute).format(formatter)
                 val feePaid = it.get("feePaid").toString()
                 val spaceType = it.getString("spaceType").toString()
+                if (spaceType == "Red" && redParkingInvalid(newParkingPeriodMinute)){
+                    Toast.makeText(this, R.string.red_valid_below_two_hours, Toast.LENGTH_SHORT).show()
+                    return@addOnSuccessListener
+                }
                 calculateExtendFee(spaceType, newParkingPeriodMinute, feePaid.toDouble())
                 //update periodParkingMinute and parkingEnd in Firestore
                 bookingRef.update("parkingPeriodMinute", newParkingPeriodMinute,
@@ -92,6 +97,13 @@ class ExtendParkingActivity : AppCompatActivity() {
                 val intent = Intent(this, MainMenuActivity::class.java)
                 startActivity(intent)
             }
+    }
+
+    private fun redParkingInvalid(parkingPeriod: Int): Boolean {
+        val totalMinute = binding.durationHour.text.toString().toInt() +
+                binding.durationMinute.text.toString().toInt()
+        Log.d("SpaceSelectionFragment", "total minute is -> $totalMinute")
+        return totalMinute >= 120
     }
 
     private fun calculateExtendFee(spaceType: String, newParkingPeriodMinute: Int, feePaid: Double) {
