@@ -1,7 +1,6 @@
 package com.abing.letak.advancebookingactivity.fragments
 
 import android.annotation.SuppressLint
-import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.os.Bundle
 import android.text.InputFilter
@@ -13,22 +12,21 @@ import android.widget.AdapterView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.NavArgs
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.abing.letak.R
+import com.abing.letak.advancebookingactivity.viewmodels.AdvBookingViewModel
 import com.abing.letak.databinding.FragmentAdvanceSpaceSelectionFragmentBinding
 import com.abing.letak.model.ParkingLot
 import com.abing.letak.ordernowactivity.adapter.SpaceSpinnerAdapter
-import com.abing.letak.utils.DatePicker
 import com.abing.letak.utils.MinMaxFilter
-import com.abing.letak.utils.TimePicker
 import com.abing.letak.viewmodel.ParkingFeeViewModel
+import com.abing.letak.viewmodel.UserBookingViewModel
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.toObject
 import java.text.SimpleDateFormat
 import java.time.Duration
-import java.time.LocalDate
+import java.time.LocalDateTime
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 import java.util.*
@@ -36,12 +34,12 @@ import kotlin.math.absoluteValue
 
 class advance_space_selection_fragment : Fragment(), TimePickerDialog.OnTimeSetListener {
 
-
+    private var parkingStart: String? = null
+    private val advBookingViewModel: AdvBookingViewModel by activityViewModels()
     private val viewModel: ParkingFeeViewModel by activityViewModels()
     private var durationMinute: Long = 0
     private val args: advance_space_selection_fragmentArgs by navArgs()
     private var spaceType = "Green"
-    private val parkingLots: MutableList<ParkingLot> = mutableListOf()
     private val db = FirebaseFirestore.getInstance()
     private var _binding: FragmentAdvanceSpaceSelectionFragmentBinding? = null
     private val binding get() = _binding!!
@@ -135,9 +133,35 @@ class advance_space_selection_fragment : Fragment(), TimePickerDialog.OnTimeSetL
             return
         }
 
+        updateViewModel()
+
         val action = advance_space_selection_fragmentDirections
             .actionAdvanceSpaceSelectionFragmentToAdvanceConfirmationFragment()
         view.findNavController().navigate(action)
+    }
+
+    private fun updateViewModel() {
+        advBookingViewModel.setLotId(args.lotId)
+        advBookingViewModel.setSpaceType(spaceType)
+        advBookingViewModel.setParkingPeriodMinute(getParkingPeriodMinute().toString())
+        advBookingViewModel.setParkingStart(parkingStart.toString())
+        advBookingViewModel.setParkingEnd(getParkingEnd())
+    }
+
+    private fun getParkingEnd(): String{
+        val parkingPeriod = getParkingPeriodMinute()
+        val hour = Duration.ofHours(parkingPeriod.div(60).toLong())
+        val minute = Duration.ofMinutes(parkingPeriod.rem(60).toLong())
+        val startTime = parkingStart.toString()
+        val formatter = DateTimeFormatter.ofPattern("HH:mm")
+        val formattedTime = LocalTime.parse(startTime, formatter)
+        val endTime = formattedTime.plus(hour).plus(minute)
+        return endTime.format(formatter)
+    }
+
+    private fun getParkingPeriodMinute(): Int {
+        return (binding.durationHour.text.toString().toInt() * 60) +
+                binding.durationMinute.text.toString().toInt()
     }
 
     private fun redParkingInvalid(): Boolean {
@@ -172,6 +196,7 @@ class advance_space_selection_fragment : Fragment(), TimePickerDialog.OnTimeSetL
         Log.d(TAG, "onTimeSet: duration of time is $durationMinute")
         isTimeExist = true
         binding.parkingTime.text = formattedTime
+        parkingStart = formattedTime
     }
 
     private fun initView() {
