@@ -17,7 +17,9 @@ import com.abing.letak.R
 import com.abing.letak.advancebookingactivity.AdvanceBookingActivity
 import com.abing.letak.databinding.FragmentOrderNowBinding
 import com.abing.letak.extendparking.ExtendParkingActivity
+import com.abing.letak.model.AdvBooking
 import com.abing.letak.model.ParkingLot
+import com.abing.letak.model.UserBooking
 import com.abing.letak.ordernowactivity.OrderNowActivity
 import com.abing.letak.parkinglotadapter.ParkingLotAdapter
 import com.abing.letak.viewmodel.UserBookingViewModel
@@ -25,6 +27,8 @@ import com.abing.letak.viewmodel.UserIdViewModel
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.toObject
+import java.time.LocalTime
+import java.time.format.DateTimeFormatter
 
 class OrderNowFragment : Fragment() {
     private var parkingDurationMilis: Long = 0
@@ -63,9 +67,12 @@ class OrderNowFragment : Fragment() {
         bookingRef.get().addOnSuccessListener {
             lotId = it.getString("lotId").toString()
             spaceId = it.getString("spaceId").toString()
-            val spaceRef = db.collection("parkingLots").document(lotId).collection("parkingSpaces").document(spaceId)
+            val spaceRef = db.collection("parkingLots").document(lotId).collection("parkingSpaces")
+                .document(spaceId)
             spaceRef.update("spaceEmpty", true)
         }
+
+        //reload the fragment
         val fragmentTransaction = activity?.supportFragmentManager?.beginTransaction()
         val newFragment = OrderNowFragment()
         fragmentTransaction?.replace(R.id.fragment_container, newFragment)
@@ -79,22 +86,129 @@ class OrderNowFragment : Fragment() {
         userRef.get().addOnSuccessListener {
             orderNowStatus = it.getBoolean("orderNowStatus")
             advanceBookingStatus = it.getBoolean("advanceBookingStatus")
-            if (orderNowStatus == false && advanceBookingStatus == false){
+            if (orderNowStatus == false && advanceBookingStatus == false) {
                 binding.apply {
                     noActiveGroup.visibility = View.VISIBLE
                     orderNowActiveGroup.visibility = View.GONE
+                    advActiveGroup.visibility = View.GONE
                     noActiveParking()
                 }
             }
-            if (orderNowStatus == true && advanceBookingStatus == false){
+            if (orderNowStatus == true && advanceBookingStatus == false) {
                 binding.apply {
                     orderNowActiveCard.visibility = View.VISIBLE
                     noActiveGroup.visibility = View.GONE
+                    advActiveGroup.visibility = View.GONE
                     orderNowActive()
+                }
+            }
+            if (orderNowStatus == false && advanceBookingStatus == true) {
+                binding.apply {
+                    advActiveGroup.visibility = View.VISIBLE
+                    noActiveGroup.visibility = View.GONE
+                    orderNowActiveGroup.visibility = View.GONE
+                    advBookingActive()
                 }
             }
         }
     }
+
+    private fun advBookingActive() {
+        userRef.get().addOnSuccessListener {
+            activeBookingId = it.getString("activeBookingId").toString()
+            bookingRef = userRef.collection("advBookings").document(activeBookingId)
+            setupAdvBooking()
+        }
+    }
+
+    private fun setupAdvBooking() {
+        bookingRef.get().addOnSuccessListener {
+            val lotId = it.getString("lotId").toString()
+            val spaceId = it.getString("spaceId").toString()
+            //fetch lot name
+            db.collection("parkingLots").document(lotId).get().addOnSuccessListener { lot ->
+                binding.advanceParkingLotName.text = lot.getString("lotName")
+            }
+            //setup adv parking time
+            binding.advanceTime.text = it.getString("parkingStart").toString()
+            //setup spaceType card
+            val spaceType = it.getString("spaceType").toString()
+            when (spaceType) {
+                "Green" -> {
+                    binding.advanceSpaceTypeCard.backgroundTintList =
+                        resources.getColorStateList(R.color.space_green)
+                }
+                "Yellow" -> {
+                    binding.advanceSpaceTypeCard.backgroundTintList =
+                        resources.getColorStateList(R.color.space_yellow)
+                }
+                "Red" -> {
+                    binding.advanceSpaceTypeCard.backgroundTintList =
+                        resources.getColorStateList(R.color.space_red)
+                }
+            }
+            binding.parkButton.setOnClickListener { advStartPark(lotId, spaceId) }
+        }
+    }
+
+    private fun advStartPark(lotId: String, spaceId: String) {
+        //check if time already same with parking start
+        bookingRef.get().addOnSuccessListener {
+            val parkingStart = it.getString("parkingStart").toString()
+            val currentTime = LocalTime.now().toString()
+            if (parkingStart != currentTime) {
+                Toast.makeText(requireContext(), R.string.not_time_to_park, Toast.LENGTH_SHORT)
+                    .show()
+                return@addOnSuccessListener
+            }
+            //update space vacancy
+            val spaceRef = db.collection("parkingLots").document(lotId).collection("parkingSpaces")
+                .document(spaceId)
+            spaceRef.update("spaceEmpty", false)
+            // TODO: how to show user they have parked in the system
+            //convert the adv booking into user booking
+            bookingRef.get().addOnSuccessListener {
+                val advBooking = it.toObject<AdvBooking>()
+                val startMilis = System.currentTimeMillis()
+                val userBookingAdv = UserBooking(
+                    null,
+                    advBooking?.lotId,
+                    advBooking?.spaceId,
+                    advBooking?.spaceType,
+                    advBooking?.parkingPeriodMinute?.toInt(),
+                    null,
+                    null,
+                    advBooking?.eWalletType,
+                    advBooking?.vecPlate,
+                    startMilis,
+                    advBooking?.parkingFee
+                )
+                //insert to firestore inside bookings collection
+                db.collection("users").document(userIdViewModel.userId).collection("bookings").add(userBookingAdv)
+                    .addOnSuccessListener {booking ->
+                        booking.update("bookingId", booking.id)
+                        userRef.update("activeBookingId", booking.id)
+                        switchActiveStatus()
+                        reloadFragment()
+                    }
+
+            }
+        }
+    }
+
+    private fun reloadFragment() {
+        val fragmentTransaction = activity?.supportFragmentManager?.beginTransaction()
+        val newFragment = OrderNowFragment()
+        fragmentTransaction?.replace(R.id.fragment_container, newFragment)
+        fragmentTransaction?.commit()
+    }
+
+    private fun switchActiveStatus() {
+        val userRef = db.collection("users").document(userIdViewModel.userId)
+        userRef.update("advanceBookingStatus", false)
+        userRef.update("orderNowStatus", true)
+    }
+
 
     private fun orderNowActive() {
         userRef.get()
@@ -136,21 +250,21 @@ class OrderNowFragment : Fragment() {
         val remainingMilis = endTimeMilis.minus(currentTimeMilis)
         //convert milis to minutes
         //1minute = 1000 * 60
-        val remainingMinute = remainingMilis.div(60*1000)
+        val remainingMinute = remainingMilis.div(60 * 1000)
         binding.elapsedTime.text = remainingMinute.toString()
-        if (remainingMinute < 10){
+        if (remainingMinute < 10) {
             val builder = AlertDialog.Builder(requireContext())
             builder.setTitle(R.string.parking_expiring)
                 .setMessage(R.string.parking_expiring_soon)
                 .setCancelable(true)
-                .setPositiveButton(R.string.extend){dialogInterface, it ->
+                .setPositiveButton(R.string.extend) { dialogInterface, it ->
                     extendParking()
                 }
-                .setNegativeButton(R.string.unpark){dialogInterface, it ->
+                .setNegativeButton(R.string.unpark) { dialogInterface, it ->
                     dialogInterface.cancel()
                 }
                 .show()
-            if (remainingMinute < 1){
+            if (remainingMinute < 1) {
                 binding.elapsedTime.apply {
                     setTextSize(TypedValue.COMPLEX_UNIT_SP, 16f)
                     text = getString(R.string.parking_expired)
@@ -169,12 +283,15 @@ class OrderNowFragment : Fragment() {
 
     @SuppressLint("UseCompatLoadingForColorStateLists")
     private fun setupSpaceTypeCard(spaceType: String?) {
-        if (spaceType == "Green"){
-            binding.spaceTypeCard.backgroundTintList = resources.getColorStateList(R.color.space_green)
-        }else if (spaceType == "Yellow"){
-            binding.spaceTypeCard.backgroundTintList = resources.getColorStateList(R.color.space_yellow)
-        }else{
-            binding.spaceTypeCard.backgroundTintList = resources.getColorStateList(R.color.space_red)
+        if (spaceType == "Green") {
+            binding.spaceTypeCard.backgroundTintList =
+                resources.getColorStateList(R.color.space_green)
+        } else if (spaceType == "Yellow") {
+            binding.spaceTypeCard.backgroundTintList =
+                resources.getColorStateList(R.color.space_yellow)
+        } else {
+            binding.spaceTypeCard.backgroundTintList =
+                resources.getColorStateList(R.color.space_red)
         }
     }
 

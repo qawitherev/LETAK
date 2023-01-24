@@ -206,7 +206,6 @@ class advance_space_selection_fragment : Fragment(), TimePickerDialog.OnTimeSetL
         val formattedTime = formatter.format(time)
         val duration = Duration.between(currentTime, time)
         durationMinute = duration.toMinutes().absoluteValue
-        Log.d(TAG, "onTimeSet: duration of time is $durationMinute")
         isTimeExist = true
         binding.parkingTime.text = formattedTime
         parkingStart = formattedTime

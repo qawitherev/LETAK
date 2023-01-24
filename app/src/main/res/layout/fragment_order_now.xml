@@ -64,7 +64,7 @@
                             android:layout_marginStart="8dp"
                             android:text="5.08"
                             android:textColor="@color/primaryColor"
-                            android:textSize="48sp"
+                            android:textSize="36sp"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toStartOf="@+id/advance_parking_lot_image"
@@ -117,6 +117,18 @@
                     android:layout_marginTop="20dp"
                     android:layout_gravity="center"
                     android:text="@string/app_name"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/cancel_adv"
+                    app:cornerRadius="8dp"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:layout_gravity="center"
+                    android:textColor="@color/primaryColor"
+                    android:backgroundTint="@color/white"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cancel"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -321,13 +333,14 @@
 a_little_insight_recycler_view, letak_now_button, advance_book_button" />
 
         <androidx.constraintlayout.widget.Group
-            android:visibility="gone"
+            android:visibility="visible"
             android:id="@+id/order_now_active_group"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:constraint_referenced_ids="order_now_active_card"/>
 
         <androidx.constraintlayout.widget.Group
+            android:id="@+id/adv_active_group"
             android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
