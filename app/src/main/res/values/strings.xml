@@ -211,6 +211,7 @@
     <string name="set_date">Set Your Date</string>
     <string name="set_time">Set Your Time</string>
     <string name="adv_book_rule">Advance Booking Must Be Between 6-12 hours before</string>
+    <string name="no_available_space">Selected Space Type Is Unavailable</string>
 
     <string-array name="space_type">
         <item>Green</item>

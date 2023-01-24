@@ -33,6 +33,9 @@ class AdvBookingViewModel: ViewModel() {
     private val _eWalletType = MutableLiveData<String>()
     val eWalletType: LiveData<String> = _eWalletType
 
+    private val _parkingFee = MutableLiveData<Double>()
+    val parkingFee: LiveData<Double> = _parkingFee
+
     fun setAdvBookingId(advBookingId: String){
         _advBookingId.value = advBookingId
     }
@@ -67,5 +70,9 @@ class AdvBookingViewModel: ViewModel() {
 
     fun setEWalletType(eWalletType: String){
         _eWalletType.value = eWalletType
+    }
+
+    fun setParkingFee(parkingFee: Double){
+        _parkingFee.value = parkingFee
     }
 }

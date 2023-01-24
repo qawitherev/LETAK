@@ -18,6 +18,7 @@ import com.abing.letak.R
 import com.abing.letak.advancebookingactivity.viewmodels.AdvBookingViewModel
 import com.abing.letak.databinding.FragmentAdvanceSpaceSelectionFragmentBinding
 import com.abing.letak.model.ParkingLot
+import com.abing.letak.model.ParkingSpace
 import com.abing.letak.ordernowactivity.adapter.SpaceSpinnerAdapter
 import com.abing.letak.utils.MinMaxFilter
 import com.abing.letak.viewmodel.ParkingFeeViewModel
@@ -30,6 +31,7 @@ import java.time.LocalDateTime
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 import java.util.*
+import kotlin.collections.ArrayList
 import kotlin.math.absoluteValue
 
 class advance_space_selection_fragment : Fragment(), TimePickerDialog.OnTimeSetListener {
@@ -118,6 +120,7 @@ class advance_space_selection_fragment : Fragment(), TimePickerDialog.OnTimeSetL
         )
         viewModel.parkingFee.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
             binding.parkingFee.text = it.toString()
+            advBookingViewModel.setParkingFee(it)
         })
     }
 
@@ -140,12 +143,22 @@ class advance_space_selection_fragment : Fragment(), TimePickerDialog.OnTimeSetL
         view.findNavController().navigate(action)
     }
 
+
+
     private fun updateViewModel() {
         advBookingViewModel.setLotId(args.lotId)
         advBookingViewModel.setSpaceType(spaceType)
         advBookingViewModel.setParkingPeriodMinute(getParkingPeriodMinute().toString())
         advBookingViewModel.setParkingStart(parkingStart.toString())
         advBookingViewModel.setParkingEnd(getParkingEnd())
+//        things are updated in this fragments are
+//        1. lotId
+//        2. spaceType
+//        3. parkingPeriodMinute
+//        4. parkingStart
+//        5. parkingEnd
+//        6. parkingFee???
+//        7. spaceId
     }
 
     private fun getParkingEnd(): String{
@@ -168,7 +181,7 @@ class advance_space_selection_fragment : Fragment(), TimePickerDialog.OnTimeSetL
         val totalMinute = (binding.durationHour.text.toString().toInt() * 60) +
                 binding.durationMinute.text.toString().toInt()
         Log.d(TAG, "total minute is -> $totalMinute")
-        return totalMinute >= 120
+        return totalMinute > 120
     }
 
     private fun timeInvalid(): Boolean {

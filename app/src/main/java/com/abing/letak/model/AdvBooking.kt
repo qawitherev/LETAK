@@ -8,8 +8,9 @@ data class AdvBooking(
     var spaceId: String? = null,
     var spaceType: String? = null,
     var parkingPeriodMinute: String? = null,
-    var parkingStart: Date? = null,
-    var parkingEnd: Date? = null,
+    var parkingStart: String? = null,
+    var parkingEnd: String? = null,
     var vecPlate: String? = null,
     var eWalletType: String? = null,
+    var parkingFee: Double? = null
 )

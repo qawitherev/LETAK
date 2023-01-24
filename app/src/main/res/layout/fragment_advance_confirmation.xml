@@ -279,13 +279,13 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/letak_button"
+                android:id="@+id/advance_book_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:elevation="10dp"
-                android:text="@string/app_name"
-                android:textSize="18sp"
+                android:text="@string/advance_book"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 app:cornerRadius="8dp"
                 android:paddingTop="10dp"
