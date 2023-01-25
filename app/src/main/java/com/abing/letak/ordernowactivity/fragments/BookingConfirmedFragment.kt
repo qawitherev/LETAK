@@ -22,11 +22,13 @@ import com.abing.letak.viewmodel.UserIdViewModel
 import com.google.api.LogDescriptor
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentReference
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import java.time.Instant
 import java.time.LocalDateTime
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
+import kotlin.math.log
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.hours
 
@@ -70,6 +72,7 @@ class BookingConfirmedFragment : Fragment() {
     }
 
     private fun startParking() {
+        updateLotOccupied(userBookingViewModel.lotId.value.toString())
         timeLeftViewModel.stopTimer()
         val dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
         val currentDateTime = LocalDateTime.now().format(dateTimeFormatter)
@@ -81,6 +84,13 @@ class BookingConfirmedFragment : Fragment() {
         val intent = Intent(requireContext(), MainMenuActivity::class.java)
         startActivity(intent)
         activity?.finish()
+    }
+
+    private fun updateLotOccupied(lotId: String) {
+        Log.d(TAG, "updateLotOccupied: $lotId")
+        val lotRef = db.collection("parkingLots").document(lotId)
+        val increment = FieldValue.increment(1)
+        lotRef.update("lotOccupied", increment)
     }
 
     private fun updateActiveBookingId() {

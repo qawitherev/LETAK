@@ -9,6 +9,9 @@ import com.abing.letak.model.ParkingLot
 
 class ParkingLotAdapter(private val context: Context, private val dataset: MutableList<ParkingLot>) :
     RecyclerView.Adapter<ParkingLotAdapter.ParkingLotViewHolder>() {
+
+    
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ParkingLotViewHolder {
         val binding =
             ParkingLotItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -18,6 +21,9 @@ class ParkingLotAdapter(private val context: Context, private val dataset: Mutab
     override fun onBindViewHolder(holder: ParkingLotViewHolder, position: Int) {
         val data = dataset[position]
         holder.binding.parkingLotName.text = data.lotName
+        holder.binding.parkingLotOccupancyBar.max = data.lotTotal!!.toInt()
+        holder.binding.parkingLotOccupancyBar.progress = data.lotOccupied!!.toInt()
+        holder.binding.parkingLotOccupancy.text = "${data.lotOccupied} of ${data.lotTotal} occupied"
     }
 
     override fun getItemCount(): Int {

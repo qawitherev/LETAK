@@ -30,6 +30,7 @@ class MonthlyPassFragment : Fragment() {
     private fun startMonthlyPass() {
         val intent = Intent(requireContext(), MonthlyPassActivity::class.java)
         startActivity(intent)
+        activity?.finish()
     }
 
     override fun onDestroyView() {

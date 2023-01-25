@@ -92,6 +92,7 @@ class AdvanceConfirmationFragment : Fragment() {
             .addOnSuccessListener {
                 userRef.update("activeBookingId", advBookingViewModel.bookingId.value)
             }
+        activity?.finish()
     }
 
     private fun getSpace() {

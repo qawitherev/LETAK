@@ -11,6 +11,10 @@
         android:label="fragment_advance_space_selection_fragment"
         tools:layout="@layout/fragment_advance_space_selection_fragment" >
         <action
+            app:enterAnim="@anim/slide_in_from_right"
+            app:exitAnim="@anim/slide_out_from_right"
+            app:popEnterAnim="@anim/slide_in_from_left"
+            app:popExitAnim="@anim/slide_out_from_left"
             android:id="@+id/action_advance_space_selection_fragment_to_advanceConfirmationFragment"
             app:destination="@id/advanceConfirmationFragment" />
         <argument
@@ -29,6 +33,10 @@
         tools:layout="@layout/fragment_advance_lot_selection" >
         <action
             android:id="@+id/action_advanceLotSelectionFragment_to_advance_space_selection_fragment"
-            app:destination="@id/advance_space_selection_fragment" />
+            app:destination="@id/advance_space_selection_fragment"
+            app:enterAnim="@anim/slide_in_from_right"
+            app:exitAnim="@anim/slide_out_from_right"
+            app:popEnterAnim="@anim/slide_in_from_left"
+            app:popExitAnim="@anim/slide_out_from_left" />
     </fragment>
 </navigation>

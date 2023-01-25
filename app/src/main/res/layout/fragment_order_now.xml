@@ -333,7 +333,7 @@
 a_little_insight_recycler_view, letak_now_button, advance_book_button" />
 
         <androidx.constraintlayout.widget.Group
-            android:visibility="visible"
+            android:visibility="gone"
             android:id="@+id/order_now_active_group"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

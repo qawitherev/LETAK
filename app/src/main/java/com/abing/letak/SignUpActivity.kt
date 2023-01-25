@@ -136,6 +136,7 @@ class SignUpActivity : AppCompatActivity() {
                     Toast.makeText(this, R.string.registration_success, Toast.LENGTH_SHORT).show()
                     val intent = Intent(this, ProfileSetupActivity::class.java)
                     startActivity(intent)
+                    finish()
                 } else {
                     Toast.makeText(this, R.string.authentication_failed, Toast.LENGTH_SHORT).show()
                     Log.w("Sign up activity", "Sign up failed. ${it.exception}")

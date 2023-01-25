@@ -58,6 +58,7 @@ class PhoneOtpFragment : Fragment() {
         val otpNumber = binding.otpNumber.text.trim().toString()
         val credential = PhoneAuthProvider.getCredential(verificationId, otpNumber)
         signInFirebaseWithCredential(credential)
+        activity?.finish()
     }
 
     private fun signInFirebaseWithCredential(credential: PhoneAuthCredential) {

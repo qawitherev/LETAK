@@ -59,13 +59,21 @@ class ProfileSetupActivity : AppCompatActivity() {
         intent.putExtra("firstName", firstName)
         intent.putExtra("lastName", lastName)
         startActivity(intent)
+        finish()
     }
 
     private fun addUserInFireStore(firstName: String, lastName: String) {
         val user = User(
             userId,
             firstName,
-            lastName
+            lastName,
+            null,
+            null,
+            false,
+            false,
+            false,
+            null,
+            null,
         )
         //user doc ref
         val userRef = db.collection("users").document(userId)

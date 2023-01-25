@@ -25,6 +25,7 @@ import com.abing.letak.parkinglotadapter.ParkingLotAdapter
 import com.abing.letak.viewmodel.UserBookingViewModel
 import com.abing.letak.viewmodel.UserIdViewModel
 import com.google.firebase.firestore.DocumentReference
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.toObject
 import java.time.LocalTime
@@ -70,6 +71,8 @@ class OrderNowFragment : Fragment() {
             val spaceRef = db.collection("parkingLots").document(lotId).collection("parkingSpaces")
                 .document(spaceId)
             spaceRef.update("spaceEmpty", true)
+            val lotRef = db.collection("parkingLots").document(lotId)
+            lotRef.update("lotOccupied", FieldValue.increment(-1))
         }
 
         //reload the fragment
@@ -153,19 +156,20 @@ class OrderNowFragment : Fragment() {
 
     private fun advStartPark(lotId: String, spaceId: String) {
         //check if time already same with parking start
+        updateLotOccupied(lotId)
         bookingRef.get().addOnSuccessListener {
             val parkingStart = it.getString("parkingStart").toString()
             val currentTime = LocalTime.now().toString()
             if (parkingStart != currentTime) {
                 Toast.makeText(requireContext(), R.string.not_time_to_park, Toast.LENGTH_SHORT)
                     .show()
-                return@addOnSuccessListener
+                // TODO: comment below for testing purposes
+//                return@addOnSuccessListener
             }
             //update space vacancy
             val spaceRef = db.collection("parkingLots").document(lotId).collection("parkingSpaces")
                 .document(spaceId)
             spaceRef.update("spaceEmpty", false)
-            // TODO: how to show user they have parked in the system
             //convert the adv booking into user booking
             bookingRef.get().addOnSuccessListener {
                 val advBooking = it.toObject<AdvBooking>()
@@ -216,10 +220,19 @@ class OrderNowFragment : Fragment() {
                 activeBookingId = it.getString("activeBookingId").toString()
                 bookingRef = userRef.collection("bookings").document(activeBookingId)
                 setupActiveBookingRef()
+                bookingRef.get().addOnSuccessListener {
+                    val lotId = it.getString("lotId").toString()
+                }
             }
             .addOnFailureListener {
                 Log.d(TAG, "orderNowActive: User not found")
             }
+    }
+
+    private fun updateLotOccupied(lotId: String) {
+        val lotRef = db.collection("parkingLots").document(lotId)
+        val increment = FieldValue.increment(1)
+        lotRef.update("lotOccupied", increment)
     }
 
     private fun setupActiveBookingRef() {
@@ -306,6 +319,7 @@ class OrderNowFragment : Fragment() {
     private fun startAdvanceBookActivity() {
         val intent = Intent(requireContext(), AdvanceBookingActivity::class.java)
         startActivity(intent)
+        activity?.finish()
     }
 
     private fun initialSetup() {
