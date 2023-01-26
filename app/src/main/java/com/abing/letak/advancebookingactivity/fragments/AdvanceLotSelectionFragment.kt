@@ -26,6 +26,8 @@ class AdvanceLotSelectionFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentAdvanceLotSelectionBinding.inflate(layoutInflater)
+
+
         return binding.root
     }
 

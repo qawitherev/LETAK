@@ -28,6 +28,7 @@ import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.toObject
+import java.text.SimpleDateFormat
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 
@@ -180,8 +181,8 @@ class OrderNowFragment : Fragment() {
                     advBooking?.spaceId,
                     advBooking?.spaceType,
                     advBooking?.parkingPeriodMinute?.toInt(),
-                    null,
-                    null,
+                    advBooking?.parkingStart,
+                    advBooking?.parkingEnd,
                     advBooking?.eWalletType,
                     advBooking?.vecPlate,
                     startMilis,

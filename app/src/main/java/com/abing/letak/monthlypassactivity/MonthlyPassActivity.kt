@@ -10,6 +10,7 @@ import com.abing.letak.utils.lightStatusBar
 import com.abing.letak.utils.setFullScreen
 
 class MonthlyPassActivity : AppCompatActivity() {
+
     private lateinit var navController: NavController
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

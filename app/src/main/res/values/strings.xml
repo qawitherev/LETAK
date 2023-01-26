@@ -55,6 +55,8 @@
     <!--    main menu toolbar   -->
     <string name="notification_caps">NOTIFICATIONS</string>
     <string name="profile_caps">PROFILE</string>
+    <string name="order_history_caps">ORDER HISTORY</string>
+    <string name="order_history">Order History</string>
 
     <!--    notification fragment   -->
     <string name="clear_notifications">Clear All</string>

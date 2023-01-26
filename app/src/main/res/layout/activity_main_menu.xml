@@ -31,7 +31,7 @@
                 app:menu="@menu/main_menu_toolbar_menu" />
 
             <com.google.android.material.appbar.MaterialToolbar
-                app:title="@string/notification_caps"
+                app:title="@string/order_history_caps"
                 android:id="@+id/notification_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
