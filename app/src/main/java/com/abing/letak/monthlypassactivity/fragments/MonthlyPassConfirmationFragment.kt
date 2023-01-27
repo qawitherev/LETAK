@@ -1,6 +1,7 @@
 package com.abing.letak.monthlypassactivity.fragments
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import androidx.fragment.app.activityViewModels
+import com.abing.letak.MainMenuActivity
 import com.abing.letak.R
 import com.abing.letak.databinding.FragmentMonthlyPassConfirmationBinding
 import com.abing.letak.model.PassBooking
@@ -47,12 +49,16 @@ class MonthlyPassConfirmationFragment : Fragment() {
 
     private fun purchasePass() {
         updateFirestore()
+        val intent = Intent(requireContext(), MainMenuActivity::class.java)
+        startActivity(intent)
+        activity?.finish()
     }
 
     private fun updateFirestore() {
 
         val userRef = db.collection("users").document(userIdViewModel.userId)
         userRef.update("monthlyPassStatus", true)
+
 
         val pass = PassBooking(
             null,
@@ -61,10 +67,13 @@ class MonthlyPassConfirmationFragment : Fragment() {
             passBookingViewModel.startDate.value,
             passBookingViewModel.endDate.value,
             passBookingViewModel.eWalletType.value,
+            null
         )
         db.collection("users").document(userIdViewModel.userId).collection("pass")
             .add(pass).addOnSuccessListener {
                 it.update("passId", it.id)
+                passBookingViewModel.setPassId(it.id)
+                userRef.update("activePassId", passBookingViewModel.passId.value)
             }
     }
 

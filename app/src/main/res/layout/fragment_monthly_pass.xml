@@ -84,8 +84,18 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.card.MaterialCardView>
 
+        <ImageView
+            android:layout_marginTop="20dp"
+            android:id="@+id/active_pass_img"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@drawable/active_pass_image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <com.google.android.material.card.MaterialCardView
-            android:visibility="gone"
             android:id="@+id/active_monthly_pass_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -93,7 +103,7 @@
             app:cardCornerRadius="@dimen/card_corner_radius"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/monthly_pass_desc_card">
+            app:layout_constraintTop_toBottomOf="@+id/active_pass_img">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -102,6 +112,7 @@
 
 
                 <TextView
+                    android:textSize="18sp"
                     android:id="@+id/parking_lot_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -117,8 +128,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="@string/status"
-                    android:textStyle="bold"
+                    android:text="@string/days_left"
+                    android:textSize="16sp"
                     app:layout_constraintEnd_toStartOf="@+id/guideline14"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
@@ -130,8 +141,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
-                    android:text="@string/days_left"
-                    android:textStyle="bold"
+                    android:text="@string/status"
+                    android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/guideline14"
                     app:layout_constraintHorizontal_bias="0.0"
@@ -144,7 +155,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="64dp"
                     android:backgroundTint="#7B7474"
-                    app:cardCornerRadius="10dp"
+                    app:cardCornerRadius="6dp"
                     app:layout_constraintBottom_toBottomOf="@+id/status_text"
                     app:layout_constraintEnd_toStartOf="@+id/guideline11"
                     app:layout_constraintHorizontal_bias="0.0"
@@ -168,8 +179,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="64dp"
-                    android:backgroundTint="@color/green"
-                    app:cardCornerRadius="10dp"
+                    android:backgroundTint="@color/space_green"
+                    app:cardCornerRadius="6dp"
                     app:layout_constraintBottom_toBottomOf="@+id/days_left_text"
                     app:layout_constraintEnd_toStartOf="@+id/guideline11"
                     app:layout_constraintHorizontal_bias="0.0"
@@ -189,19 +200,26 @@
                         android:textStyle="bold" />
                 </com.google.android.material.card.MaterialCardView>
 
-                <Button
+                <com.google.android.material.button.MaterialButton
+                    app:cornerRadius="10dp"
                     android:id="@+id/park_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
+                    android:layout_width="0dp"
                     android:text="@string/park"
-                    android:textSize="12sp"
-                    app:cornerRadius="15dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_height="wrap_content"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/guideline11"
                     app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.button.MaterialButton
+                    app:cornerRadius="10dp"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:id="@+id/unpark_button"
+                    android:layout_width="0dp"
+                    android:text="@string/unpark"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/guideline11"
+                    app:layout_constraintTop_toBottomOf="@+id/park_button" />
 
                 <androidx.constraintlayout.widget.Guideline
                     android:id="@+id/guideline11"
@@ -259,7 +277,6 @@
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.button.MaterialButton
-            android:visibility="gone"
             android:id="@+id/need_assistance_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -267,6 +284,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="64dp"
             android:text="@string/need_assistance"
+            android:visibility="gone"
             app:cornerRadius="15dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -289,6 +307,20 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/materialCardView2" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/pass_inactive_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:constraint_referenced_ids="imageView, monthly_pass_desc, monthly_pass_desc_card, purchase_pass_button" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/active_group"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="active_pass_img, active_monthly_pass_card"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

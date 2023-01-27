@@ -24,6 +24,9 @@ class PassBookingViewModel: ViewModel() {
     private val _eWalletType = MutableLiveData<String>()
     val eWalletType: LiveData<String> = _eWalletType
 
+    private val _spaceId = MutableLiveData<String>()
+    val spaceId: LiveData<String> = _spaceId
+
     fun setPassId(passId: String){
         _passId.value = passId
     }
@@ -46,5 +49,9 @@ class PassBookingViewModel: ViewModel() {
 
     fun setEwalletType(eWalletType: String){
         _eWalletType.value = eWalletType
+    }
+
+    fun setSpaceId(spaceId: String){
+        _spaceId.value = spaceId
     }
 }

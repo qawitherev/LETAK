@@ -10,5 +10,6 @@ data class User(
     val advanceBookingStatus: Boolean? = null,
     val monthlyPassStatus: Boolean? = null,
     val activeBookingId: String? = null,
-    val activeMonthlyId: String? = null
+    val activeMonthlyId: String? = null,
+    val activePassId: String? = null
 )

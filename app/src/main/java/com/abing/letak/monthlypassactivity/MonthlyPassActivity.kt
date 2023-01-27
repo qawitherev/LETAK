@@ -27,7 +27,8 @@ class MonthlyPassActivity : AppCompatActivity() {
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        return navController.navigateUp() || super.onSupportNavigateUp()
+        finish()
+        return super.onSupportNavigateUp()
     }
 
     override fun onBackPressed() {

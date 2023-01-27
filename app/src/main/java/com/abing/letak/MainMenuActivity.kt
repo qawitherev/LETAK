@@ -45,17 +45,17 @@ class MainMenuActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when(item.itemId){
-            R.id.setting -> {
-                auth.signOut()
-                finish()
-                val intent = Intent(this, WelcomeActivity::class.java)
-                startActivity(intent)
-                true
-            }else -> { super.onOptionsItemSelected(item)}
-        }
-    }
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        return when(item.itemId){
+//            R.id.setting -> {
+//                auth.signOut()
+//                finish()
+//                val intent = Intent(this, WelcomeActivity::class.java)
+//                startActivity(intent)
+//                true
+//            }else -> { super.onOptionsItemSelected(item)}
+//        }
+//    }
 
     private fun navBotNavigations() {
         binding.bottomNavBar.setOnItemSelectedListener {
