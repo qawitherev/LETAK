@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.DatePicker
+import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
@@ -25,6 +26,7 @@ import java.util.*
 
 class MonthlyPassSpaceSelection : Fragment(), DatePickerDialog.OnDateSetListener {
 
+    private var dateExist = false
     private val passBookingViewModel: PassBookingViewModel by activityViewModels()
     private val TAG = "MonthPassSpaceSelection"
     private val args: MonthlyPassSpaceSelectionArgs by navArgs()
@@ -52,7 +54,7 @@ class MonthlyPassSpaceSelection : Fragment(), DatePickerDialog.OnDateSetListener
         db.collection("parkingLots").document(args.lotId).get().addOnSuccessListener {
             val parkingLot = it.toObject<ParkingLot>()!!
             binding.parkingLotName.text = parkingLot.lotName
-            Log.d(TAG, "initInfo: parkingLotName->${parkingLot.lotName}")
+            passBookingViewModel.setLotName(parkingLot.lotName!!)
         }
     }
 
@@ -83,22 +85,36 @@ class MonthlyPassSpaceSelection : Fragment(), DatePickerDialog.OnDateSetListener
             set(Calendar.DAY_OF_MONTH, day)
         }
         val startDate = c.time
-        val formatter = SimpleDateFormat("dd-MMM-yyyy")
-        val formattedStartDate = formatter.format(startDate)
-        passBookingViewModel.setStartDate(formattedStartDate)
+        val today = Calendar.getInstance()
+        val todayDay = today.time
+        if (startDate.after(todayDay)){
+            val formatter = SimpleDateFormat("dd-MMM-yyyy")
+            val formattedStartDate = formatter.format(startDate)
+            passBookingViewModel.setStartDate(formattedStartDate)
 
-        //adding 30 days into the days
-        c.add(Calendar.DAY_OF_MONTH, 30)
-        val endDate = c.time
-        val formattedEndDate = formatter.format(endDate)
-        passBookingViewModel.setEndDate(formattedEndDate)
-        binding.apply {
-            passStartDate.text = passBookingViewModel.startDate.value
-            passEndDate.text = passBookingViewModel.endDate.value
+            //adding 30 days into the days
+            c.add(Calendar.DAY_OF_MONTH, 30)
+            val endDate = c.time
+            val formattedEndDate = formatter.format(endDate)
+            passBookingViewModel.setEndDate(formattedEndDate)
+            binding.apply {
+                passStartDate.text = passBookingViewModel.startDate.value
+                passEndDate.text = passBookingViewModel.endDate.value
+            }
+            dateExist = true
+        }else {
+            Toast.makeText(requireContext(), R.string.day_after_today, Toast.LENGTH_SHORT).show()
+            return
         }
+
     }
 
     private fun continueToPassConfirmation(view: View?) {
+        if (!dateExist){
+            Toast.makeText(requireContext(), R.string.pick_a_date, Toast.LENGTH_SHORT).show()
+            return
+        }
+        passBookingViewModel.setLotId(args.lotId)
         val action = MonthlyPassSpaceSelectionDirections
             .actionMonthlyPassSpaceSelectionToMonthlyPassConfirmationFragment()
         view?.findNavController()?.navigate(action)

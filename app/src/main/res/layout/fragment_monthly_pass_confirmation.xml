@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="10dp"
-        android:text="@string/parking_details"
+        android:text="@string/pass_details"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -78,7 +78,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="8am - 6pm"
+                android:text="@string/pass_time"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/guideline21"
@@ -89,7 +89,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="21 JULY 2022 - 21 AUGUST 2022"
+                android:text="@string/start_date"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/guideline21"
@@ -100,7 +100,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="RM 200"
+                android:text="@string/pass_price"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -153,6 +153,20 @@
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:elevation="10dp"
+                app:cardCornerRadius="10dp"
+                android:layout_marginTop="8dp">
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/ewallet_spinner"/>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="32dp"
@@ -161,33 +175,7 @@
                 android:elevation="@dimen/card_elevation"
                 app:cardCornerRadius="15dp">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp">
 
-                    <TextView
-                        android:id="@+id/ewallet_name"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:text="Boost"
-                        android:textAlignment="center"
-                        android:textSize="18sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@id/ewallet_dropdown"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <ImageView
-                        android:id="@+id/ewallet_dropdown"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:src="@drawable/ic_dropdown"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
@@ -198,7 +186,7 @@
                 app:cardCornerRadius="10dp">
 
                 <ImageView
-                    android:id="@+id/ewallet_image"
+                    android:id="@+id/ewallet_logo"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:src="@drawable/boost_logo" />
@@ -248,15 +236,16 @@
         android:background="@drawable/pass_confirmation_bot_bg">
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/purchase_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:text="@string/app_name"
+            android:text="@string/purchase_pass"
             android:textStyle="bold"
-            android:textSize="20sp"
+            android:textSize="16sp"
             app:cornerRadius="10dp"
             android:paddingTop="16dp"
             android:paddingBottom="16dp"

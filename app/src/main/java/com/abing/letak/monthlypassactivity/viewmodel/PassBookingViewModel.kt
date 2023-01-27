@@ -21,6 +21,9 @@ class PassBookingViewModel: ViewModel() {
     private val _endDate = MutableLiveData<String>()
     val endDate: LiveData<String> = _endDate
 
+    private val _eWalletType = MutableLiveData<String>()
+    val eWalletType: LiveData<String> = _eWalletType
+
     fun setPassId(passId: String){
         _passId.value = passId
     }
@@ -39,5 +42,9 @@ class PassBookingViewModel: ViewModel() {
 
     fun setEndDate(endDate: String){
         _endDate.value = endDate
+    }
+
+    fun setEwalletType(eWalletType: String){
+        _eWalletType.value = eWalletType
     }
 }

@@ -123,6 +123,10 @@
     <string name="pass_price">RM 165</string>
     <string name="start_date">Start Date</string>
     <string name="end_date">End Date</string>
+    <string name="pass_details">Pass Details</string>
+    <string name="pick_a_date">Pick A Date</string>
+    <string name="day_after_today">Start Date is At Least Tomorrow</string>
+    <string name="purchase_pass">Purchase Pass</string>
 
     <!--    pass confirmation fragment     -->
     <string name="important_notice">Important notice: </string>

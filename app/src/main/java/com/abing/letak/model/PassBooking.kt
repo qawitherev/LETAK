@@ -5,5 +5,6 @@ data class PassBooking(
     var lotId: String? = null,
     var lotName: String? = null,
     var startDate: String? = null,
-    var endDate: String? = null
+    var endDate: String? = null,
+    var eWalletType: String? = null
 )
