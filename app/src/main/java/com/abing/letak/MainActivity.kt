@@ -2,6 +2,7 @@ package com.abing.letak
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.abing.letak.managevehicle.ManageVehicleActivity
@@ -17,14 +18,14 @@ import kotlin.time.Duration.Companion.hours
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        //this is actually a splash screen
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        welcomeActivity()
-    }
-
-    private fun welcomeActivity() {
-        val intent = Intent(this, WelcomeActivity::class.java)
-        startActivity(intent)
+        Handler().postDelayed({
+            val intent = Intent(this, WelcomeActivity::class.java)
+            startActivity(intent)
+            finish()
+        }, 2000)
     }
 }

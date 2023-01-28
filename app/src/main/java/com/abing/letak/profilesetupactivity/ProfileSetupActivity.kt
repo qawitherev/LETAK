@@ -42,7 +42,7 @@ class ProfileSetupActivity : AppCompatActivity() {
         lightStatusBar(window, true, true)
 
         //binding listeners
-        binding.addPhotoBtn.setOnClickListener { importPhoto() }
+//        binding.addPhotoBtn.setOnClickListener { importPhoto() }
         binding.finishSetupBtn.setOnClickListener { finishSetup() }
     }
 

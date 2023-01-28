@@ -128,6 +128,7 @@
     <string name="day_after_today">Start Date is At Least Tomorrow</string>
     <string name="purchase_pass">Purchase Pass</string>
     <string name="check_time">Parking Pass Only Valid from 8am to 6pm</string>
+    <string name="have_not_parked">You Have Not Parked Yet</string>
 
     <!--    pass confirmation fragment     -->
     <string name="important_notice">Important notice: </string>

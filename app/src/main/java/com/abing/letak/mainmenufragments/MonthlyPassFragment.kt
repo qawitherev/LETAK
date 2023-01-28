@@ -27,7 +27,6 @@ import java.util.*
 
 class MonthlyPassFragment : Fragment() {
 
-    private var parkYes = false
     private val TAG = "MonthlyPassFragment"
     private val passBookingViewModel: PassBookingViewModel by activityViewModels()
     private val userIdViewModel: UserIdViewModel by activityViewModels()
@@ -41,9 +40,7 @@ class MonthlyPassFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentMonthlyPassBinding.inflate(inflater, container, false)
-
         initSetup()
-
         checkStatus()
         return binding.root
     }
@@ -61,8 +58,10 @@ class MonthlyPassFragment : Fragment() {
                 binding.passInactiveGroup.visibility = View.VISIBLE
                 binding.activeGroup.visibility = View.GONE
             }else {
-                binding.passInactiveGroup.visibility = View.GONE
-                binding.activeGroup.visibility = View.VISIBLE
+                binding.apply {
+                    passInactiveGroup.visibility = View.GONE
+                    activeGroup.visibility = View.VISIBLE
+                }
                 activePass()
             }
         }
@@ -75,11 +74,23 @@ class MonthlyPassFragment : Fragment() {
     }
 
     private fun passUnpark() {
-        Toast.makeText(requireContext(), "unpark manja bestie", Toast.LENGTH_SHORT).show()
+        //start unpark
+        val lotRef = db.collection("parkingLots").document(passBookingViewModel.lotId.value.toString())
+        lotRef.update("lotOccupied", FieldValue.increment(-1))
+        val spaceRef = lotRef.collection("parkingSpaces").document(passBookingViewModel.spaceId.value.toString())
+        spaceRef.update("spaceEmpty", true)
+        val bookingRef = db.collection("users").document(userIdViewModel.userId).collection("pass")
+            .document(passBookingViewModel.passId.value.toString())
+        bookingRef.update("parked", false)
+        binding.apply {
+            parkButton.visibility = View.VISIBLE
+            unparkButton.visibility = View.GONE
+        }
     }
 
     private fun passPark() {
         spaceManagement()
+        binding.unparkButton.setOnClickListener { passUnpark() }
     }
 
     private fun spaceManagement() {
@@ -107,7 +118,11 @@ class MonthlyPassFragment : Fragment() {
                     spaceRef.update("spaceEmpty", false)
                     val occupiedRef = db.collection("parkingLots").document(passBookingViewModel.lotId.value.toString())
                     occupiedRef.update("lotOccupied", FieldValue.increment(1))
-                    parkYes = true
+                    bookingRef.update("parked", true)
+                    binding.apply {
+                        parkButton.visibility = View.GONE
+                        unparkButton.visibility = View.VISIBLE
+                    }
                 }
 
             }
@@ -125,6 +140,19 @@ class MonthlyPassFragment : Fragment() {
         passRef.get().addOnSuccessListener {
             binding.parkingLotName.text = it.getString("lotName")
             binding.daysLeftTextCardText.text = calculateDaysLeft(it).toString()
+            passBookingViewModel.setIsParked(it.getBoolean("parked")!!)
+            val isParked = passBookingViewModel.isParked.value!!
+            if (!isParked){
+                binding.apply {
+                    parkButton.visibility = View.VISIBLE
+                    unparkButton.visibility = View.GONE
+                }
+            }else {
+                binding.apply {
+                    parkButton.visibility = View.GONE
+                    unparkButton.visibility = View.VISIBLE
+                }
+            }
 
             //setting the lotid
             passBookingViewModel.setLotId(it?.getString("lotId").toString())

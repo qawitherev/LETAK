@@ -67,7 +67,8 @@ class MonthlyPassConfirmationFragment : Fragment() {
             passBookingViewModel.startDate.value,
             passBookingViewModel.endDate.value,
             passBookingViewModel.eWalletType.value,
-            null
+            null,
+            false
         )
         db.collection("users").document(userIdViewModel.userId).collection("pass")
             .add(pass).addOnSuccessListener {

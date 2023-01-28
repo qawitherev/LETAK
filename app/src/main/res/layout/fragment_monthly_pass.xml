@@ -85,10 +85,10 @@
         </com.google.android.material.card.MaterialCardView>
 
         <ImageView
-            android:layout_marginTop="20dp"
             android:id="@+id/active_pass_img"
             android:layout_width="200dp"
             android:layout_height="200dp"
+            android:layout_marginTop="20dp"
             android:src="@drawable/active_pass_image"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -112,11 +112,11 @@
 
 
                 <TextView
-                    android:textSize="18sp"
                     android:id="@+id/parking_lot_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Parking Lot A1"
+                    android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toStartOf="@+id/guideline11"
                     app:layout_constraintHorizontal_bias="0.0"
@@ -201,25 +201,27 @@
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.button.MaterialButton
-                    app:cornerRadius="10dp"
                     android:id="@+id/park_button"
                     android:layout_width="0dp"
-                    android:text="@string/park"
                     android:layout_height="wrap_content"
+                    android:text="@string/park"
+                    app:cornerRadius="10dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/guideline11"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <com.google.android.material.button.MaterialButton
-                    app:cornerRadius="10dp"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                     android:id="@+id/unpark_button"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                     android:layout_width="0dp"
-                    android:text="@string/unpark"
                     android:layout_height="wrap_content"
+                    android:text="@string/unpark"
+                    app:cornerRadius="10dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/guideline11"
-                    app:layout_constraintTop_toBottomOf="@+id/park_button" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.constraintlayout.widget.Guideline
                     android:id="@+id/guideline11"
@@ -317,10 +319,10 @@
 
         <androidx.constraintlayout.widget.Group
             android:id="@+id/active_group"
-            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:constraint_referenced_ids="active_pass_img, active_monthly_pass_card"/>
+            android:visibility="gone"
+            app:constraint_referenced_ids="active_pass_img, active_monthly_pass_card" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

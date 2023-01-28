@@ -27,6 +27,9 @@ class PassBookingViewModel: ViewModel() {
     private val _spaceId = MutableLiveData<String>()
     val spaceId: LiveData<String> = _spaceId
 
+    private val _isParked = MutableLiveData<Boolean>()
+    val isParked: LiveData<Boolean> = _isParked
+
     fun setPassId(passId: String){
         _passId.value = passId
     }
@@ -53,5 +56,9 @@ class PassBookingViewModel: ViewModel() {
 
     fun setSpaceId(spaceId: String){
         _spaceId.value = spaceId
+    }
+
+    fun setIsParked(isParked: Boolean){
+        _isParked.value = isParked
     }
 }

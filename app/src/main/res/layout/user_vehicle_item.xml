@@ -11,24 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="72dp"
-            android:layout_height="72dp"
-            android:layout_margin="8dp"
-            app:cardCornerRadius="15dp"
-            app:layout_constraintBottom_toTopOf="@+id/guideline8"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <ImageView
-                android:scaleType="centerCrop"
-                android:id="@+id/user_vehicle_img"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/user_placeholder" />
-
-        </androidx.cardview.widget.CardView>
-
         <TextView
             android:id="@+id/user_vehicle_name"
             android:layout_width="wrap_content"
@@ -76,7 +58,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_begin="95dp" />
+            app:layout_constraintGuide_begin="16dp" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline8"

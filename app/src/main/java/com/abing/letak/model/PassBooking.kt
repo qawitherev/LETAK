@@ -7,5 +7,6 @@ data class PassBooking(
     var startDate: String? = null,
     var endDate: String? = null,
     var eWalletType: String? = null,
-    var spaceId: String? = null
+    var spaceId: String? = null,
+    var isParked: Boolean? = null
 )
