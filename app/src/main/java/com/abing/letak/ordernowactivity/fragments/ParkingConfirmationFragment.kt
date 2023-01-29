@@ -219,8 +219,7 @@ class ParkingConfirmationFragment : Fragment() {
         val lotId = userBookingViewModel.lotId.value.toString()
         val selectedSpaceId = userBookingViewModel.spaceId.value.toString()
         parkingLotRef.document(lotId).collection("parkingSpaces").document(selectedSpaceId)
-            .update("spaceEmpty", false).addOnSuccessListener {
-            }
+            .update("spaceEmpty", false, "vecPlate", userBookingViewModel.vecPlate.value)
     }
 
     private fun insertBookingFirestore() {

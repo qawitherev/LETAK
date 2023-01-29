@@ -71,7 +71,7 @@ class OrderNowFragment : Fragment() {
             spaceId = it.getString("spaceId").toString()
             val spaceRef = db.collection("parkingLots").document(lotId).collection("parkingSpaces")
                 .document(spaceId)
-            spaceRef.update("spaceEmpty", true)
+            spaceRef.update("spaceEmpty", true, "vecPlate", null)
             val lotRef = db.collection("parkingLots").document(lotId)
             lotRef.update("lotOccupied", FieldValue.increment(-1))
         }
